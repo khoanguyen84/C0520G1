@@ -1,0 +1,13 @@
+C:\CodeGym\Class\C0520G1\C0520G1\APC\Bai1\bin\Debug\netcoreapp3.1\Bai1.exe
+C:\CodeGym\Class\C0520G1\C0520G1\APC\Bai1\bin\Debug\netcoreapp3.1\Bai1.deps.json
+C:\CodeGym\Class\C0520G1\C0520G1\APC\Bai1\bin\Debug\netcoreapp3.1\Bai1.runtimeconfig.json
+C:\CodeGym\Class\C0520G1\C0520G1\APC\Bai1\bin\Debug\netcoreapp3.1\Bai1.runtimeconfig.dev.json
+C:\CodeGym\Class\C0520G1\C0520G1\APC\Bai1\bin\Debug\netcoreapp3.1\Bai1.dll
+C:\CodeGym\Class\C0520G1\C0520G1\APC\Bai1\bin\Debug\netcoreapp3.1\Bai1.pdb
+C:\CodeGym\Class\C0520G1\C0520G1\APC\Bai1\obj\Debug\netcoreapp3.1\Bai1.csprojAssemblyReference.cache
+C:\CodeGym\Class\C0520G1\C0520G1\APC\Bai1\obj\Debug\netcoreapp3.1\Bai1.AssemblyInfoInputs.cache
+C:\CodeGym\Class\C0520G1\C0520G1\APC\Bai1\obj\Debug\netcoreapp3.1\Bai1.AssemblyInfo.cs
+C:\CodeGym\Class\C0520G1\C0520G1\APC\Bai1\obj\Debug\netcoreapp3.1\Bai1.csproj.CoreCompileInputs.cache
+C:\CodeGym\Class\C0520G1\C0520G1\APC\Bai1\obj\Debug\netcoreapp3.1\Bai1.dll
+C:\CodeGym\Class\C0520G1\C0520G1\APC\Bai1\obj\Debug\netcoreapp3.1\Bai1.pdb
+C:\CodeGym\Class\C0520G1\C0520G1\APC\Bai1\obj\Debug\netcoreapp3.1\Bai1.genruntimeconfig.cache
