@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <StartupObject>Bai1.MatrixDemo</StartupObject>
+    <StartupObject>Bai2.MatrixDemo</StartupObject>
   </PropertyGroup>
 
 </Project>
