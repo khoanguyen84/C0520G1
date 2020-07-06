@@ -1,0 +1,13 @@
+C:\CodeGym\Class\C0520G1\C0520G1\APC\OOP\bin\Debug\netcoreapp3.1\OOP.exe
+C:\CodeGym\Class\C0520G1\C0520G1\APC\OOP\bin\Debug\netcoreapp3.1\OOP.deps.json
+C:\CodeGym\Class\C0520G1\C0520G1\APC\OOP\bin\Debug\netcoreapp3.1\OOP.runtimeconfig.json
+C:\CodeGym\Class\C0520G1\C0520G1\APC\OOP\bin\Debug\netcoreapp3.1\OOP.runtimeconfig.dev.json
+C:\CodeGym\Class\C0520G1\C0520G1\APC\OOP\bin\Debug\netcoreapp3.1\OOP.dll
+C:\CodeGym\Class\C0520G1\C0520G1\APC\OOP\bin\Debug\netcoreapp3.1\OOP.pdb
+C:\CodeGym\Class\C0520G1\C0520G1\APC\OOP\obj\Debug\netcoreapp3.1\OOP.csprojAssemblyReference.cache
+C:\CodeGym\Class\C0520G1\C0520G1\APC\OOP\obj\Debug\netcoreapp3.1\OOP.AssemblyInfoInputs.cache
+C:\CodeGym\Class\C0520G1\C0520G1\APC\OOP\obj\Debug\netcoreapp3.1\OOP.AssemblyInfo.cs
+C:\CodeGym\Class\C0520G1\C0520G1\APC\OOP\obj\Debug\netcoreapp3.1\OOP.csproj.CoreCompileInputs.cache
+C:\CodeGym\Class\C0520G1\C0520G1\APC\OOP\obj\Debug\netcoreapp3.1\OOP.dll
+C:\CodeGym\Class\C0520G1\C0520G1\APC\OOP\obj\Debug\netcoreapp3.1\OOP.pdb
+C:\CodeGym\Class\C0520G1\C0520G1\APC\OOP\obj\Debug\netcoreapp3.1\OOP.genruntimeconfig.cache
