@@ -20,6 +20,7 @@ namespace OOP
             Console.WriteLine($"Fullname: {nhan.FullName}");
             Console.WriteLine($"PinCode: {nhan.PinCode}");
             Console.WriteLine($"Average Score' Nhan: {nhan.AverageScore}");
+            var a = Helper.StringHelper.BankInfo;
         }
     }
 }

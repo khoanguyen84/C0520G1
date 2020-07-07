@@ -1,0 +1,13 @@
+C:\CodeGym\Class\C0520G1\C0520G1\APC\AccessModifer\ProductManagement\bin\Debug\netcoreapp3.1\ProductManagement.exe
+C:\CodeGym\Class\C0520G1\C0520G1\APC\AccessModifer\ProductManagement\bin\Debug\netcoreapp3.1\ProductManagement.deps.json
+C:\CodeGym\Class\C0520G1\C0520G1\APC\AccessModifer\ProductManagement\bin\Debug\netcoreapp3.1\ProductManagement.runtimeconfig.json
+C:\CodeGym\Class\C0520G1\C0520G1\APC\AccessModifer\ProductManagement\bin\Debug\netcoreapp3.1\ProductManagement.runtimeconfig.dev.json
+C:\CodeGym\Class\C0520G1\C0520G1\APC\AccessModifer\ProductManagement\bin\Debug\netcoreapp3.1\ProductManagement.dll
+C:\CodeGym\Class\C0520G1\C0520G1\APC\AccessModifer\ProductManagement\bin\Debug\netcoreapp3.1\ProductManagement.pdb
+C:\CodeGym\Class\C0520G1\C0520G1\APC\AccessModifer\ProductManagement\obj\Debug\netcoreapp3.1\ProductManagement.csprojAssemblyReference.cache
+C:\CodeGym\Class\C0520G1\C0520G1\APC\AccessModifer\ProductManagement\obj\Debug\netcoreapp3.1\ProductManagement.AssemblyInfoInputs.cache
+C:\CodeGym\Class\C0520G1\C0520G1\APC\AccessModifer\ProductManagement\obj\Debug\netcoreapp3.1\ProductManagement.AssemblyInfo.cs
+C:\CodeGym\Class\C0520G1\C0520G1\APC\AccessModifer\ProductManagement\obj\Debug\netcoreapp3.1\ProductManagement.csproj.CoreCompileInputs.cache
+C:\CodeGym\Class\C0520G1\C0520G1\APC\AccessModifer\ProductManagement\obj\Debug\netcoreapp3.1\ProductManagement.dll
+C:\CodeGym\Class\C0520G1\C0520G1\APC\AccessModifer\ProductManagement\obj\Debug\netcoreapp3.1\ProductManagement.pdb
+C:\CodeGym\Class\C0520G1\C0520G1\APC\AccessModifer\ProductManagement\obj\Debug\netcoreapp3.1\ProductManagement.genruntimeconfig.cache

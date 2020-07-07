@@ -47,5 +47,8 @@ namespace OOP
             }
             set => pinCode = value;
         }
+        public override string ToString() {
+            return "";
+        }
     }
 }

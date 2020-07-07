@@ -1,0 +1,13 @@
+C:\CodeGym\Class\C0520G1\C0520G1\APC\AccessModifer\AccessModiferDemo\bin\Debug\netcoreapp3.1\AccessModiferDemo.exe
+C:\CodeGym\Class\C0520G1\C0520G1\APC\AccessModifer\AccessModiferDemo\bin\Debug\netcoreapp3.1\AccessModiferDemo.deps.json
+C:\CodeGym\Class\C0520G1\C0520G1\APC\AccessModifer\AccessModiferDemo\bin\Debug\netcoreapp3.1\AccessModiferDemo.runtimeconfig.json
+C:\CodeGym\Class\C0520G1\C0520G1\APC\AccessModifer\AccessModiferDemo\bin\Debug\netcoreapp3.1\AccessModiferDemo.runtimeconfig.dev.json
+C:\CodeGym\Class\C0520G1\C0520G1\APC\AccessModifer\AccessModiferDemo\bin\Debug\netcoreapp3.1\AccessModiferDemo.dll
+C:\CodeGym\Class\C0520G1\C0520G1\APC\AccessModifer\AccessModiferDemo\bin\Debug\netcoreapp3.1\AccessModiferDemo.pdb
+C:\CodeGym\Class\C0520G1\C0520G1\APC\AccessModifer\AccessModiferDemo\obj\Debug\netcoreapp3.1\AccessModiferDemo.csprojAssemblyReference.cache
+C:\CodeGym\Class\C0520G1\C0520G1\APC\AccessModifer\AccessModiferDemo\obj\Debug\netcoreapp3.1\AccessModiferDemo.AssemblyInfoInputs.cache
+C:\CodeGym\Class\C0520G1\C0520G1\APC\AccessModifer\AccessModiferDemo\obj\Debug\netcoreapp3.1\AccessModiferDemo.AssemblyInfo.cs
+C:\CodeGym\Class\C0520G1\C0520G1\APC\AccessModifer\AccessModiferDemo\obj\Debug\netcoreapp3.1\AccessModiferDemo.csproj.CoreCompileInputs.cache
+C:\CodeGym\Class\C0520G1\C0520G1\APC\AccessModifer\AccessModiferDemo\obj\Debug\netcoreapp3.1\AccessModiferDemo.dll
+C:\CodeGym\Class\C0520G1\C0520G1\APC\AccessModifer\AccessModiferDemo\obj\Debug\netcoreapp3.1\AccessModiferDemo.pdb
+C:\CodeGym\Class\C0520G1\C0520G1\APC\AccessModifer\AccessModiferDemo\obj\Debug\netcoreapp3.1\AccessModiferDemo.genruntimeconfig.cache
