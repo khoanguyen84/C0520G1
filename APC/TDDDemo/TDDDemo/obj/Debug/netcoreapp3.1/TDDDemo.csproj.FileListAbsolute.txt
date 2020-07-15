@@ -1,0 +1,13 @@
+C:\CodeGym\Class\C0520G1\C0520G1\APC\TDDDemo\TDDDemo\bin\Debug\netcoreapp3.1\TDDDemo.exe
+C:\CodeGym\Class\C0520G1\C0520G1\APC\TDDDemo\TDDDemo\bin\Debug\netcoreapp3.1\TDDDemo.deps.json
+C:\CodeGym\Class\C0520G1\C0520G1\APC\TDDDemo\TDDDemo\bin\Debug\netcoreapp3.1\TDDDemo.runtimeconfig.json
+C:\CodeGym\Class\C0520G1\C0520G1\APC\TDDDemo\TDDDemo\bin\Debug\netcoreapp3.1\TDDDemo.runtimeconfig.dev.json
+C:\CodeGym\Class\C0520G1\C0520G1\APC\TDDDemo\TDDDemo\bin\Debug\netcoreapp3.1\TDDDemo.dll
+C:\CodeGym\Class\C0520G1\C0520G1\APC\TDDDemo\TDDDemo\bin\Debug\netcoreapp3.1\TDDDemo.pdb
+C:\CodeGym\Class\C0520G1\C0520G1\APC\TDDDemo\TDDDemo\obj\Debug\netcoreapp3.1\TDDDemo.csprojAssemblyReference.cache
+C:\CodeGym\Class\C0520G1\C0520G1\APC\TDDDemo\TDDDemo\obj\Debug\netcoreapp3.1\TDDDemo.AssemblyInfoInputs.cache
+C:\CodeGym\Class\C0520G1\C0520G1\APC\TDDDemo\TDDDemo\obj\Debug\netcoreapp3.1\TDDDemo.AssemblyInfo.cs
+C:\CodeGym\Class\C0520G1\C0520G1\APC\TDDDemo\TDDDemo\obj\Debug\netcoreapp3.1\TDDDemo.csproj.CoreCompileInputs.cache
+C:\CodeGym\Class\C0520G1\C0520G1\APC\TDDDemo\TDDDemo\obj\Debug\netcoreapp3.1\TDDDemo.dll
+C:\CodeGym\Class\C0520G1\C0520G1\APC\TDDDemo\TDDDemo\obj\Debug\netcoreapp3.1\TDDDemo.pdb
+C:\CodeGym\Class\C0520G1\C0520G1\APC\TDDDemo\TDDDemo\obj\Debug\netcoreapp3.1\TDDDemo.genruntimeconfig.cache
