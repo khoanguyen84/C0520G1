@@ -1,0 +1,13 @@
+C:\CodeGym\Class\C0520G1\C0520G1\APC\GenericDemo\NewManagement\bin\Debug\netcoreapp3.1\NewManagement.exe
+C:\CodeGym\Class\C0520G1\C0520G1\APC\GenericDemo\NewManagement\bin\Debug\netcoreapp3.1\NewManagement.deps.json
+C:\CodeGym\Class\C0520G1\C0520G1\APC\GenericDemo\NewManagement\bin\Debug\netcoreapp3.1\NewManagement.runtimeconfig.json
+C:\CodeGym\Class\C0520G1\C0520G1\APC\GenericDemo\NewManagement\bin\Debug\netcoreapp3.1\NewManagement.runtimeconfig.dev.json
+C:\CodeGym\Class\C0520G1\C0520G1\APC\GenericDemo\NewManagement\bin\Debug\netcoreapp3.1\NewManagement.dll
+C:\CodeGym\Class\C0520G1\C0520G1\APC\GenericDemo\NewManagement\bin\Debug\netcoreapp3.1\NewManagement.pdb
+C:\CodeGym\Class\C0520G1\C0520G1\APC\GenericDemo\NewManagement\obj\Debug\netcoreapp3.1\NewManagement.csprojAssemblyReference.cache
+C:\CodeGym\Class\C0520G1\C0520G1\APC\GenericDemo\NewManagement\obj\Debug\netcoreapp3.1\NewManagement.AssemblyInfoInputs.cache
+C:\CodeGym\Class\C0520G1\C0520G1\APC\GenericDemo\NewManagement\obj\Debug\netcoreapp3.1\NewManagement.AssemblyInfo.cs
+C:\CodeGym\Class\C0520G1\C0520G1\APC\GenericDemo\NewManagement\obj\Debug\netcoreapp3.1\NewManagement.csproj.CoreCompileInputs.cache
+C:\CodeGym\Class\C0520G1\C0520G1\APC\GenericDemo\NewManagement\obj\Debug\netcoreapp3.1\NewManagement.dll
+C:\CodeGym\Class\C0520G1\C0520G1\APC\GenericDemo\NewManagement\obj\Debug\netcoreapp3.1\NewManagement.pdb
+C:\CodeGym\Class\C0520G1\C0520G1\APC\GenericDemo\NewManagement\obj\Debug\netcoreapp3.1\NewManagement.genruntimeconfig.cache
