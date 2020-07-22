@@ -1,0 +1,6 @@
+Line 1 : CODEGYM HUE
+Line 2 : C0520G1
+Line 3 : HELLO WORLD
+Line 4 : C#
+Line 5 : JAVA
+Line 6 : NET CORE

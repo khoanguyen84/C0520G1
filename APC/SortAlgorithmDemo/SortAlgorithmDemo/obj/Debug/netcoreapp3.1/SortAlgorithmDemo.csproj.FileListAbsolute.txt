@@ -1,0 +1,13 @@
+C:\CodeGym\Class\C0520G1\C0520G1\APC\SortAlgorithmDemo\SortAlgorithmDemo\obj\Debug\netcoreapp3.1\SortAlgorithmDemo.csprojAssemblyReference.cache
+C:\CodeGym\Class\C0520G1\C0520G1\APC\SortAlgorithmDemo\SortAlgorithmDemo\obj\Debug\netcoreapp3.1\SortAlgorithmDemo.AssemblyInfoInputs.cache
+C:\CodeGym\Class\C0520G1\C0520G1\APC\SortAlgorithmDemo\SortAlgorithmDemo\obj\Debug\netcoreapp3.1\SortAlgorithmDemo.AssemblyInfo.cs
+C:\CodeGym\Class\C0520G1\C0520G1\APC\SortAlgorithmDemo\SortAlgorithmDemo\obj\Debug\netcoreapp3.1\SortAlgorithmDemo.csproj.CoreCompileInputs.cache
+C:\CodeGym\Class\C0520G1\C0520G1\APC\SortAlgorithmDemo\SortAlgorithmDemo\bin\Debug\netcoreapp3.1\SortAlgorithmDemo.exe
+C:\CodeGym\Class\C0520G1\C0520G1\APC\SortAlgorithmDemo\SortAlgorithmDemo\bin\Debug\netcoreapp3.1\SortAlgorithmDemo.deps.json
+C:\CodeGym\Class\C0520G1\C0520G1\APC\SortAlgorithmDemo\SortAlgorithmDemo\bin\Debug\netcoreapp3.1\SortAlgorithmDemo.runtimeconfig.json
+C:\CodeGym\Class\C0520G1\C0520G1\APC\SortAlgorithmDemo\SortAlgorithmDemo\bin\Debug\netcoreapp3.1\SortAlgorithmDemo.runtimeconfig.dev.json
+C:\CodeGym\Class\C0520G1\C0520G1\APC\SortAlgorithmDemo\SortAlgorithmDemo\bin\Debug\netcoreapp3.1\SortAlgorithmDemo.dll
+C:\CodeGym\Class\C0520G1\C0520G1\APC\SortAlgorithmDemo\SortAlgorithmDemo\bin\Debug\netcoreapp3.1\SortAlgorithmDemo.pdb
+C:\CodeGym\Class\C0520G1\C0520G1\APC\SortAlgorithmDemo\SortAlgorithmDemo\obj\Debug\netcoreapp3.1\SortAlgorithmDemo.dll
+C:\CodeGym\Class\C0520G1\C0520G1\APC\SortAlgorithmDemo\SortAlgorithmDemo\obj\Debug\netcoreapp3.1\SortAlgorithmDemo.pdb
+C:\CodeGym\Class\C0520G1\C0520G1\APC\SortAlgorithmDemo\SortAlgorithmDemo\obj\Debug\netcoreapp3.1\SortAlgorithmDemo.genruntimeconfig.cache

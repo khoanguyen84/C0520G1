@@ -1,0 +1,1 @@
+Error 22/07/2020 02:30: Attempted to divide by zero.

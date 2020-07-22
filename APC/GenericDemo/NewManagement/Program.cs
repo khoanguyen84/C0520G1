@@ -41,6 +41,13 @@ namespace NewManagement
         public static void ViewListNews()
         {
             Console.WriteLine($"Id\tTitle\tPublish Date\tAuthor\tContent\tAverageRate");
+            //Sort by Title
+            //var sortByTitle = new SortByTitleGeneric<News>();
+            //newList.Sort(sortByTitle);
+
+            //Sort by Author
+            newList.Sort(new SortByAuthorGeneric<News>());
+
             foreach(var news in newList)
             {
                 news.Display();
