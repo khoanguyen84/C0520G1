@@ -1,0 +1,27 @@
+{
+  "matrix": [
+    [ 1, 2, 3, 4, 5 ],
+    [ 6, 7, 8, 9, 10 ]
+  ],
+  "array": [ 10, 11, 12, 13, 14, 15, 16 ],
+  "employees": [
+    {
+      "name": "Nhan Vo",
+      "age": 18,
+      "gender": "male",
+      "dob": "01/01/2000"
+    },
+    {
+      "name": "An Nguyen",
+      "age": 18,
+      "gender": "male",
+      "dob": "02/01/2000"
+    },
+    {
+      "name": "Son Tung",
+      "age": 18,
+      "gender": "male",
+      "dob": "01/01/2001"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+C:\CodeGym\Class\C0520G1\C0520G1\APC\FileDemo\JsonDemo\bin\Debug\netcoreapp3.1\JsonDemo.exe
+C:\CodeGym\Class\C0520G1\C0520G1\APC\FileDemo\JsonDemo\obj\Debug\netcoreapp3.1\JsonDemo.csprojAssemblyReference.cache
+C:\CodeGym\Class\C0520G1\C0520G1\APC\FileDemo\JsonDemo\obj\Debug\netcoreapp3.1\JsonDemo.AssemblyInfoInputs.cache
+C:\CodeGym\Class\C0520G1\C0520G1\APC\FileDemo\JsonDemo\obj\Debug\netcoreapp3.1\JsonDemo.AssemblyInfo.cs
+C:\CodeGym\Class\C0520G1\C0520G1\APC\FileDemo\JsonDemo\bin\Debug\netcoreapp3.1\JsonDemo.deps.json
+C:\CodeGym\Class\C0520G1\C0520G1\APC\FileDemo\JsonDemo\bin\Debug\netcoreapp3.1\JsonDemo.runtimeconfig.json
+C:\CodeGym\Class\C0520G1\C0520G1\APC\FileDemo\JsonDemo\bin\Debug\netcoreapp3.1\JsonDemo.runtimeconfig.dev.json
+C:\CodeGym\Class\C0520G1\C0520G1\APC\FileDemo\JsonDemo\bin\Debug\netcoreapp3.1\JsonDemo.dll
+C:\CodeGym\Class\C0520G1\C0520G1\APC\FileDemo\JsonDemo\bin\Debug\netcoreapp3.1\JsonDemo.pdb
+C:\CodeGym\Class\C0520G1\C0520G1\APC\FileDemo\JsonDemo\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\CodeGym\Class\C0520G1\C0520G1\APC\FileDemo\JsonDemo\obj\Debug\netcoreapp3.1\JsonDemo.csproj.CoreCompileInputs.cache
+C:\CodeGym\Class\C0520G1\C0520G1\APC\FileDemo\JsonDemo\obj\Debug\netcoreapp3.1\JsonDemo.csproj.CopyComplete
+C:\CodeGym\Class\C0520G1\C0520G1\APC\FileDemo\JsonDemo\obj\Debug\netcoreapp3.1\JsonDemo.dll
+C:\CodeGym\Class\C0520G1\C0520G1\APC\FileDemo\JsonDemo\obj\Debug\netcoreapp3.1\JsonDemo.pdb
+C:\CodeGym\Class\C0520G1\C0520G1\APC\FileDemo\JsonDemo\obj\Debug\netcoreapp3.1\JsonDemo.genruntimeconfig.cache

@@ -1,0 +1,46 @@
+{
+  "students": [
+    {
+      "average": 7.9,
+      "rank": "Kha",
+      "name": "Tri",
+      "age": 10,
+      "gender": "male",
+      "scores": [
+        {
+          "name": "Toan",
+          "score": 7.4
+        },
+        {
+          "name": "Ly",
+          "score": 7.9
+        },
+        {
+          "name": "Hoa",
+          "score": 8.9
+        }
+      ]
+    },
+    {
+      "average": 8.4,
+      "rank": "Gioi",
+      "name": "Tan",
+      "age": 10,
+      "gender": "male",
+      "scores": [
+        {
+          "name": "Toan",
+          "score": 8.4
+        },
+        {
+          "name": "Ly",
+          "score": 8.9
+        },
+        {
+          "name": "Hoa",
+          "score": 7.9
+        }
+      ]
+    }
+  ]
+}
