@@ -1,0 +1,24 @@
+﻿@model Student
+@{
+    ViewBag.Title = "Student detail";
+}
+
+<div class="text-center">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">
+                <h3>@Model.Fullname</h3>
+            </div>
+            <img class="card-img-top" src="~/images/@Model.Aavatar" width="200" height="350">
+            <div class="card-body">
+                <h5>Id: @Model.ID</h5>
+                <h5>Dob: @Model.DoB </h5>
+            </div>
+            <div class="card-footer text-center">
+                <a class="btn btn-primary">Back</a>
+                <a class="btn btn-warning">Edit</a>
+                <a class="btn btn-danger">Remove</a>
+            </div>
+        </div>
+    </div>
+</div>

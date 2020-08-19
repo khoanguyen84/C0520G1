@@ -1,24 +1,29 @@
 ﻿@model HomeViewModel
 @{
     ViewBag.Title = Model.Title;
-    int number1 = 10;
-    int numbe2 = 20;
-    //var student = ViewBag.Student as StudentManagement.Models.Student;
 }
-
-<p>Khoa Nguyen 2</p>
-<h1>My calculator</h1>
-<h3>@Model.Message</h3>
-@*    <h3>@ViewBag.Hello</h3>
-    <h3>@TempData["msg"]</h3>*@
-
-@*<h1>@number1 + @numbe2 = @(number1 + numbe2)</h1>*@
-
-@foreach (var student in Model.Students)
-{
-    <h3>StudentId: @student.ID</h3>
-    <h3>Student name: @student.Fullname </h3>
-    <h3>Student's Dob: @student.DoB </h3>
-    <img src="~/images/@student.Aavatar" width="150px" height="150px" />
-    <hr />
-}
+<div class="row">
+    <a asp-controller="Home" asp-action="Create" class="btn btn-secondary mb-1">Create</a>
+</div>
+<div class="row">
+    @foreach (var student in Model.Students)
+    {
+        <div class="col-3">
+            <div class="card">
+                <div class="card-header">
+                    <h3>@student.Fullname</h3>
+                </div>
+                <img class="card-img-top" src="~/images/@student.Aavatar" width="200" height="200">
+                <div class="card-body">
+                    <h5>Id: @student.ID</h5>
+                    <h5>Dob: @student.DoB </h5>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-controller="Home" asp-action="detail" asp-route-id="@student.ID" class="btn btn-primary">Detail</a> 
+                    <a class="btn btn-warning">Edit</a> 
+                    <a class="btn btn-danger">Remove</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

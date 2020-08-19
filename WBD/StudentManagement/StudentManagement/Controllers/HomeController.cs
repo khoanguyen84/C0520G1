@@ -10,39 +10,50 @@ namespace StudentManagement.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IStudentRepository studentRepository;
+
+        public HomeController(IStudentRepository studentRepository)
+        {
+            this.studentRepository = studentRepository;
+        }
         public IActionResult Index()
         {
-            //ViewData["Message"] = "Hello everyone come to my site";
-            //ViewBag.Hello = "Nice to meet you.";
-            //TempData["msg"] = "welcome to my site";
-            var students = new List<Student>()
-            {
-                new Student()
-                {
-                    DoB = "10/10/2000",
-                    Fullname = "Khoa Nguyen",
-                    ID  = 1,
-                    Aavatar = "noavatar.png"
-                },
-                new Student()
-                {
-                    DoB = "10/10/2000",
-                    Fullname = "Nhan Nguyen",
-                    ID  = 2,
-                    Aavatar = "avatar10.jpg"
-                }
-            };
-            //ViewData["Message"] = "welcome to my site";
-            //ViewBag.Title = "Student management";
-
+            var students = studentRepository.Gets();
             var model = new HomeViewModel()
             {
                 Message = "welcome to my site",
                 Title = "Student management",
-                Students = students
+                Students = students.ToList()
             };
 
+            return View(model);
+        }
 
+        //attribute routing
+        //[Route("/Detail/{studentId}/{classId}/{subjectId}")]
+        //[Route("/Home/Detail/{studentId}/{classId}/{subjectId}")]
+
+        //public IActionResult Detail(int studentId, int classId, int subjectId)
+        public IActionResult Detail(int id)
+        {
+            var student = studentRepository.Get(id);
+            return View(student);
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(StudentCreateModel model)
+        {
+            var studentCreated = studentRepository.Create(model);
+            if(studentCreated != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View(model);
         }
     }
