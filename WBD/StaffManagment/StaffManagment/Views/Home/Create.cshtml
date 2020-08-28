@@ -1,0 +1,86 @@
+﻿@model RegisterView
+@{
+    ViewBag.Title = "Create new staff";
+}
+
+<div>
+    <h1>ĐĂNG KÝ TÀI KHOẢN</h1>
+    <form asp-controller="Home" asp-action="Create" method="post">
+        <fieldset>
+            <legend>Thông tin cá nhân</legend>
+            <div class="row form-group">
+                <label asp-for="Fullname" class="col-2"></label>
+                <div class="col-10">
+                    <input asp-for="Fullname" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="Fullname" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label asp-for="Email" class="col-2"></label>
+                <div class="col-10">
+                    <input asp-for="Email" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label asp-for="PhoneNumber" class="col-2"></label>
+                <div class="col-10">
+                    <input asp-for="PhoneNumber" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Mật khẩu của bạn</legend>
+            <div class="row form-group">
+                <label asp-for="Password" class="col-2"></label>
+                <div class="col-10">
+                    <input asp-for="Password" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label asp-for="ConfirmPassword" class="col-2"></label>
+                <div class="col-10">
+                    <input asp-for="ConfirmPassword" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Thông tin địa chỉ</legend>
+            <div class="row form-group">
+                <label asp-for="ProvinceId" class="col-2"></label>
+                <div class="col-10">
+                    <select asp-for="ProvinceId" asp-items="@(new SelectList(Model.Provinces, "id", "_name"))" class="custom-select" onchange="create.changeProvince(this.value)"></select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label asp-for="DistrictId" class="col-2"></label>
+                <div class="col-10">
+                    <select asp-for="DistrictId" asp-items="@(new SelectList(Model.Districts, "id", "DistrictName"))" class="custom-select" onchange="create.changeDistrict(this.value)"></select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label asp-for="WardId" class="col-2"></label>
+                <div class="col-10">
+                    <select asp-for="WardId" asp-items="@(new SelectList(Model.Wards, "id", "WardName"))" class="custom-select"></select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label asp-for="Address" class="col-2"></label>
+                <div class="col-10">
+                    <input asp-for="Address" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+            </div>
+        </fieldset>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts{ 
+    <script src="~/js/create.js"></script>
+}

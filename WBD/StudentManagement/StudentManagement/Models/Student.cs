@@ -9,7 +9,9 @@ namespace StudentManagement.Models
     {
         public int ID { get; set; }
         public string Fullname { get; set; }
-        public string DoB { get; set; }
+        public DateTime DoB { get; set; }
         public string Aavatar { get; set; }
+        public string Email { get; set; }
+        public Classes Classes { get; set; }
     }
 }

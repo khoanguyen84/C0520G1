@@ -11,5 +11,7 @@ namespace StudentManagement.Models
         IEnumerable<Student> Gets();
         Student Get(int studentId);
         Student Create(StudentCreateModel model);
+        Student Edit(StudentEditModel model);
+        Student Delete(int studentId);
     }
 }

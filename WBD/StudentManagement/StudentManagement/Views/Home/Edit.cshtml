@@ -1,0 +1,52 @@
+﻿@model StudentEditModel
+@{
+    ViewBag.Title = "Modify student";
+}
+<h4>Modify student</h4>
+<form asp-controller="Home" asp-action="Edit" method="post">
+    <div class="row form-group">
+        <div class="col-2">
+            <label asp-for="Fullname"></label>
+        </div>
+        <div class="col-10">
+            <input asp-for="Fullname" class="form-control" />
+            <span asp-validation-for="Fullname" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-2">
+            <label asp-for="Email"></label>
+        </div>
+        <div class="col-10">
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-2">
+            <label asp-for="DoB"></label>
+        </div>
+        <div class="col-10">
+            <input asp-for="DoB" class="form-control" />
+            <span asp-validation-for="DoB" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-2">
+            <label asp-for="Classes"></label>
+        </div>
+        <div class="col-10">
+            <select class="form-control custom-select" asp-for="Classes" asp-items="@Html.GetEnumSelectList<Classes>()">
+                <option value="">Chọn lớp học</option>
+            </select>
+            <span asp-validation-for="Classes" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <a class="btn btn-warning" asp-controller="Home" asp-action="index">Cancel</a>
+            <button type="submit" class="btn btn-success">Update</button>
+        </div>
+    </div>
+</form>
+

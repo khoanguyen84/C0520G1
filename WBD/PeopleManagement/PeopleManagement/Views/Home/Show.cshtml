@@ -1,0 +1,87 @@
+﻿@model RegisterView
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <h1 class="display-4">ĐĂNG KÝ TÀI KHOẢN</h1>
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend>Thông tin cá nhân</legend>
+            <div class="row form-group">
+                @Html.LabelFor(e => e.Fullname, htmlAttributes: new { @class = "col-2" })
+                <div class="col-10">
+                    @Html.TextBoxFor(e => e.Fullname, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(e => e.Fullname, "", htmlAttributes: new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row form-group">
+                @Html.LabelFor(e => e.Email, htmlAttributes: new { @class = "col-2" })
+                <div class="col-10">
+                    @Html.TextBoxFor(e => e.Email, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(e => e.Email, "", htmlAttributes: new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row form-group">
+                @Html.LabelFor(e => e.PhoneNumber, htmlAttributes: new { @class = "col-2" })
+                <div class="col-10">
+                    @Html.TextBoxFor(e => e.PhoneNumber, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(e => e.PhoneNumber, "", htmlAttributes: new { @class = "text-danger" })
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Thông tin cá nhân</legend>
+            <div class="row form-group">
+                @Html.LabelFor(e => e.Password, htmlAttributes: new { @class = "col-2" })
+                <div class="col-10">
+                    @Html.TextBoxFor(e => e.Password, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(e => e.Password, "", htmlAttributes: new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row form-group">
+                @Html.LabelFor(e => e.ConfirmPassword, htmlAttributes: new { @class = "col-2" })
+                <div class="col-10">
+                    @Html.TextBoxFor(e => e.ConfirmPassword, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(e => e.ConfirmPassword, "", htmlAttributes: new { @class = "text-danger" })
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Thông tin cá nhân</legend>
+            <div class="row form-group">
+                @Html.LabelFor(e => e.ProvinceId, htmlAttributes: new { @class = "col-2" })
+                <div class="col-10">
+                    @Html.DropDownListFor(e => e.ProvinceId, new SelectList(Model.Provinces, "id", "_name", Model.ProvinceId), htmlAttributes: new { @class = "form-control", @onchange = "register.changeProvince(this.value)" })
+                </div>
+            </div>
+            <div class="row form-group">
+                @Html.LabelFor(e => e.DistrictId, htmlAttributes: new { @class = "col-2" })
+                <div class="col-10">
+                    @Html.DropDownListFor(e => e.DistrictId, new SelectList(Model.Districts, "id", "_name", Model.DistrictId), htmlAttributes: new { @class = "form-control", @onchange = "register.changeDistrict(this.value)" })
+                </div>
+            </div>
+            <div class="row form-group">
+                @Html.LabelFor(e => e.WardId, htmlAttributes: new { @class = "col-2" })
+                <div class="col-10">
+                    @Html.DropDownListFor(e => e.WardId, new SelectList(Model.Wards, "id", "_name", Model.WardId), htmlAttributes: new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row form-group">
+                @Html.LabelFor(e => e.Address, htmlAttributes: new { @class = "col-2" })
+                <div class="col-10">
+                    @Html.TextBoxFor(e => e.Address, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(e => e.Address, "", htmlAttributes: new { @class = "text-danger" })
+                </div>
+            </div>
+        </fieldset>
+        <div class="row form-group">
+            <button type="submit" class="btn btn-primary">Đăng ký</button>
+        </div>
+    }
+</div>
+
+@section Scripts{
+    <script src="~/js/register.js" asp-append-version="true"></script>
+}

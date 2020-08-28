@@ -11,17 +11,17 @@
         <div class="col-3">
             <div class="card">
                 <div class="card-header">
-                    <h3>@student.Fullname</h3>
+                    <h4>@student.Fullname</h4>
                 </div>
                 <img class="card-img-top" src="~/images/@student.Aavatar" width="200" height="200">
-                <div class="card-body">
+                <div class="card-body text-center">
                     <h5>Id: @student.ID</h5>
-                    <h5>Dob: @student.DoB </h5>
+                    <h5>Email: @student.Email</h5>
+                    <h5>Dob: @student.DoB.ToString("dd/MM/yyyy") </h5>
                 </div>
                 <div class="card-footer text-center">
-                    <a asp-controller="Home" asp-action="detail" asp-route-id="@student.ID" class="btn btn-primary">Detail</a> 
-                    <a class="btn btn-warning">Edit</a> 
-                    <a class="btn btn-danger">Remove</a>
+                    <a asp-controller="Home" asp-action="detail" asp-route-id="@student.ID" class="btn btn-primary">Detail</a>
+                    <a asp-controller="Home" asp-action="Edit" asp-route-id="@student.ID" class="btn btn-warning">Edit</a>
                 </div>
             </div>
         </div>

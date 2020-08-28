@@ -49,12 +49,54 @@ namespace StudentManagement.Controllers
         [HttpPost]
         public IActionResult Create(StudentCreateModel model)
         {
-            var studentCreated = studentRepository.Create(model);
-            if(studentCreated != null)
+            if (ModelState.IsValid)
+            {
+                var studentCreated = studentRepository.Create(model);
+                if (studentCreated != null)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var student = studentRepository.Get(id);
+            var editStudent = new StudentEditModel()
+            {
+                ID = student.ID,
+                Classes = student.Classes,
+                DoB = student.DoB,
+                Email = student.Email,
+                Fullname = student.Fullname
+            };
+            return View(editStudent);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(StudentEditModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var studentEdited = studentRepository.Edit(model);
+                if (studentEdited != null)
+                {
+                    return RedirectToAction("detail", "Home",new { id = model.ID});
+                }
+            }
+            return View(model);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var delStudent = studentRepository.Delete(id);
+            if(delStudent != null)
             {
                 return RedirectToAction("Index", "Home");
             }
-            return View(model);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

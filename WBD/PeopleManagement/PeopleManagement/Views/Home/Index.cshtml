@@ -1,0 +1,86 @@
+﻿@model RegisterView
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <h1 class="display-4">ĐĂNG KÝ TÀI KHOẢN</h1>
+    <form asp-controller="Home" asp-action="Index" method="post">
+        <fieldset>
+            <legend>Thông tin cá nhân</legend>
+            <div class="row form-group">
+                <label class="col-2" asp-for="Fullname"></label>
+                <div class="col-10">
+                    <input class="form-control" asp-for="Fullname" />
+                    <span asp-validation-for="Fullname" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-2" asp-for="Email"></label>
+                <div class="col-10 ">
+                    <input class="form-control" asp-for="Email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-2" asp-for="PhoneNumber"></label>
+                <div class="col-10 ">
+                    <input class="form-control" asp-for="PhoneNumber" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Mật khẩu của bạn</legend>
+            <div class="row form-group">
+                <label class="col-2" asp-for="Password"></label>
+                <div class="col-10">
+                    <input class="form-control" asp-for="Password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-2" asp-for="ConfirmPassword"></label>
+                <div class="col-10 ">
+                    <input class="form-control" asp-for="ConfirmPassword" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Thông tin địa chỉ</legend>
+            <div class="row form-group">
+                <label class="col-2" asp-for="ProvinceId"></label>
+                <div class="col-10">
+                    <select asp-for="ProvinceId" class="form-control custom-select" asp-items="@(new SelectList(Model.Provinces, "id", "_name", Model.ProvinceId))" onchange="register.changeProvince(this.value)"></select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-2" asp-for="DistrictId"></label>
+                <div class="col-10 ">
+                    <select asp-for="DistrictId" class="form-control custom-select" asp-items="@(new SelectList(Model.Districts, "id","DistrictName", Model.DistrictId))" onchange="register.changeDistrict(this.value)"></select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-2" asp-for="WardId"></label>
+                <div class="col-10 ">
+                    <select asp-for="WardId" class="form-control custom-select" asp-items="@(new SelectList(Model.Wards, "id", "WardName", Model.WardId))"></select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-2" asp-for="Address"></label>
+                <div class="col-10 ">
+                    <input class="form-control" asp-for="Address" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+            </div>
+        </fieldset>
+        <div class="row form-group">
+            <button type="submit" class="btn btn-primary">Đăng ký</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    <script src="~/js/register.js" asp-append-version="true"></script>
+ }
