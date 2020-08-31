@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using StaffManagment.Models;
+using StaffManagment.Models.Entities;
 using StaffManagment.Models.ViewModels;
 using StaffManagment.Services;
 
@@ -26,7 +27,9 @@ namespace StaffManagment.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var staffs = new List<StaffView>();
+            staffs = staffService.GetStaffs().ToList();
+            return View(staffs);
         }
 
         [HttpGet]
@@ -51,7 +54,23 @@ namespace StaffManagment.Controllers
         {
             if (ModelState.IsValid)
             {
-                return RedirectToAction("Index", "Home");
+                var staff = new Staff()
+                {
+                    Address = model.Address,
+                    DistrictId = model.DistrictId,
+                    Email = model.Email,
+                    Fullname = model.Fullname,
+                    Password = model.Password,
+                    PhoneNumber = model.PhoneNumber,
+                    ProvinceId = model.ProvinceId,
+                    WardId = model.WardId
+                };
+                var staffId = staffService.CreateStaff(staff);
+                if (staffId > 0)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                ModelState.AddModelError("", "System error, please try again later!");
             }
             var registerView = new RegisterView();
             return View(registerView);
@@ -67,7 +86,22 @@ namespace StaffManagment.Controllers
         {
             if (ModelState.IsValid)
             {
-                return RedirectToAction("Index", "Home");
+                var staff = new Staff()
+                {
+                    Address = model.Address,
+                    DistrictId = model.DistrictId,
+                    Email = model.Email,
+                    Fullname = model.Fullname,
+                    Password = model.Password,
+                    PhoneNumber = model.PhoneNumber,
+                    ProvinceId = model.ProvinceId,
+                    WardId = model.WardId
+                };
+                if(staffService.CreateStaff(staff) > 0)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                ModelState.AddModelError("", "System error, please try again later!");
             }
             var registerView = new RegisterView();
             return View(registerView);
@@ -85,6 +119,50 @@ namespace StaffManagment.Controllers
         {
             var wards = staffService.GetWards(districtId, provinceId);
             return Json(new { wards });
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var staff = staffService.GetStaff(id);
+            var staffEdit = new EditStaff();
+            if (staff != null)
+            {
+                staffEdit.Id = staff.Id;
+                staffEdit.Fullname = staff.Fullname;
+                staffEdit.Address = staff.Address;
+                staffEdit.Email = staff.Email;
+                staffEdit.PhoneNumber = staff.PhoneNumber;
+                staffEdit.ProvinceId = staff.ProvinceId;
+                staffEdit.WardId = staff.WardId;
+                staffEdit.DistrictId = staff.DistrictId;
+                staffEdit.Provinces = staffService.GetProvinces();
+                staffEdit.Districts = staffService.GetDistricts(staffEdit.ProvinceId);
+                staffEdit.Wards = staffService.GetWards(staffEdit.DistrictId, staffEdit.ProvinceId);
+            }
+            return View(staffEdit);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(UpdateStaff model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (staffService.UpdateStaff(model) > 0)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                ModelState.AddModelError("", "System error, please try again later!");
+            }
+            var staffEdit = new EditStaff();
+            return View(staffEdit);
+        }
+
+        [Route("/Home/Delete/{staffId}")]
+        public IActionResult DeleteStaff(int staffId)
+        {
+            var deleteResult = staffService.DeleteStaff(staffId);
+            return Json(new { deleteResult });
         }
     }
 }

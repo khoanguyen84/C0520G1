@@ -17,5 +17,13 @@ namespace StaffManagment.Models
         public DbSet<Province> Provinces { get; set; }
         public DbSet<District> Districts { get; set; }
         public DbSet<Ward> Wards { get; set; }
+        public DbSet<Staff> Staffs { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            //modelBuilder.Ignore<Province>();
+            //modelBuilder.Ignore<District>();
+            //modelBuilder.Ignore<Ward>();
+        }
     }
 }

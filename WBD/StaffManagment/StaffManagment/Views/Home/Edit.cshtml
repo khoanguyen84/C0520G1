@@ -1,11 +1,11 @@
-﻿@model RegisterView
+﻿@model EditStaff
 @{
-    ViewBag.Title = "Create new staff";
+    ViewBag.Title = "Modify staff";
 }
 
 <div>
-    <h1>ĐĂNG KÝ TÀI KHOẢN</h1>
-    <form asp-controller="Home" asp-action="Create" method="post">
+    <h1>CẬP NHẬT THÔNG TIN NHÂN VIÊN</h1>
+    <form asp-controller="Home" asp-action="Edit" method="post">
         <div asp-validation-summary="All" class="text-danger"></div>
         <fieldset>
             <legend>Thông tin cá nhân</legend>
@@ -28,23 +28,6 @@
                 <div class="col-10">
                     <input asp-for="PhoneNumber" class="form-control" autocomplete="off" />
                     <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                </div>
-            </div>
-        </fieldset>
-        <fieldset>
-            <legend>Mật khẩu của bạn</legend>
-            <div class="row form-group">
-                <label asp-for="Password" class="col-2"></label>
-                <div class="col-10">
-                    <input asp-for="Password" class="form-control" autocomplete="off" />
-                    <span asp-validation-for="Password" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="row form-group">
-                <label asp-for="ConfirmPassword" class="col-2"></label>
-                <div class="col-10">
-                    <input asp-for="ConfirmPassword" class="form-control" autocomplete="off" />
-                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                 </div>
             </div>
         </fieldset>
@@ -77,11 +60,8 @@
             </div>
         </fieldset>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary">Cập nhật</button>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Hủy</a>
         </div>
     </form>
 </div>
-
-@section Scripts{ 
-    <script src="~/js/create.js"></script>
-}

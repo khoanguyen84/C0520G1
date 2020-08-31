@@ -1,8 +1,47 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model List<StaffView>
+@{
+    ViewData["Title"] = "Staff list";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Staff List</h1>
+    <table id="tbStaffs" class="table table-bordered table-hover table-primary">
+        <thead class="thead-dark">
+            <tr>
+                <th>#ID</th>
+                <th>Họ và tên</th>
+                <th>Email</th>
+                <th>Số điện thoại</th>
+                <th>Tỉnh/Thành phố</th>
+                <th>Quận/Huyện</th>
+                <th>Phường/Xã</th>
+                <th>Địa chỉ</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var staff in Model)
+            {
+                <tr>
+                    <td>@staff.Id</td>
+                    <td>@staff.Fullname</td>
+                    <td>@staff.Email</td>
+                    <td>@staff.PhoneNumber</td>
+                    <td>@staff.ProvinceName</td>
+                    <td>@staff.DistrictName</td>
+                    <td>@staff.WardName</td>
+                    <td>@staff.Address</td>
+                    <td>
+                        <a asp-controller="Home" asp-action="Edit" asp-route-id="@staff.Id" class="text-danger"><i class="fas fa-edit"></i></a>
+                        <a href="javascript:void(0)" class="text-danger" onclick="staffs.delete(@staff.Id)"><i class="fas fa-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
+
+@section Scripts{
+    <script src="~/lib/bootbox/bootbox.min.js"></script>
+    <script src="~/js/staffs.js" asp-append-version="true"></script>
+}
