@@ -22,11 +22,8 @@ namespace StaffManagment.Models.Entities
         [Required]
         [MaxLength(100)]
         public string Password { get; set; }
-        [ForeignKey("Provinces")]
         public int ProvinceId { get; set; }
-        [ForeignKey("Districts")]
         public int DistrictId { get; set; }
-        [ForeignKey("Wards")]
         public int WardId { get; set; }
         [Required]
         [MaxLength(200)]

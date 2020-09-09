@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StaffManagment.Models;
 
 namespace StaffManagment.Migrations
 {
     [DbContext(typeof(StaffDbContext))]
-    partial class StaffDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200903092051_ExtendAspNetUserTable")]
+    partial class ExtendAspNetUserTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

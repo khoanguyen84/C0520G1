@@ -10,9 +10,31 @@
     <Compile Remove="Migrations\20200831071025_CreateStaffTable.Designer.cs" />
     <Compile Remove="Migrations\20200831072502_CreateRelationshipStaffTable.cs" />
     <Compile Remove="Migrations\20200831072502_CreateRelationshipStaffTable.Designer.cs" />
+    <Compile Remove="Migrations\20200901074415_CreateDepartmentTable.cs" />
+    <Compile Remove="Migrations\20200901074415_CreateDepartmentTable.Designer.cs" />
+    <Compile Remove="Migrations\20200901074723_CreateRelationshipDepartmentAndStaffTable.cs" />
+    <Compile Remove="Migrations\20200901074723_CreateRelationshipDepartmentAndStaffTable.Designer.cs" />
+    <Compile Remove="Migrations\20200901074910_CreateRelationshipDepartmentAndStaffTable.cs" />
+    <Compile Remove="Migrations\20200901074910_CreateRelationshipDepartmentAndStaffTable.Designer.cs" />
+    <Compile Remove="Migrations\20200901075334_CreateRelationshipDepartmentAndStaffTable.cs" />
+    <Compile Remove="Migrations\20200901075334_CreateRelationshipDepartmentAndStaffTable.Designer.cs" />
+    <Compile Remove="Migrations\20200901075659_CreateDepartmentTable.cs" />
+    <Compile Remove="Migrations\20200901075659_CreateDepartmentTable.Designer.cs" />
+    <Compile Remove="Migrations\20200901075835_CreateDepartmentTable.cs" />
+    <Compile Remove="Migrations\20200901075835_CreateDepartmentTable.Designer.cs" />
+    <Compile Remove="Migrations\20200901080349_CreateEmployeeTable.cs" />
+    <Compile Remove="Migrations\20200901080349_CreateEmployeeTable.Designer.cs" />
+    <Compile Remove="Migrations\20200903091211_InitIdentityTables.cs" />
+    <Compile Remove="Migrations\20200903091211_InitIdentityTables.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Views\User\Create.cshtml" />
+    <Content Remove="Views\User\Edit.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.7" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.7" />

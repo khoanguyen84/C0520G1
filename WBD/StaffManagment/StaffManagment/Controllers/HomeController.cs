@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using StaffManagment.Models;
 using StaffManagment.Models.Entities;
 using StaffManagment.Models.ViewModels;
 using StaffManagment.Services;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace StaffManagment.Controllers
 {
@@ -27,6 +24,8 @@ namespace StaffManagment.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.Email = HttpContext.Session.GetString("email");
+            //ViewBag.Email = HttpContext.Request.Cookies["email"];
             var staffs = new List<StaffView>();
             staffs = staffService.GetStaffs().ToList();
             return View(staffs);

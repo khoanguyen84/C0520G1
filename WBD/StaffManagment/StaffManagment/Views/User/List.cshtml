@@ -1,0 +1,42 @@
+﻿@model List<ViewUser>
+@{
+    ViewData["Title"] = "Roles list";
+}
+
+<div>
+    <h3 class="display text-center">DANH SÁCH NGƯỜI QUẢN TRỊ</h3>
+    <a asp-controller="Role" asp-action="Create" class="btn btn-warning mb-2">Create User</a>
+    <table id="tbUsers" class="table table-bordered table-hover table-primary">
+        <thead class="thead-dark">
+            <tr>
+                <th>#ID</th>
+                <th>Email</th>
+                <th>Vai trò</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var role in Model)
+                {
+            <tr>
+                <td>@role.Id</td>
+                <td>@role.Email</td>
+                <td>@role.RoleName</td>
+                <td>
+                    <a asp-controller="User" asp-action="Edit" asp-route-id="@role.Id" class="text-danger"><i class="fas fa-edit"></i></a>
+                    <a href="javascript:void(0)" class="text-danger"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>
+
+@section Scripts{
+    <script src="~/lib/bootbox/bootbox.min.js"></script>
+    <script src="~/js/user.js" asp-append-version="true"></script>
+}
