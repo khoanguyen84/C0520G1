@@ -17,5 +17,6 @@ namespace StaffManagment.Services
         Staff GetStaff(int id);
         int UpdateStaff(UpdateStaff model);
         int DeleteStaff(int id);
+        List<Province> GetAllProvinces();
     }
 }

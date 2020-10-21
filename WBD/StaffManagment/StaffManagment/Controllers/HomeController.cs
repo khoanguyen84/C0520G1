@@ -28,6 +28,7 @@ namespace StaffManagment.Controllers
             //ViewBag.Email = HttpContext.Request.Cookies["email"];
             var staffs = new List<StaffView>();
             staffs = staffService.GetStaffs().ToList();
+            var address = staffService.GetAllProvinces();
             return View(staffs);
         }
 

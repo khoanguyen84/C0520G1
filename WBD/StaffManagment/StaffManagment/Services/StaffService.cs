@@ -1,4 +1,5 @@
-﻿using StaffManagment.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using StaffManagment.Models;
 using StaffManagment.Models.Entities;
 using StaffManagment.Models.ViewModels;
 using System;
@@ -112,6 +113,11 @@ namespace StaffManagment.Services
 
             context.Update(staff);
             return context.SaveChanges();
+        }
+
+        public List<Province> GetAllProvinces()
+        {
+            return context.Provinces.Include(p => p.Districts).ThenInclude(d => d.Wards).ToList();
         }
     }
 }

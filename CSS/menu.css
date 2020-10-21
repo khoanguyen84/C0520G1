@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.hmenu {
+    margin-left: 100px;
+    width: 200px;
+}
+
+.hmenu ul {
+    list-style: none;
+}
+
+.hmenu ul li {
+    position: relative;
+}
+
+.hmenu ul li:not(:last-child) {
+    margin-bottom: 1px;
+}
+
+.hmenu ul li a {
+    text-decoration: none;
+    display: block;
+    padding: 7px 10px;
+    background-color: green;
+    color: white;
+}
+
+.hmenu ul li ul {
+    display: none;
+    position: absolute;
+    width: 100%;
+}
+
+.hmenu ul li:hover ul {
+    display: block;
+    left: 201px;
+    top: 0;
+}
+
+.hmenu a:hover {
+    background-color: darkgreen;
+}
+
+.vmenu {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.vmenu ul {
+    list-style: none;
+}
+
+.vmenu ul li {
+    float: left;
+    position: relative;
+}
+
+.vmenu ul li a {
+    text-decoration: none;
+    padding: 7px 10px;
+    background-color: green;
+    color: white;
+    display: block;
+}
+
+.vmenu ul li ul {
+    display: none;
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    clear: left;
+}
+
+.vmenu ul li:hover ul {
+    display: block;
+    left: 0;
+    top: 32px;
+}
+
+.vmenu ul li ul li {
+    display: block;
+    width: 100%;
+    margin-top: 1px;
+}
+
+.vmenu a:hover {
+    background-color: darkgreen;
+}

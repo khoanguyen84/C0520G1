@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CG.DAL.Interface\CG.DAL.Interface.csproj" />
+    <ProjectReference Include="..\CG.Domain\CG.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
