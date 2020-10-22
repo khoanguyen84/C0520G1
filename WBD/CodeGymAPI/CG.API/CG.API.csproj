@@ -9,7 +9,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CG.BAL.Implement\CG.BAL.Implement.csproj" />
     <ProjectReference Include="..\CG.BAL.Interface\CG.BAL.Interface.csproj" />
+    <ProjectReference Include="..\CG.DAL.Implement\CG.DAL.Implement.csproj" />
   </ItemGroup>
 
 
