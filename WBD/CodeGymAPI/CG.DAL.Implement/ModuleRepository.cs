@@ -1,17 +1,15 @@
 ﻿using CG.DAL.Interface;
 using CG.Domain;
-using System;
+using Dapper;
 using System.Collections.Generic;
-using System.Text;
+using System.Data;
 using System.Threading.Tasks;
 
 namespace CG.DAL.Implement
 {
-    class ModuleRepository : IModuleRepository
+    public class ModuleRepository : BaseRepository, IModuleRepository
     {
-        public Task<IEnumerable<ModuleViewModel>> Gets()
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<IEnumerable<ModuleViewModel>> Gets() =>
+             await SqlMapper.QueryAsync<ModuleViewModel>(cnn: connection, sql: "sp_GetModules", commandType: CommandType.StoredProcedure);
     }
 }

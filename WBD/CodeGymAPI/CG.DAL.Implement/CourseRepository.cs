@@ -15,12 +15,6 @@ namespace CG.DAL.Implement
             return await SqlMapper.QueryAsync<CourseView>(cnn: connection,
                                                         sql: "sp_GetCourses",
                                                         commandType: CommandType.StoredProcedure);
-
-            //var query = "SELECT [CourseId],[CourseName],[Status],[StartDate],[EndDate] FROM[dbo].[Course] WHERE[Status] = 1";
-            //var result = await SqlMapper.QueryAsync<CourseView>(cnn: connection,
-            //                                                    sql: query,
-            //                                                    commandType: CommandType.Text);
-            //return result;
         }
     }
 }
