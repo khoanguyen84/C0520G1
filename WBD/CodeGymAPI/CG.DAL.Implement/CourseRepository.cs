@@ -10,17 +10,23 @@ namespace CG.DAL.Implement
 {
     public class CourseRepository : BaseRepository, ICourseRepository
     {
+        public async Task<CourseView> GetCourseById(int Id)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@CourseId", Id);
+            var result = await SqlMapper.QueryFirstOrDefaultAsync<CourseView>(cnn: connection,
+                                                        sql: "sp_GetCourseById",
+                                                        parameters,
+                                                        commandType: CommandType.StoredProcedure);
+            return result;
+        }
+
         public async Task<IEnumerable<CourseView>> Gets()
         {
-            return await SqlMapper.QueryAsync<CourseView>(cnn: connection,
+            var result =  await SqlMapper.QueryAsync<CourseView>(cnn: connection,
                                                         sql: "sp_GetCourses",
                                                         commandType: CommandType.StoredProcedure);
-
-            //var query = "SELECT [CourseId],[CourseName],[Status],[StartDate],[EndDate] FROM[dbo].[Course] WHERE[Status] = 1";
-            //var result = await SqlMapper.QueryAsync<CourseView>(cnn: connection,
-            //                                                    sql: query,
-            //                                                    commandType: CommandType.Text);
-            //return result;
+            return result;
         }
     }
 }

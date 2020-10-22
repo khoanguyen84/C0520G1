@@ -28,10 +28,19 @@ namespace CG.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("api/course/gets")]
-        public async Task<OkObjectResult> GetCourses()
+        public async Task<IEnumerable<CourseView>> GetCourses()
         {
-            var courses = await courseService.Gets();
-            return Ok(courses);
+            return await courseService.Gets();
+        }
+        /// <summary>
+        /// Get Course By Id is inprocess
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        [HttpGet("api/course/GetCourseById")]
+        public async Task<CourseView> GetCourse(int Id)
+        {
+            return await courseService.GetCourseById(Id);
         }
     }
 }
