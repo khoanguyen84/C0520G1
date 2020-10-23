@@ -10,9 +10,5 @@ namespace CG.Domain
         public string ModuleName{ get; set; }
         public int Duration { get; set; }
         public int Status { get; set; }
-        public DateTimeOffset CreatedDate { get; set; }
-        public int CreatedBy { get; set; }
-        public DateTimeOffset ModifiedDate { get; set; }
-        public int ModifiedBy { get; set; }
     }
 }

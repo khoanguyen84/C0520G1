@@ -15,10 +15,6 @@ module.drawTable = function() {
                         <td>${v.moduleName}</td>
                         <td>${v.duration}</td>
                         <td>${v.status}</td>
-                        <td>${v.createdDate}</td>
-                        <td>${v.createdBy}</td>
-                        <td>${v.modifiedDate}</td>
-                        <td>${v.modifiedBy}</td>
                         <td></td>
                     </tr>
                 `);
