@@ -33,6 +33,8 @@ namespace CG.API
             services.AddSwaggerGen();
             services.AddScoped<ICourseService, CourseService>();
             services.AddScoped<ICourseRepository, CourseRepository>();
+            services.AddScoped<IModuleRepository, ModuleRepository>();
+            services.AddScoped<IModuleService, ModuleService>();
 
         }
 
