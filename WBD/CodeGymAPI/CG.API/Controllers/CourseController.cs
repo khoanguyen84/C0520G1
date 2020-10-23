@@ -20,9 +20,6 @@ namespace CG.API.Controllers
         {
             this.courseService = courseService;
         }
-
-        //[Route("/gets")]
-        //[HttpGet]
         /// <summary>
         /// Get all Courses with status is inprocess
         /// </summary>
@@ -37,7 +34,7 @@ namespace CG.API.Controllers
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        [HttpGet("api/course/GetCourseById")]
+        [HttpGet("api/course/GetCourseById/{Id}")]
         public async Task<CourseView> GetCourse(int Id)
         {
             return await courseService.GetCourseById(Id);
