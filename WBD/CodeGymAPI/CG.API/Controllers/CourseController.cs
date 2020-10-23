@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using CG.BAL.Interface;
+using CG.Domain.Request.Course;
 using CG.Domain.Response.Course;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -32,6 +33,11 @@ namespace CG.API.Controllers
         {
             var courses = await courseService.Gets();
             return Ok(courses);
+        }
+        [HttpPut("api/course/update")]
+        public int UpdateCourse([FromBody] UpdateCourse request)
+        {
+            return courseService.Update(request);
         }
     }
 }

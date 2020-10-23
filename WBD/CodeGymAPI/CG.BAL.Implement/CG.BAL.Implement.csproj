@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CG.BAL.Interface\CG.BAL.Interface.csproj" />
     <ProjectReference Include="..\CG.DAL.Interface\CG.DAL.Interface.csproj" />
   </ItemGroup>
