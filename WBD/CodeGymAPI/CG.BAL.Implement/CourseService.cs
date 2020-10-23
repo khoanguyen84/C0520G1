@@ -1,5 +1,6 @@
 ﻿using CG.BAL.Interface;
 using CG.DAL.Interface;
+using CG.Domain.Request;
 using CG.Domain.Response.Course;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,12 @@ namespace CG.BAL.Implement
         {
             this.courseRepository = courseRepository;
         }
+
+        public int ChangeStatus(UpdateCourse request)
+        {
+            return courseRepository.ChangeStatus(request);
+        }
+
         public async Task<IEnumerable<CourseView>> Gets()
         {
             return await courseRepository.Gets();

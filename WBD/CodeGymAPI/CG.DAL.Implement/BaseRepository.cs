@@ -11,7 +11,7 @@ namespace CG.DAL.Implement
         protected IDbConnection connection;
         public BaseRepository()
         {
-            connection = new SqlConnection(@"Data Source=ADMIN\SQLEXPRESS;Initial Catalog=CodeGymDb;Integrated Security=True");
+            connection = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=CodeGymDb;Integrated Security=True");
         }
     }
 }
