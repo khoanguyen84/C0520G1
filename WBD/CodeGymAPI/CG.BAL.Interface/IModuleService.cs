@@ -9,5 +9,7 @@ namespace CG.BAL.Interface
     public interface IModuleService
     {
         Task<IEnumerable<ModuleViewModel>> Gets();
+
+        Task<ModuleViewModel> GetModuleById(int id);
     }
 }

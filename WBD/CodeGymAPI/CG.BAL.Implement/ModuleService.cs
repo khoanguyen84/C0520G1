@@ -16,9 +16,9 @@ namespace CG.BAL.Implement
         {
             this.moduleRepository = moduleRepository;
         }
-        public Task<IEnumerable<ModuleViewModel>> Gets()
-        {
-            return moduleRepository.Gets();
-        }
+
+        public Task<ModuleViewModel> GetModuleById(int id) => moduleRepository.GetModuleViewModelById(id);
+
+        public Task<IEnumerable<ModuleViewModel>> Gets() => moduleRepository.Gets();
     }
 }

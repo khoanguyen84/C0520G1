@@ -25,5 +25,12 @@ namespace CG.API.Controllers
             var modules = await moduleService.Gets();
             return Ok(modules);
         }
+
+        [HttpGet("api/module/getmodulebyid")]
+        public async Task<OkObjectResult> GetModuleById(int id)
+        {
+            var modules = await moduleService.GetModuleById(id);
+            return Ok(modules);
+        }
     }
 }

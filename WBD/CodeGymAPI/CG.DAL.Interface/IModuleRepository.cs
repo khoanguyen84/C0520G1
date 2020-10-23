@@ -9,5 +9,7 @@ namespace CG.DAL.Interface
     public interface IModuleRepository
     {
         Task<IEnumerable<ModuleViewModel>> Gets();
+
+        Task<ModuleViewModel> GetModuleViewModelById(int id);
     }
 }
