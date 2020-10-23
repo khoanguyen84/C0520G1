@@ -10,6 +10,6 @@ namespace CG.DAL.Interface
     {
         Task<IEnumerable<CourseView>> Gets();
         Task<CourseView> Get(int courseId);
-        int Update(UpdateCourse request);
+        int Update(UpdateCourse request); 
     }
 }
