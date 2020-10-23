@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using CG.BAL.Interface;
+using CG.Domain.Request;
 using CG.Domain.Response.Course;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -32,6 +33,16 @@ namespace CG.API.Controllers
         {
             var courses = await courseService.Gets();
             return Ok(courses);
+        }
+        /// <summary>
+        /// Create a new course
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("/api/course/save")]
+        public async Task<SaveCourseResult> Save(SaveCourseRequest request)
+        {
+            return await courseService.Save(request);
         }
     }
 }

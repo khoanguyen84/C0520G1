@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <h2 class="title-1 m-b-25">Course Managerment</h2>
+            <div class="col-12 mb-3">
+                <a href="javascript:void(0);" class="au-btn au-btn-icon btn-danger au-btn--small"
+                    onclick="course.openAddEditCourse()">
+                    <i class="zmdi zmdi-plus"></i>Create
+                </a>
+            </div>
+            <div class="table-responsive table--no-card m-b-40">
+                <table id="tbCourse" class="table table-bordered" style="text-align: center;">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Course Id</th>
+                            <th>Course Name</th>
+                            <th>Start date</th>
+                            <th>End date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="addEditCourse" class="modal fade" data-backdrop="false" role="dialog" style="z-index:9999">
+        <div class="modal-dialog modal-lg position-sticky">
+            <form id="frmAddEditCourse">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add New Course</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <input hidden id="CourseId" name="CourseId">
+                    <div class="modal-body">
+                        <div class="row form-group">
+                            <div class="col-3">
+                                <label>Course Name</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" id="CourseName" name="CourseName" class="form-control"
+                                    data-rule-required="true">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-3">
+                                <label>Course Status</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="number" min="1" max="3" id="Status" name="Status" class="form-control"
+                                    data-rule-required="true">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-3">
+                                <label>Start Date</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="date" id="StartDate" name="StartDate" class="form-control"
+                                    data-rule-required="true">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-3">
+                                <label>End Date</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="date" id="EndDate" name="EndDate" class="form-control"
+                                    data-rule-required="true">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                        <a href="javascript:;" class="btn btn-danger" onclick="course.save()">Save</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script/course.js"></script>
+</body>
+
+</html>

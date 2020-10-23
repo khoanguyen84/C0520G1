@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CG.Domain;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -8,10 +9,10 @@ namespace CG.DAL.Implement
 {
     public class BaseRepository
     {
-        protected IDbConnection connection;
+        protected IDbConnection conn;
         public BaseRepository()
         {
-            connection = new SqlConnection(@"Data Source=ADMIN\SQLEXPRESS;Initial Catalog=CodeGymDb;Integrated Security=True");
+            conn = new SqlConnection(Common.ConnectionString);
         }
     }
 }

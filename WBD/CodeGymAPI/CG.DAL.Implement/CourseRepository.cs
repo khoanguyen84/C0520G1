@@ -1,4 +1,5 @@
 ﻿using CG.DAL.Interface;
+using CG.Domain.Request;
 using CG.Domain.Response.Course;
 using Dapper;
 using System;
@@ -12,15 +13,35 @@ namespace CG.DAL.Implement
     {
         public async Task<IEnumerable<CourseView>> Gets()
         {
-            return await SqlMapper.QueryAsync<CourseView>(cnn: connection,
+            return await SqlMapper.QueryAsync<CourseView>(cnn: conn,
                                                         sql: "sp_GetCourses",
                                                         commandType: CommandType.StoredProcedure);
 
-            //var query = "SELECT [CourseId],[CourseName],[Status],[StartDate],[EndDate] FROM[dbo].[Course] WHERE[Status] = 1";
-            //var result = await SqlMapper.QueryAsync<CourseView>(cnn: connection,
-            //                                                    sql: query,
-            //                                                    commandType: CommandType.Text);
-            //return result;
+           
+        }
+
+        public async Task<SaveCourseResult> Save(SaveCourseRequest request)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@CourseName", request.CourseName);
+                parameters.Add("@Status", request.Status);
+                parameters.Add("@StartDate", request.StartDate);
+                parameters.Add("@EndDate", request.EndDate);
+                return (await SqlMapper.QueryFirstOrDefaultAsync<SaveCourseResult>(cnn: conn, 
+                                            sql: "CourseCreate",
+                                            param: parameters, 
+                                            commandType: CommandType.StoredProcedure));
+            }
+            catch (Exception)
+            {
+                return new SaveCourseResult()
+                {
+                    CourseId = 0,
+                    Message = "Something went wrong, please try again"
+                };
+            }
         }
     }
 }
