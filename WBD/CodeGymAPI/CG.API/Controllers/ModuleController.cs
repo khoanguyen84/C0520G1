@@ -22,9 +22,17 @@ namespace CG.API.Controllers
         }
         [HttpGet]
         [Route("api/module/get/{id}")]
-        public async Task<ModuleView> Get(int id)
+        public async Task<OkObjectResult> Get(int id)
         {
-            return await moduleService.Get(id);
+            var status = await moduleService.Get(id);
+            if(status.ModuleName!=null)
+                return Ok(status);
+
+            return Ok(new NotFound()
+            {
+                ID= id,
+                Message="Not Found !"
+            });
         }
     }
 }

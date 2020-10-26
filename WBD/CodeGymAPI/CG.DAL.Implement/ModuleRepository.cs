@@ -1,5 +1,4 @@
 ﻿using CG.DAL.Interface;
-using CG.Domain.Response.Course;
 using CG.Domain.Response.Module;
 using Dapper;
 using System.Collections.Generic;

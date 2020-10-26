@@ -10,11 +10,8 @@ namespace CG.Domain.Response.Module
         public string ModuleName { get; set; }
         public int Duration { get; set; }
         public int Status { get; set; }
-        public DateTimeOffset CreateDate { get; set; }
-        public int CreatedBy { get; set; }
-        public DateTimeOffset ModifiedDate { get; set; }
-        public int ModifiedBy { get; set; }
         public string StartDateStr { get; set; }
         public string ModifiedDateStr { get; set; }
+        public string Message { get; set; }
     }
 }
