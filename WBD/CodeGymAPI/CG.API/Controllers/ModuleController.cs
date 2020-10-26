@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CG.BAL.Interface;
+using CG.Domain.Response.Module;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,6 +31,13 @@ namespace CG.API.Controllers
         public async Task<OkObjectResult> GetModuleById(int id)
         {
             var modules = await moduleService.GetModuleById(id);
+            return Ok(modules);
+        }
+
+        [HttpPost("api/module/create")]
+        public OkObjectResult CreateModule(InputCreateModuleView inputCreateModule)
+        {
+            var modules = moduleService.CreateModule(inputCreateModule);
             return Ok(modules);
         }
     }

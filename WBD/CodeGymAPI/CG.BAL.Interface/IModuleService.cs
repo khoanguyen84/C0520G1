@@ -1,4 +1,5 @@
 ﻿using CG.Domain;
+using CG.Domain.Response.Module;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,5 +12,7 @@ namespace CG.BAL.Interface
         Task<IEnumerable<ModuleViewModel>> Gets();
 
         Task<ModuleViewModel> GetModuleById(int id);
+
+        int CreateModule(InputCreateModuleView inputCreateModule);
     }
 }
