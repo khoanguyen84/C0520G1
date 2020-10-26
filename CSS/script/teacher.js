@@ -19,10 +19,6 @@ teacher.drawTable = function () {
                         <td>${v.level}</td>
                         <td>${v.address}</td>
                         <td>${v.avatar}</td>
-                        <td>${v.createDateStr}</td>
-                        <td>${v.createBy}</td>
-                        <td>${v.modifiedDateStr}</td>
-                        <td>${v.modifiedBy}</td>
                     </tr>
                 `);
             })
