@@ -1,0 +1,32 @@
+﻿@model List<CourseView>
+@{
+    ViewData["Title"] = "Course page";
+}
+
+<div class=" row">
+    <a asp-controller="Course" asp-action="Create" class="btn btn-info">Create</a>
+
+    <table class="table table-bordered mt-2">
+        <thead class="thead-dark">
+            <tr>
+                <th>Course Id</th>
+                <th>Course Name</th>
+                <th>Start date</th>
+                <th>End date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@item.CourseId</td>
+                    <td>@item.CourseName</td>
+                    <td>@item.StartDateStr</td>
+                    <td>@item.EndDateStr</td>
+                    <td></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
