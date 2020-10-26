@@ -29,6 +29,9 @@ namespace CG.API
 
             services.AddScoped<IModuleService, ModuleService>();
             services.AddScoped<IModuleRepository, ModuleRepository>();
+            //add scoped for status
+            services.AddScoped<IStatusService, StatusService>();
+            services.AddScoped<IStatusRepository, StatusRepository>();
 
         }
 

@@ -14,7 +14,7 @@ module.drawTable = function() {
                         <td>${v.moduleId}</td>
                         <td>${v.moduleName}</td>
                         <td>${v.duration}</td>
-                        <td>${v.status}</td>
+                        <td>${v.statusName}</td>
                         <td></td>
                     </tr>
                 `);

@@ -30,7 +30,6 @@ namespace CG.API.Controllers
         public async Task<OkObjectResult> GetModuleById(int id)
         {
             var modules = await moduleService.GetModuleById(id);
-
             return Ok(modules);
         }
     }
