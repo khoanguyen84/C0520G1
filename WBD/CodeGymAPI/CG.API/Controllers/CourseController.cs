@@ -29,15 +29,21 @@ namespace CG.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("api/course/gets")]
-        public async Task<OkObjectResult> GetCourses()
+        public async Task<OkObjectResult> Gets()
         {
             var courses = await courseService.Gets();
             return Ok(courses);
         }
         [HttpPut("api/course/update")]
-        public int UpdateCourse([FromBody] UpdateCourse request)
+        public async Task<ResultView> Update([FromBody] UpdateCourse request)
         {
-            return courseService.Update(request);
+            return await courseService.Update(request);
+        }
+        [HttpGet("api/course/get/{id}")]
+        public async Task<OkObjectResult> Get(int id)
+        {
+            var courses = await courseService.Get(id);
+            return Ok(courses);
         }
     }
 }

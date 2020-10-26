@@ -11,11 +11,19 @@ namespace CG.DAL.Implement
 {
     public class CourseRepository : BaseRepository, ICourseRepository
     {
-        public async Task<CourseView> Get(int courseId)
+        public async Task<CourseView> Get(int id)
         {
-            return await SqlMapper.QueryFirstAsync<CourseView>(cnn: connection,
-                                                        sql: "sp_GetCoursesById",
-                                                        commandType: CommandType.StoredProcedure);
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@courseId", id);
+                var result = await SqlMapper.QueryFirstOrDefaultAsync<CourseView>(connection, "sp_GetCoursesById", param: parameters, commandType: CommandType.StoredProcedure);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public async Task<IEnumerable<CourseView>> Gets()
@@ -31,7 +39,7 @@ namespace CG.DAL.Implement
             //return result;
         }
 
-        public int Update(UpdateCourse request)
+        public async  Task<ResultView> Update(UpdateCourse request)
         {
             try
             {
@@ -41,12 +49,12 @@ namespace CG.DAL.Implement
                 parameters.Add("@Status", request.Status);
                 parameters.Add("@StartDate", request.StartDate);
                 parameters.Add("@EndDate", request.EndDate);
-                var id =SqlMapper.ExecuteScalar<int>(connection, "UpdateCourse", param: parameters, commandType: CommandType.StoredProcedure);
-                return id;
+                parameters.Add("@ModifiedBy", 1);
+                var result = await SqlMapper.QueryFirstOrDefaultAsync<ResultView>(connection, "sp_UpdateCourse", param: parameters, commandType: CommandType.StoredProcedure);
+                return result;
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
