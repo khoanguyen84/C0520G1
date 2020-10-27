@@ -13,5 +13,7 @@ namespace CodeGymWeb.Models.Course
         public DateTime EndDate { get; set; }
         public string StartDateStr { get; set; }
         public string EndDateStr { get; set; }
+        public int Status { get; set; }
+        public string StatusName { get; set; }
     }
 }
