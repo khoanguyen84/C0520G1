@@ -20,5 +20,9 @@ namespace CG.BAL.Implement
         {
             return await moduleRepository.Get(id);
         }
+        public async Task<IEnumerable<ModuleView>> Gets()
+        {
+            return await moduleRepository.Gets();
+        }
     }
 }

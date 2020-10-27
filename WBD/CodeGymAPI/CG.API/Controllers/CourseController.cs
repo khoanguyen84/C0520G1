@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CG.BAL.Interface;
 using CG.Domain.Response.Course;
+using CG.Domain.Response.Module;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,6 +33,20 @@ namespace CG.API.Controllers
         {
             var courses = await courseService.Gets();
             return Ok(courses);
+        }
+        [HttpGet]
+        [Route("api/course/get/{id}")]
+        public async Task<OkObjectResult> Get(int id)
+        {
+            var status = await courseService.Get(id);
+            if (status.CourseName != null)
+                return Ok(status);
+
+            return Ok(new NotFound()
+            {
+                ID = id,
+                ErrorMessage = "Not Found !"
+            });
         }
     }
 }

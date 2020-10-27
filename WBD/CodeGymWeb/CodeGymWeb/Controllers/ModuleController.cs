@@ -1,26 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
-using CodeGymWeb.Models.Course;
+using CodeGymWeb.Models.Module;
 using CodeGymWeb.Ultilities;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace CodeGymWeb.Controllers
 {
-    public class CourseController : Controller
+    public class ModuleController : Controller
     {
         public IActionResult Index()
         {
-            var data = ApiHelper<List<CourseView>>.HttpGetAsync("course/gets");
+            var data = ApiHelper<List<ModuleView>>.HttpGetAsync("module/gets");
             return View(data);
         }
         public IActionResult Details(int id)
         {
-            var data = ApiHelper<CourseView>.HttpGetAsync($"course/get/{id}");
+            var data = ApiHelper<ModuleView>.HttpGetAsync($"module/get/{id}");
             return View(data);
         }
     }

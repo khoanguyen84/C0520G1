@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace CG.Domain.Response.Module
+namespace CodeGymWeb.Models.Module
 {
     public class ModuleView
     {

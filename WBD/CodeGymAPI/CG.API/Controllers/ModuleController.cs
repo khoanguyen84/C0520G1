@@ -30,9 +30,15 @@ namespace CG.API.Controllers
 
             return Ok(new NotFound()
             {
-                ID= id,
-                Message="Not Found !"
+                ID = id,
+                ErrorMessage = "Not Found !"
             });
+        }
+        [HttpGet("api/module/gets")]
+        public async Task<OkObjectResult> GetCourses()
+        {
+            var module = await moduleService.Gets();
+            return Ok(module);
         }
     }
 }
