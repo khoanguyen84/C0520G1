@@ -1,14 +1,11 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace CodeGymWeb.Ultilities
 {
-    public static class ApiHelper <T> where T:class
+    public static class ApiHelper<T> where T : class
     {
         public static T HttpGetAsync(string apiName)
         {
@@ -30,7 +27,7 @@ namespace CodeGymWeb.Ultilities
                     ((IDisposable)responseStream).Dispose();
                 }
                 return JsonConvert.DeserializeObject<T>(responseData);
-                
+
             }
         }
     }

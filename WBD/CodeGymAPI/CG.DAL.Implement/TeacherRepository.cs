@@ -14,7 +14,7 @@ namespace CG.DAL.Implement
         public async Task<IEnumerable<TeacherView>> GetTeacher()
         {
             return await SqlMapper.QueryAsync<TeacherView>(cnn: connection,
-                                                        sql: "sp_GetTeacher",
+                                                        sql: "sp_GetTeachers",
                                                         commandType: CommandType.StoredProcedure);
         }
     }

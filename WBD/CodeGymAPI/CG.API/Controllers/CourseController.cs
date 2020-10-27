@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CG.API.Controllers
 {
-    //[Route("api/[controller]")]
+   
     [ApiController]
     public class CourseController : ControllerBase
     {
@@ -20,18 +20,19 @@ namespace CG.API.Controllers
         {
             this.courseService = courseService;
         }
-
-        //[Route("/gets")]
-        //[HttpGet]
-        /// <summary>
-        /// Get all Courses with status is inprocess
-        /// </summary>
-        /// <returns></returns>
+     
         [HttpGet("api/course/gets")]
         public async Task<OkObjectResult> GetCourses()
         {
             var courses = await courseService.Gets();
             return Ok(courses);
+        }
+
+        [HttpGet("api/course/get/{id}")]
+        public async Task<OkObjectResult> Get(int id)
+        {
+            var course = await courseService.Get(id);
+            return Ok(course);
         }
     }
 }

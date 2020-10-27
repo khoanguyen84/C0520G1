@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Request\" />
+    <None Remove="Request\Course\SaveCourseReqcs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Request\Course\SaveCourseReqcs" />
   </ItemGroup>
 
   <ItemGroup>

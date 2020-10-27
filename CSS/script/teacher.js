@@ -1,10 +1,10 @@
 var teacher = teacher || {};
 
-teacher.apiUrl = "https://localhost:44393/api/teacher/api/teacher";
+teacher.apiUrl = "https://localhost:44393/api/teacher";
 
 teacher.drawTable = function () {
     $.ajax({
-        url: `${teacher.apiUrl}/getteacher`,
+        url: `${teacher.apiUrl}/gets`,
         method: 'GET',
         dataType: 'JSON',
         success: function (data) {
@@ -18,7 +18,8 @@ teacher.drawTable = function () {
                         <td>${v.phoneNumber}</td>
                         <td>${v.level}</td>
                         <td>${v.address}</td>
-                        <td>${v.avatar}</td>
+                        <td>${v.avata}</td>
+                        <td>${v.status}</td>
                     </tr>
                 `);
             })
@@ -29,7 +30,6 @@ teacher.drawTable = function () {
 teacher.init = function () {
     teacher.drawTable();
 }
-
 
 $(document).ready(function () {
     teacher.init();

@@ -7,7 +7,7 @@
     <a asp-controller="Course" asp-action="Create" class="btn btn-info">Create</a>
 
     <table class="table table-bordered mt-2">
-        <thead class="thead-dark">
+        <thead class="thead-dark" style="text-align:center">
             <tr>
                 <th>Course Id</th>
                 <th>Course Name</th>
@@ -16,7 +16,7 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="text-center">
             @foreach(var item in Model)
             {
                 <tr>
@@ -24,7 +24,7 @@
                     <td>@item.CourseName</td>
                     <td>@item.StartDateStr</td>
                     <td>@item.EndDateStr</td>
-                    <td></td>
+                    <td><a asp-controller="Course" asp-action="Detail" asp-route-id="@item.CourseId">Detail</a></td>
                 </tr>
             }
         </tbody>

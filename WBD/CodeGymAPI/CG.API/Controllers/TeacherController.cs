@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CG.API.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class TeacherController : ControllerBase
     {
@@ -19,7 +18,7 @@ namespace CG.API.Controllers
             this.teacherService = teacherService;
         }
 
-        [HttpGet("api/teacher/getteacher")]
+        [HttpGet("api/teacher/gets")]
         public async Task<OkObjectResult> GetTeachers()
         {
             var teachers = await teacherService.GetTeacher();

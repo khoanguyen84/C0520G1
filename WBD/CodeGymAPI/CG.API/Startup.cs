@@ -26,7 +26,6 @@ namespace CG.API
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
@@ -35,10 +34,12 @@ namespace CG.API
             services.AddScoped<ICourseRepository, CourseRepository>();
             services.AddScoped<ITeacherService, TeacherService>();
             services.AddScoped<ITeacherRepository, TeacherRepository>();
-
+            services.AddScoped<IModuleService, ModuleService>();
+            services.AddScoped<IModuleRepository, ModuleRepository>();
+            services.AddScoped<IStudentService, StudentService>();
+            services.AddScoped<IStudentRepository, StudentRepository>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

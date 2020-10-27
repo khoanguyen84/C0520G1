@@ -2,13 +2,13 @@ var course = course || {};
 
 course.apiUrl = "https://localhost:44393/api/course";
 
-course.drawTable = function() {
+course.drawTable = function () {
     $.ajax({
         url: `${course.apiUrl}/gets`,
         method: 'GET',
         dataType: 'JSON',
-        success: function(data) {
-            $.each(data, function(i, v) {
+        success: function (data) {
+            $.each(data, function (i, v) {
                 $('#tbCourse>tbody').append(`
                     <tr>
                         <td>${v.courseId}</td>
@@ -23,11 +23,11 @@ course.drawTable = function() {
     });
 }
 
-course.init = function() {
+course.init = function () {
     course.drawTable();
 }
 
 
-$(document).ready(function() {
+$(document).ready(function () {
     course.init();
 });
