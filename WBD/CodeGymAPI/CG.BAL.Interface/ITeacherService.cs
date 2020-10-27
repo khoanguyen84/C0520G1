@@ -9,7 +9,10 @@ namespace CG.BAL.Interface
 {
     public interface ITeacherService
     {
-        int CreateTeacher(CreateTeacher request);
-        IEnumerable<TeacherView> Gets();
+        Task<DeleteTeacher> CreateTeacher(CreateTeacher request);
+        Task<IEnumerable<TeacherView>> Gets();
+        Task<TeacherView> GetTeacher(int id);
+        Task<DeleteTeacher> EditTeacher(EditTeacher request);
+        Task<DeleteTeacher> DeleteTeacher(int id);
     }
 }

@@ -1,13 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace CG.Domain.Request
 {
-    public class CreateTeacher
+    public class EditTeacher
     {
+        public int TeacherId { get; set; }
         [Required]
         [MaxLength(50, ErrorMessage = "more than 50 characters")]
         public string FullName { get; set; }
@@ -34,9 +34,6 @@ namespace CG.Domain.Request
         [Required]
         [Range(0, 2, ErrorMessage = "Must enter 0 - 2")]
         public int Status { get; set; }
-        //public DateTimeOffset CreateDate { get; set; }
-        //public int CreateBy { get; set; }
-        //public DateTimeOffset ModifiedDate { get; set; }
-        //public int ModifiedBy { get; set; }
+        public int ModifiedBy { get; set; }
     }
 }

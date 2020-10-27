@@ -40,3 +40,34 @@ Teacher.init = function() {
 $(document).ready(function() {
     Teacher.init();
 });
+
+$(document).ready(function() {
+    $("#myBtn").click( function () {
+        $("#newCustomerModal").modal("show");
+    });
+});
+$(document).ready(function(){
+    $('#save').click(function(){
+        var formdata = new FormData();
+        formdata.append('FullName', $('#FullName').val());
+        formdata.append('Gender', $('#Gender').val());
+        formdata.append('Dob', $('#Dob').val());
+        formdata.append('Email', $('#Email').val());
+        formdata.append('PhoneNumber', $('#PhoneNumber').val());
+        formdata.append('Level', $('#Level').val());
+        formdata.append('Address', $('#Address').val());
+        formdata.append('Avatar', $('#Avatar').val());
+        $.ajax({
+            type: "POST",
+            url: `${Teacher.apiUrl}/CreateTeacher`,
+            data: formdata,
+            contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+            processData: false, 
+            success: function () {
+                alert("Create Success");
+                window.location.href = "http://127.0.0.1:5500/course.html";
+
+            }
+        });
+    })
+});

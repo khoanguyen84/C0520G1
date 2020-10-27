@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Course page";
 }
-
+<h4>@TempData["thanhcong"]</h4>
 <div class=" row">
     <a asp-controller="Course" asp-action="Create" class="btn btn-info">Create</a>
 
@@ -24,7 +24,10 @@
                     <td>@item.CourseName</td>
                     <td>@item.StartDateStr</td>
                     <td>@item.EndDateStr</td>
-                    <td></td>
+                    <td>
+                        <a asp-controller="Course" asp-action="Detail" asp-route-id="@item.CourseId">Detail</a>
+                        <a asp-controller="Course" asp-action="Delete" asp-route-id="@item.CourseId">Delete</a>
+                    </td>
                 </tr>
             }
         </tbody>

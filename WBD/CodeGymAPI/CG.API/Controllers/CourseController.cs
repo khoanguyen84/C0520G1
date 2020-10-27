@@ -33,5 +33,28 @@ namespace CG.API.Controllers
             var courses = await courseService.Gets();
             return Ok(courses);
         }
+        [HttpGet("api/course/gets/{id}")]
+        public async Task<OkObjectResult> GetsCourses(int id)
+        {
+            var status = await courseService.GetCourse(id);
+            if (status.CourseName != null)
+                return Ok(status);
+            return Ok(new CourseNotFound()
+            {
+                CourseId = id,
+                Message = "Not Found !"
+            });
+        }
+        [HttpPost("api/course/Create")]
+        public async Task<OkObjectResult> CreateCourse([FromBody] CreateCourse request)
+        {
+            var courses = await courseService.CreateCourse(request);
+            return Ok(courses);
+        }
+        [HttpPut("api/Course/Delete/{id}")]
+        public async Task<CourseNotFound> Delete(int id)
+        {
+            return await courseService.DeleteCourse(id);
+        }
     }
 }

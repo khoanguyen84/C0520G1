@@ -10,6 +10,41 @@ namespace CG.DAL.Implement
 {
     public class CourseRepository : BaseRepository, ICourseRepository
     {
+        public async Task<CourseNotFound> CreateCourse(CreateCourse request)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@CourseName", request.CourseName);
+                parameters.Add("@Status", request.Status);
+                parameters.Add("@StartDate", request.StartDate);
+                parameters.Add("@EndDate", request.EndDate);
+                var data = await SqlMapper.QueryFirstOrDefaultAsync<CourseNotFound>(connection, "Create_Course", parameters, commandType: CommandType.StoredProcedure);
+                return data;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task<CourseNotFound> DeleteCourse(int id)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@CourseId", id);
+            var data = await SqlMapper.QueryFirstOrDefaultAsync<CourseNotFound>(connection, "Delete_Course", parameters, commandType: CommandType.StoredProcedure);
+            return data;
+        }
+
+        public async Task<CourseView> GetCourse(int id)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@CourseId", id);
+            var data = await SqlMapper.QueryFirstAsync<CourseView>(connection, "sp_GetCourseById", parameters, commandType: CommandType.StoredProcedure);
+            return data;
+        }
+
         public async Task<IEnumerable<CourseView>> Gets()
         {
             return await SqlMapper.QueryAsync<CourseView>(cnn: connection,

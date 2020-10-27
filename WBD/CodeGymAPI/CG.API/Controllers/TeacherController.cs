@@ -23,9 +23,9 @@ namespace CG.API.Controllers
 
         [HttpGet]
         [Route("api/Teacher/Gets")]
-        public IEnumerable<TeacherView> Gets()
+        public async Task<IEnumerable<TeacherView>> Gets()
         {
-            return teacherService.Gets();
+            return await teacherService.Gets();
         }
 
         /// <summary>
@@ -34,11 +34,36 @@ namespace CG.API.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/Teacher/CreateTeacher")]
-        public int CreateTeacher([FromBody] CreateTeacher request)
+        [Route("api/Teacher/Create")]
+        public async Task<DeleteTeacher> CreateTeacher([FromBody] CreateTeacher request)
         {
-            var id = teacherService.CreateTeacher(request);
-            return id;
+            //var id = teacherService.CreateTeacher(request);
+            //if(id == -2)
+            //{
+            //    return BadRequest("Email already Register");
+            //};
+            //if (id == -1)
+            //{
+            //    return BadRequest("PhoneNumber already exists");
+            //};
+            //return Ok(id);
+            return await teacherService.CreateTeacher(request);
+        }
+        [Route("api/Teacher/Edit")]
+        [HttpPut]
+        public async Task<DeleteTeacher> Edit([FromBody] EditTeacher request)
+        {
+            return await teacherService.EditTeacher(request);
+        }
+        [HttpGet("api/Teacher/Get/{id}")]
+        public async Task<TeacherView> Get(int id)
+        {
+            return await teacherService.GetTeacher(id);
+        }
+        [HttpPut("api/Teacher/Delete")]
+        public async Task<DeleteTeacher> Delete(int id)
+        {
+            return await teacherService.DeleteTeacher(id);
         }
     }
 }

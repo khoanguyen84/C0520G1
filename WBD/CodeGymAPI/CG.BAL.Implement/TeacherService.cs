@@ -17,14 +17,29 @@ namespace CG.BAL.Implement
         {
             this.teacherRepository = teacherRepository;
         }
-        public int CreateTeacher(CreateTeacher request)
+        public async Task<DeleteTeacher> CreateTeacher(CreateTeacher request)
         {
-            return teacherRepository.CreateTeacher(request);
+            return await teacherRepository.CreateTeacher(request);
         }
 
-        public IEnumerable<TeacherView> Gets()
+        public async Task<DeleteTeacher> DeleteTeacher(int id)
         {
-            return teacherRepository.Gets();
+            return await teacherRepository.DeleteTeacher(id);
+        }
+
+        public async Task<DeleteTeacher> EditTeacher(EditTeacher request)
+        {
+            return await teacherRepository.EditTeacher(request);
+        }
+
+        public async Task<IEnumerable<TeacherView>> Gets()
+        {
+            return await teacherRepository.Gets();
+        }
+
+        public async Task<TeacherView> GetTeacher(int id)
+        {
+            return await teacherRepository.GetTeacher(id);
         }
     }
 }
