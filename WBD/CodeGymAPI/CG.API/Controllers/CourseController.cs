@@ -37,6 +37,7 @@ namespace CG.API.Controllers
         [HttpGet("api/course/GetCourseById/{Id}")]
         public async Task<CourseView> GetCourse(int Id)
         {
+
             return await courseService.GetCourseById(Id);
         }
     }
