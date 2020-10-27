@@ -17,9 +17,14 @@ namespace CG.BAL.Implement
             this.courseRepository = courseRepository;
         }
 
-        public int ChangeStatus(UpdateCourse request)
+        public  async Task<CourseView> ChangeStatus(UpdateCourse request)
         {
-            return courseRepository.ChangeStatus(request);
+            return await courseRepository.ChangeStatus(request);
+        }
+
+        public async Task<CourseView> Get(int id)
+        {
+            return await courseRepository.Get(id);
         }
 
         public async Task<IEnumerable<CourseView>> Gets()

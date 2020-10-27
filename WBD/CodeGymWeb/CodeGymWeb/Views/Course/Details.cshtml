@@ -1,0 +1,28 @@
+﻿@model CourseView
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+
+<div class="row justify-content-center">
+    <div class="col-sm-6">
+        <div class="card my-2">
+            <div class="card-header">
+                <h3> Name: @Model.CourseName</h3>
+            </div>
+            <div class="card-header">
+                <h3> StarDay: @Model.StartDateStr</h3>
+            </div>
+            <div class="card-header">
+                <h3> EndDay: @Model.EndDateStr</h3>
+            </div>
+
+            <div class="card-footer text-center">
+                <a asp-controller="Course" asp-action="Index" class="btn btn-warning">Back</a>
+                <a asp-controller="Course" asp-action="Edit" asp-route-id="@Model.CourseId" class="btn btn-primary">Edit</a>
+                <a asp-controller="Course" asp-action="Delete" asp-route-id="@Model.CourseId" class="btn btn-info">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>

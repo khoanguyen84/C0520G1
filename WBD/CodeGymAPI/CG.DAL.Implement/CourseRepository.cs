@@ -11,15 +11,16 @@ namespace CG.DAL.Implement
 {
     public class CourseRepository : BaseRepository, ICourseRepository
     {
-        public int ChangeStatus(UpdateCourse request)
+        public async Task <CourseView> ChangeStatus(UpdateCourse request)
         {
             {
                 try
                 {
                     DynamicParameters parameters = new DynamicParameters();
                     parameters.Add("@Id", request.courseId);                  
-                    parameters.Add("@Status", request.Status);                 
-                    var id = SqlMapper.ExecuteScalar<int>(connection, "ChangeStatus", param: parameters, commandType: CommandType.StoredProcedure);
+                    parameters.Add("@Status", request.Status);
+                    parameters.Add("@ModifiedBy", request.ModifiedBy);
+                    var id =await SqlMapper.QueryFirstOrDefaultAsync<CourseView>(connection, "ChangeStatus", param: parameters, commandType: CommandType.StoredProcedure);
                     return id;
                 }
                 catch (Exception ex)
@@ -29,7 +30,15 @@ namespace CG.DAL.Implement
             }
         }
 
-      
+        public async Task<CourseView> Get(int request)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@CourseId", request);
+            return await SqlMapper.QueryFirstOrDefaultAsync<CourseView>(cnn: connection,
+                                                        sql: "Course_GetByCourseId",
+                                                        parameters,
+                                                        commandType: CommandType.StoredProcedure);
+        }
 
         public async Task<IEnumerable<CourseView>> Gets()
         {

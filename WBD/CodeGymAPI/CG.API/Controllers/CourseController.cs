@@ -35,9 +35,16 @@ namespace CG.API.Controllers
             return Ok(courses);
         }
         [HttpPut("api/course/ChangeStatus")]
-        public int PUT([FromBody] UpdateCourse updateCourse)
+        public async  Task<CourseView> ChangeSTT([FromBody] UpdateCourse updateCourse)
         {
-            return courseService.ChangeStatus(updateCourse);
+            return await courseService.ChangeStatus(updateCourse);
+        }
+
+        [HttpGet("api/course/get/{id}")]
+        public async Task<OkObjectResult> Get (int id)
+        {
+            var courses = await courseService.Get(id);
+            return Ok(courses);
         }
     }
 }

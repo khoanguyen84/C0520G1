@@ -8,5 +8,6 @@ namespace CG.Domain.Request
     {
         public int courseId { get; set; }
         public int Status { get; set; }
+        public int ModifiedBy { get; set; }
     }
 }

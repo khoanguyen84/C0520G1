@@ -12,5 +12,7 @@ namespace CG.Domain.Response.Course
         public DateTime EndDate { get; set; }
         public string StartDateStr { get; set; }
         public string EndDateStr { get; set; }
+        public string Message { get; set; }
+
     }
 }
