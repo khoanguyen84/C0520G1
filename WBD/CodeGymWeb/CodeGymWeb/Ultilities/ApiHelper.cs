@@ -33,5 +33,28 @@ namespace CodeGymWeb.Ultilities
                 
             }
         }
+        public static T HttpGetByIdAsync(string apiName,int id)
+        {
+            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(@$"{Common.apiUrl}/{apiName}/{id}");
+            httpWebRequest.Method = "GET";
+            var response = httpWebRequest.GetResponse();
+            {
+                string responseData;
+                Stream responseStream = response.GetResponseStream();
+                try
+                {
+                    using (StreamReader sr = new StreamReader(responseStream))
+                    {
+                        responseData = sr.ReadToEnd();
+                    }
+                }
+                finally
+                {
+                    ((IDisposable)responseStream).Dispose();
+                }
+                return JsonConvert.DeserializeObject<T>(responseData);
+
+            }
+        }
     }
 }

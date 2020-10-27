@@ -49,6 +49,7 @@ namespace CG.API
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "CodeGym API");
             });
 
+
             app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseHttpsRedirection();
 

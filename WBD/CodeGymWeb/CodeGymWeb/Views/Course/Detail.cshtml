@@ -1,0 +1,23 @@
+﻿@model CourseView
+@{
+    ViewData["Title"] = "Course detail";
+}
+<div class="row justify-content-center">
+    <div class="col-sm-6">
+        <h2 style="text-align:center;color:red">Chi tiết lớp học</h2>
+        <div class="card my-2">
+            <div class="card-header text-center">
+                <h3>Mã lớp học: @Model.CourseId</h3>
+                <h3>Tên lớp: @Model.CourseName</h3>
+            </div>
+            <div class="card-body text-center">
+                <h3>Trạng thái: Đang học </h3>
+                <h3>Ngày khai giảng: @Model.StartDateStr</h3>
+                <h3>Ngày bế giảng: @Model.EndDateStr</h3>
+            </div>
+            <div class="card-footer text-center">
+                <a asp-controller="Course" asp-action="Index" class="btn btn-warning">Trở về</a>
+            </div>
+        </div>
+    </div>
+</div>

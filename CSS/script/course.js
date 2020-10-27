@@ -29,12 +29,10 @@ course.openAddEditCourse = function () {
 };
 course.reset = function () {
     $('#CourseName').val("");
-    $('#Status').val(1);
 }
 course.save = function () {
     var saveObj = {};
     saveObj.CourseName = $('#CourseName').val();
-    saveObj.Status = parseInt($('#Status').val());
     saveObj.StartDate = $('#StartDate').val();
     saveObj.EndDate = $('#EndDate').val();
     $.ajax({

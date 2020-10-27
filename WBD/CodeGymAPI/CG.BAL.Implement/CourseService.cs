@@ -16,6 +16,12 @@ namespace CG.BAL.Implement
         {
             this.courseRepository = courseRepository;
         }
+
+        public async Task<CourseView> Get(int id)
+        {
+            return await courseRepository.Get(id);
+        }
+
         public async Task<IEnumerable<CourseView>> Gets()
         {
             return await courseRepository.Gets();

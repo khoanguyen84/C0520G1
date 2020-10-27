@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using CG.BAL.Interface;
 using CG.Domain.Request;
@@ -43,6 +44,30 @@ namespace CG.API.Controllers
         public async Task<SaveCourseResult> Save(SaveCourseRequest request)
         {
             return await courseService.Save(request);
+
         }
+        [HttpGet("api/course/get/{id}")]
+        public async Task<OkObjectResult> Get(int id)
+        {
+            var courses = await courseService.Get(id);
+            if(courses != null)
+            {
+                
+                return Ok(courses);
+            }
+           else
+            {
+                var result =  new SaveCourseResult()
+                {
+                    CourseId = 0,
+                    Message = "Id not found"
+                };
+                return Ok(result.Message);
+            }
+            
+        }
+
+
+
     }
 }
