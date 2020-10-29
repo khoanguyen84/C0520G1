@@ -42,8 +42,8 @@ namespace CG.API.Controllers
         [HttpGet("api/course/get/{id}")]
         public async Task<OkObjectResult> Get(int id)
         {
-            var courses = await courseService.Get(id);
-            return Ok(courses);
+            var course = await courseService.Get(id);
+            return Ok(course); 
         }
     }
 }

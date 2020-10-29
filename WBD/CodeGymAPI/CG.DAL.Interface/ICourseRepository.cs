@@ -11,5 +11,6 @@ namespace CG.DAL.Interface
         Task<IEnumerable<CourseView>> Gets();
         Task<ResultView> Update(UpdateCourse request);
         Task<CourseView> Get(int id);
+        //Task<bool> CheckId(int id);
     }
 }

@@ -15,6 +15,7 @@ namespace CodeGymWeb.Models.Course
         public string EndDateStr { get; set; }
         public DateTime ModifiedDate { get; set; }
         public string ModifiedDateStr { get; set; }
+        public int Status { get; set; }
         public int ModifiedBy { get; set; }
     }
 }

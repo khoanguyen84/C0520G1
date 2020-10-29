@@ -11,6 +11,28 @@ namespace CG.DAL.Implement
 {
     public class CourseRepository : BaseRepository, ICourseRepository
     {
+        //public async Task<bool> CheckId(int id)
+        //{
+        //    try
+        //    {
+        //        DynamicParameters parameters = new DynamicParameters();
+        //        parameters.Add("@courseId", id);
+        //        var query = $"SELECT [CourseId] FROM[dbo].[Course] WHERE[CourseId] = {id}";
+        //        var result = await SqlMapper.QueryFirstOrDefaultAsync(cnn: connection,
+        //                                                              sql: query,
+        //                                                              commandType: CommandType.Text);
+        //        if (result != null)
+        //        {
+        //            return true;
+        //        }
+        //        return false;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
+
         public async Task<CourseView> Get(int id)
         {
             try
@@ -39,7 +61,7 @@ namespace CG.DAL.Implement
             //return result;
         }
 
-        public async  Task<ResultView> Update(UpdateCourse request)
+        public async Task<ResultView> Update(UpdateCourse request)
         {
             try
             {
