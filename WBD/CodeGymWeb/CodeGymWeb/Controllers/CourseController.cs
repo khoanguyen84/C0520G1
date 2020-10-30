@@ -1,4 +1,5 @@
 ﻿using CodeGymWeb.Models.Course;
+using CodeGymWeb.Models.Wiki;
 using CodeGymWeb.Ultilities;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace CodeGymWeb.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
             return View();
         }
 
