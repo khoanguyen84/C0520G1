@@ -8,6 +8,7 @@ namespace CodeGymWeb.Models.Course
 {
     public class SaveCourseReq
     {
+        [Required]
         public int CourseId { get; set; }
         [Required]
         [Display(Name = "Course name")]

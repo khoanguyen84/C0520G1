@@ -1,4 +1,5 @@
-﻿using CG.Domain.Response.Course;
+﻿using CG.Domain.Request.Course;
+using CG.Domain.Response.Course;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -9,5 +10,6 @@ namespace CG.BAL.Interface
     {
         Task<IEnumerable<CourseView>> Gets();
         Task<CourseView> GetCourseById(int Id);
+        Task<SaveCourseRes> Save(SaveCourseReq request);
     }
 }

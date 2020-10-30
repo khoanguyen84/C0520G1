@@ -13,5 +13,7 @@ namespace CodeGymWeb.Models.Course
         public int CourseId { get; set; }
         [Display(Name = "Tên khóa học")]
         public string CourseName { get; set; }
+        public int Status { get; set; }
+        public string StatusName { get; set; }
     }
 }

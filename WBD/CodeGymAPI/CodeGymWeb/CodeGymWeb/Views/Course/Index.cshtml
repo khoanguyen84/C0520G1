@@ -15,13 +15,18 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CourseName)
+            </th>
+                
+            <th>
+                @Html.DisplayNameFor(model => model.StatusName)
             <th>
                 Thao tác
             </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model) 
+{
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.CourseId)
@@ -30,7 +35,10 @@
                 @Html.DisplayFor(modelItem => item.CourseName)
             </td>
             <td>
-                @Html.ActionLink("Chi tiết", "Detail", "Course", new { id=item.CourseId }, new {@class = "btn btn-success"})
+                @Html.DisplayFor(modelItem => item.StatusName)
+            </td>
+            <td>
+                @Html.ActionLink("Chi tiết", "Detail", "Course", new { id = item.CourseId }, new { @class = "btn btn-success" })
             </td>
         </tr>
 }

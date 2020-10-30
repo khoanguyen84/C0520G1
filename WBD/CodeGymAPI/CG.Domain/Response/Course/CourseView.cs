@@ -9,7 +9,9 @@ namespace CG.Domain.Response.Course
         public int CourseId { get; set; }
         public string CourseName { get; set; }
         public string StartDateStr { get; set; }
+        public DateTime StartDate { get; set; }
         public string EndDateStr { get; set; }
+        public DateTime EndDate { get; set; }
         public string StatusName { get; set; }
         public int Status { get; set; }
     }
