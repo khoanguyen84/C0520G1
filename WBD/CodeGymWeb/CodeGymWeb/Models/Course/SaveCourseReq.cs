@@ -9,7 +9,7 @@ namespace CodeGymWeb.Models.Course
     public class SaveCourseReq
     {
         public int CourseId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Course name is required")]
         [Display(Name = "Course name")]
         public string CourseName { get; set; }
         [Display(Name = "Status")]
