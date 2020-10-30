@@ -1,0 +1,57 @@
+﻿@model SaveCourseReq
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+@if (TempData["Message"] != null)
+{
+    <p class="alert alert-success">@TempData["Message"]</p>
+}
+<form asp-controller="Course" asp-action="Edit" method="post">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <input hidden asp-for="CourseId" value="@Model.CourseId" />
+    <div class="row">
+        <div class="col-2 col-form-label">
+            <label asp-for="CourseName"></label>
+        </div>
+        <div class="col-10">
+            <input asp-for="CourseName" class="form-control" />
+            <span asp-validation-for="CourseName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2 col-form-label">
+            <label asp-for="Status"></label>
+        </div>
+        <div class="col-10">
+            <select asp-for="Status" class="form-control">
+                <option value="1">Inprocess</option>
+                <option value="2">Completed</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2 col-form-label">
+            <label asp-for="StartDate"></label>
+        </div>
+        <div class="col-10">
+            <input asp-for="StartDate" class="form-control" />
+            <span asp-validation-for="StartDate" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2 col-form-label">
+            <label asp-for="EndDate"></label>
+        </div>
+        <div class="col-10">
+            <input asp-for="EndDate" class="form-control" />
+            <span asp-validation-for="EndDate" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <button class="btn btn-success mr-3" type="submit">Edit</button>
+        <button class="btn btn-warning" type="reset">Cancel</button>
+    </div>
+</form>
