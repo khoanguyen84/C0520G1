@@ -13,23 +13,23 @@
                 <th>Course Name</th>
                 <th>Start date</th>
                 <th>End date</th>
+                <th>Status</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             @foreach(var item in Model)
             {
-                <tr>
-                    <td>@item.CourseId</td>
-                    <td>@item.CourseName</td>
-                    <td>@item.StartDateStr</td>
-                    <td>@item.EndDateStr</td>
-                    <td>
-                        <a asp-controller="Course" asp-action="Detail" asp-route-id="@item.CourseId">Detail</a>
-                        <a asp-controller="Course" asp-action="Delete" asp-route-id="@item.CourseId">Delete</a>
-                    </td>
-                </tr>
+            <tr>
+                <td>@item.CourseId</td>
+                <td>@item.CourseName</td>
+                <td>@item.StartDateStr</td>
+                <td>@item.EndDateStr</td>
+                <td><span class="@(item.Status == 1? "btn btn-primary": "btn btn-success")">@item.StatusName</span></td>
+                <td></td>
+            </tr>
             }
         </tbody>
     </table>
 </div>
+

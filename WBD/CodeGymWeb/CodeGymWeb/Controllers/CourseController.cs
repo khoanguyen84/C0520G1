@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using CodeGymWeb.Models.Course;
+﻿using CodeGymWeb.Models.Course;
 using CodeGymWeb.Ultilities;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace CodeGymWeb.Controllers
 {
