@@ -1,34 +1,27 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>TeacherList</title>
+    <title>Document</title>
 </head>
 
 <body>
-
     <div class="container">
-        <div class="row">
-            <table id="tbTeacher" class="table table-bordered ">
+        <div class=" row">
+            <a asp-controller="Course" asp-action="Create" class="btn btn-info">Create</a>
+
+            <table id="tbCourse" class="table table-bordered mt-2">
                 <thead class="thead-dark">
                     <tr>
-                        <th>Teacher Id</th>
-                        <th>Teacher Name</th>
-                        <th>Gender</th>
-                        <th>Dob</th>
-                        <th>Email</th>
-                        <th>PhoneNumber</th>
-                        <th>Level</th>
-                        <th>Address</th>
-                        <th>avatar</th>
-                        <th>status</th>
-                        <th>createDate</th>
-                        <th>createBy</th>
-                        <th>modifiedDate</th>
-                        <th>modifiedBy</th>
+                        <th>Course Id</th>
+                        <th>Course Name</th>
+                        <th>Start date</th>
+                        <th>End date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,118 +29,10 @@
             </table>
         </div>
     </div>
-    <button type="button" class="btn btn-info btn-lg" id="myBtn">Create Teacher</button>
-
-    <div class="container">
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" role="dialog">
-          <div class="modal-dialog">
-          
-            <!-- Modal content-->
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Create</h4>
-              </div>
-              <form id="myForm1">
-                <input hidden>
-        
-                <div class="form-group">
-                    <div>
-                        <label>FullName</label>
-                    </div>
-                    <div>
-                        <input name="FullName" class="form-control" />
-                        <span class="error text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div>
-                        <label>Gender</label>
-                    </div>
-                    <div>
-                        <input name="Gender" class="form-control" />
-                        <span class="error text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div>
-                        <label>Dob</label>
-                    </div>
-                    <div>
-                        <input name="Dob" class="form-control" />
-                        <span class="error text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div>
-                        <label>Email</label>
-                    </div>
-                    <div>
-                        <input name="Email" class="form-control" />
-                        <span class="error text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div>
-                        <label>Phone Number</label>
-                    </div>
-                    <div>
-                        <input name="PhoneNumber" class="form-control" />
-                        <span class="error text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div>
-                        <label>Level</label>
-                    </div>
-                    <div>
-                        <input name="Level" class="form-control" />
-                        <span class="error text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div>
-                        <label>Address</label>
-                    </div>
-                    <div>
-                        <input name="Address" class="form-control" />
-                        <span class="error text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div>
-                        <label>Avatar</label>
-                    </div>
-                    <div>
-                        <input name="Avatar" class="form-control" />
-                        <span class="error text-danger"></span>
-                    </div>
-                </div>
-            </form>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <a href="#" id="save" type="submit" class="btn btn-danger">Save</a>
-              </div>
-            </div>
-            
-          </div>
-        </div>
-        
-      </div>
-      
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="script/Teacher.js"></script>
-    <script>
-        $(document).ready(function(){
-          $("#myBtn").click(function(){
-            $("#myModal").modal();
-          });
-        });
-        </script>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="script/Course.js"></script>
 
 </html>

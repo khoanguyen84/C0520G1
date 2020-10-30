@@ -83,8 +83,8 @@ namespace CG.DAL.Implement
             }
             catch (Exception ex)
             {
-
-                return result;
+                throw ex;
+                //return result;
             }
         }
     }

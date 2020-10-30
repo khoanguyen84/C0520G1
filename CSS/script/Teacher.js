@@ -33,7 +33,7 @@ Teacher.drawTable = function() {
 }
 
 Teacher.init = function() {
-    Teacher .drawTable();
+    Teacher.drawTable();
 }
 
 

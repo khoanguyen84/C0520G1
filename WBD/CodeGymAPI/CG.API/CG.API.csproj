@@ -16,6 +16,8 @@
     <ProjectReference Include="..\CG.BAL.Implement\CG.BAL.Implement.csproj" />
     <ProjectReference Include="..\CG.BAL.Interface\CG.BAL.Interface.csproj" />
     <ProjectReference Include="..\CG.DAL.Implement\CG.DAL.Implement.csproj" />
+    <ProjectReference Include="..\CG.DAL.Interface\CG.DAL.Interface.csproj" />
+    <ProjectReference Include="..\CG.Domain\CG.Domain.csproj" />
   </ItemGroup>
 
 
