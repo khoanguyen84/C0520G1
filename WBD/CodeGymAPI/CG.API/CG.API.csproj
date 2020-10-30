@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Database\Init\" />
+    <Folder Include="Database\StoredProcedure\" />
   </ItemGroup>
 
   <ItemGroup>

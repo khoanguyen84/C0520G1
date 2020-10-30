@@ -21,18 +21,32 @@ namespace CG.API.Controllers
         {
             this.courseService = courseService;
         }
-
-        //[Route("/gets")]
-        //[HttpGet]
         /// <summary>
         /// Get all Courses with status is inprocess
         /// </summary>
         /// <returns></returns>
         [HttpGet("api/course/gets")]
-        public async Task<OkObjectResult> GetCourses()
+        public async Task<IEnumerable<CourseView>> GetCourses()
         {
-            var courses = await courseService.Gets();
-            return Ok(courses);
+            return await courseService.Gets();
+        }
+        /// <summary>
+        /// Get Course By Id is inprocess
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("api/course/GetCourseById/{id}")]
+        public async Task<OkObjectResult> GetCourseById(int id)
+        {
+            var status = await courseService.GetCourseById(id);
+            if (status.CourseName != null)
+                return Ok(status);
+
+            return Ok(new NotFound()
+            {
+                Id = id,
+                ErrorMessage = "Not Found !"
+            });
         }
 
         /// <summary>
