@@ -21,5 +21,12 @@ namespace CG.API.Controllers
         {
             return moduleService.UpdatesModule(request);
         }
+
+        [HttpGet("api/Module/gets")]
+        public async Task<OkObjectResult> GetCourses()
+        {
+            var courses = await moduleService.Gets();
+            return Ok(courses);
+        }
     }
 }

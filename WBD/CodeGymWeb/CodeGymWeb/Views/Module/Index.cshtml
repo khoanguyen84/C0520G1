@@ -1,0 +1,38 @@
+﻿@model List<ModuleView>
+@{
+    ViewData["Title"] = "Course page";
+}
+
+<div class=" row">
+    <a asp-controller="Course" asp-action="Create" class="btn btn-info">Create</a>
+
+    <table class="table table-bordered mt-2">
+        <thead class="thead-dark">
+            <tr>
+                <th>Module Id</th>
+                <th>Module Name</th>
+                <th>Duration</th>
+                <th>Status</th>
+                <th>Created By</th>
+                <th>Modified Date</th>
+                <th>ModifiedBy</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item.ModuleId</td>
+                <td>@item.ModuleName</td>
+                <td>@item.Duration</td>
+                <td>@item.Status</td>
+                <td>
+                <button asp-controller="Module" asp-action="Update">
+                    Update
+                     </button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

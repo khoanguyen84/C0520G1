@@ -1,9 +1,11 @@
 ﻿using CG.BAL.Interface;
 using CG.DAL.Interface;
+using CG.Domain;
 using CG.Domain.Request;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CG.BAL.Implement
 {
@@ -18,6 +20,11 @@ namespace CG.BAL.Implement
         public int UpdatesModule(UpdateModule request)
         {
             return iRepository.UpdateModule(request);
+        }
+
+        public async Task<IEnumerable<ModuleViewModel>> Gets()
+        {
+            return await iRepository.Gets();
         }
 
     }

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace CG.Domain.Request
+namespace CodeGymWeb.Models.Module
 {
-     public class UpdateModule
+    public class ModuleView
     {
         public int ModuleId { get; set; }
         public string ModuleName { get; set; }

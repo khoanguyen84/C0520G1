@@ -10,6 +10,6 @@ namespace CG.DAL.Interface
     public interface IModuleIRepository
     {
         int UpdateModule(UpdateModule updateModule);
-        /*Task<ModuleViewModel> GetsModule(int Id);*/
+        Task<IEnumerable<ModuleViewModel>> Gets();
     }
 }
