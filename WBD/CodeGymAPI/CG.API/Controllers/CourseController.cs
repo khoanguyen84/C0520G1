@@ -49,11 +49,11 @@ namespace CG.API.Controllers
         [HttpGet("api/course/get/{id}")]
         public async Task<OkObjectResult> Get(int id)
         {
-            var courses = await courseService.Get(id);
-            if(courses != null)
+            var course = await courseService.Get(id);
+            if(course != null)
             {
                 
-                return Ok(courses);
+                return Ok(course);
             }
            else
             {
@@ -66,8 +66,16 @@ namespace CG.API.Controllers
             }
             
         }
-
+        [HttpPost("api/course/update")]
+        public async Task<OkObjectResult> Update(SaveCourseRequest request)
+        {
+            var course = await courseService.Save(request);
+            return Ok(course);
+             
+        }
+        
 
 
     }
 }
+ 

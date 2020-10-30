@@ -4,11 +4,6 @@
 }
 
 <div class=" row">
-    <a href="javascript:void(0);" class="au-btn au-btn-icon btn-danger au-btn--small"
-       onclick="course.openAddEditCourse()">
-        <i class="zmdi zmdi-plus"></i>Create
-    </a>
-
     <table  class="table table-bordered" style="text-align: center;">
         <thead class="thead-dark">
             <tr>
@@ -27,7 +22,10 @@
                     <td>@item.CourseName</td>
                     <td>@item.StartDateStr</td>
                     <td>@item.EndDateStr</td>
-                    <td><a class="btn btn-danger" asp-controller="Course" asp-action="Detail" asp-route-id="@item.CourseId">Chi tiết</a></td>
+                    <td><a class="btn btn-danger" asp-controller="Course" asp-action="Detail" asp-route-id="@item.CourseId">Chi tiết</a>
+                        <a class="btn btn-success" asp-controller="Course" asp-action="Edit" asp-route-id="@item.CourseId">Cập nhật</a>
+                    </td>
+                    
                 </tr>
             }
         </tbody>

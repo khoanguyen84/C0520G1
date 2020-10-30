@@ -27,5 +27,34 @@ namespace CodeGymWeb.Controllers
                                                 );
             return View(result);
         }
+        [HttpPost]
+        public IActionResult Edit(SaveCourseReq request)
+        {
+            if (ModelState.IsValid)
+            {
+                ApiHelper<CourseView>.HttpPutAsync("course/update", request);
+                return RedirectToAction("index");
+            }
+           ModelState.AddModelError("", "Something went wrong! Please try again later");
+            return View(request);
+        }
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var result = new SaveCourseReq();
+            result = ApiHelper<SaveCourseReq>.HttpGetByIdAsync(
+                                                    $"course/get", id
+                                                );
+            var course = new SaveCourseReq()
+            {
+                CourseId = result.CourseId,
+                CourseName = result.CourseName,
+                EndDate = result.EndDate,
+                StartDate = result.StartDate,
+                Status = result.Status
+            };
+            return View(course);
+        }
+
     }
 }

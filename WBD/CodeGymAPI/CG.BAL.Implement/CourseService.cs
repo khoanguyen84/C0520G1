@@ -29,7 +29,9 @@ namespace CG.BAL.Implement
 
         public async Task<SaveCourseResult> Save(SaveCourseRequest request)
         {
+            if(request.CourseId == 0) 
             return await courseRepository.Save(request);
+            return await courseRepository.Update(request);
         }
        
     }

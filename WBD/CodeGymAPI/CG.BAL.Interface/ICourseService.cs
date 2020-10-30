@@ -10,6 +10,7 @@ namespace CG.BAL.Interface
     {
         Task<IEnumerable<CourseView>> Gets();
         Task<SaveCourseResult> Save(SaveCourseRequest request);
+
         Task<CourseView> Get(int id);
     }
 }
