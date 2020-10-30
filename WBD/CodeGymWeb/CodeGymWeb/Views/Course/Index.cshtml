@@ -26,10 +26,7 @@
                 <td>@item.StartDateStr</td>
                 <td>@item.EndDateStr</td>
                 <td><span class="@(item.Status == 1? "btn btn-primary": "btn btn-success")">@item.StatusName</span></td>
-                <td>
-                    <a class="btn btn-primary" asp-controller="Course" asp-action="Edit" asp-route-id="@item.CourseId">Edit</a>
-                    <a class="btn btn-warning" asp-controller="Course" asp-action="Detail" asp-route-id="@item.CourseId">Detail</a>
-                </td>
+                <td></td>
             </tr>
             }
         </tbody>
