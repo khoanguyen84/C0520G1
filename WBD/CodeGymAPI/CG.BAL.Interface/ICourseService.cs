@@ -9,7 +9,6 @@ namespace CG.BAL.Interface
     public interface ICourseService
     {
         Task<IEnumerable<CourseView>> Gets();
-        Task<ResultView> Update(UpdateCourse request);
-        Task<CourseView> Get(int id);
+        Task<SaveCourseRes> Save(SaveCourseReq request);
     }
 }

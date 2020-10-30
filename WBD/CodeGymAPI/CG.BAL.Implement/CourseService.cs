@@ -27,9 +27,9 @@ namespace CG.BAL.Implement
             return await courseRepository.Gets();
         }
 
-        public async Task<ResultView> Update(UpdateCourse request)
+        public async Task<SaveCourseRes> Save(SaveCourseReq request)
         {
-            return await courseRepository.Update(request);
+            return await courseRepository.Save(request);
         }
     }
 }

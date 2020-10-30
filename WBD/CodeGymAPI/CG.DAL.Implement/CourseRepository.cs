@@ -61,23 +61,32 @@ namespace CG.DAL.Implement
             //return result;
         }
 
-        public async Task<ResultView> Update(UpdateCourse request)
+        public async Task<SaveCourseRes> Save(SaveCourseReq request)
         {
+            var result = new SaveCourseRes()
+            {
+                CourseId = 0,
+                Message = "Something went wrong, please contact administrator."
+            };
             try
             {
                 DynamicParameters parameters = new DynamicParameters();
-                parameters.Add("@Id", request.CourseId);
+                parameters.Add("@CourseId", request.CourseId);
                 parameters.Add("@CourseName", request.CourseName);
                 parameters.Add("@Status", request.Status);
                 parameters.Add("@StartDate", request.StartDate);
                 parameters.Add("@EndDate", request.EndDate);
-                parameters.Add("@ModifiedBy", 1);
-                var result = await SqlMapper.QueryFirstOrDefaultAsync<ResultView>(connection, "sp_UpdateCourse", param: parameters, commandType: CommandType.StoredProcedure);
+
+                result = await SqlMapper.QueryFirstOrDefaultAsync<SaveCourseRes>(cnn: connection,
+                                                                    sql: "sp_SaveCourse",
+                                                                    param: parameters,
+                                                                    commandType: CommandType.StoredProcedure);
                 return result;
             }
             catch (Exception ex)
             {
-                throw ex;
+
+                return result;
             }
         }
     }
