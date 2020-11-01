@@ -24,7 +24,9 @@
                     <td>@item.CourseName</td>
                     <td>@item.StartDateStr</td>
                     <td>@item.EndDateStr</td>
-                    <td></td>
+                    <td>
+                        <a asp-controller="Course" asp-action="Detail" asp-route-id="@item.CourseId">Detail</a>
+                    </td>
                 </tr>
             }
         </tbody>

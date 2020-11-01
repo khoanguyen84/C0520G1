@@ -18,5 +18,11 @@ namespace CodeGymWeb.Controllers
             var data = ApiHelper<List<CourseView>>.HttpGetAsync("course/gets");
             return View(data);
         }
+
+        public IActionResult Detail(int id)
+        {
+            var data = ApiHelper<CourseView>.HttpGetAsync($"course/get/{id}");
+            return View(data);
+        }
     }
 }

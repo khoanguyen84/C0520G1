@@ -22,13 +22,13 @@ namespace CG.DAL.Implement
         {
             CreateModuleView createModuleView = new CreateModuleView()
             {
-                Name= inputCreateModule.Name,
-                Duration=inputCreateModule.Duration,
-                Status=1,
-                CreateDate=DateTimeOffset.Now,
-                CreateBy=1,
-                ModifiedDate= DateTimeOffset.Now,
-                ModifiedBy=1
+                Name = inputCreateModule.Name,
+                Duration = inputCreateModule.Duration,
+                Status = 1,
+                CreateDate = DateTimeOffset.Now,
+                CreateBy = 1,
+                ModifiedDate = DateTimeOffset.Now,
+                ModifiedBy = 1
             };
             DynamicParameters param = new DynamicParameters();
             param.Add("@ModuleNameParm", createModuleView.Name);
@@ -48,21 +48,19 @@ namespace CG.DAL.Implement
             DynamicParameters parameter = new DynamicParameters();
             parameter.Add("@ModuleIdParm", id);
 
-            var resutl = await SqlMapper.QueryFirstAsync<ModuleViewModel>(cnn: connection, sql: "sp_GetModuleById", parameter,
+            var result = await SqlMapper.QueryFirstOrDefaultAsync<ModuleViewModel>(cnn: connection, sql: "sp_GetModuleById", parameter,
                                                             commandType: CommandType.StoredProcedure);
+            if (result != null)
+                result.StatusName = statusRepository.Get(result.Status).Result.StatusName;
 
-            resutl.StatusName = statusRepository.Get(resutl.Status).Result.StatusName;
-            return resutl;
+            return result;
         }
 
         public async Task<IEnumerable<ModuleViewModel>> Gets()
         {
-            var resutl = await SqlMapper.QueryAsync<ModuleViewModel>(cnn: connection, sql: "sp_GetModules",
+            var result = await SqlMapper.QueryAsync<ModuleViewModel>(cnn: connection, sql: "sp_GetModules",
                                                         commandType: CommandType.StoredProcedure);
-            foreach (var item in resutl)
-                item.StatusName = statusRepository.Get(item.Status).Result.StatusName;
-
-            return resutl;
+            return result;
         }
 
     }
