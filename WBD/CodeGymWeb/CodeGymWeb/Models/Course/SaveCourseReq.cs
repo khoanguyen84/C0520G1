@@ -10,17 +10,17 @@ namespace CodeGymWeb.Models.Course
     {
         public int CourseId { get; set; }
         [Required]
-        [Display(Name = "Course name")]
+        [Display(Name = "Course Name")]
         public string CourseName { get; set; }
         [Display(Name = "Status")]
         public int Status { get; set; }
         [Required]
         [DataType(DataType.Date)]
-        [Display(Name = "Start date")]
+        [Display(Name = "Start Date")]
         public DateTime StartDate { get; set; }
         [Required]
         [DataType(DataType.Date)]
-        [Display(Name = "End date")]
+        [Display(Name = "End Date")]
         public DateTime EndDate { get; set; }
     }
 }
