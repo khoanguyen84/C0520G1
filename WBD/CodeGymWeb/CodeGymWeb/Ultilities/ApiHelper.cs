@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CodeGymWeb.Ultilities
 {
-    public static class ApiHelper <T> where T:class
+    public static class ApiHelper<T> where T : class
     {
         public static T HttpGetAsync(string apiName)
         {
@@ -30,8 +30,26 @@ namespace CodeGymWeb.Ultilities
                     ((IDisposable)responseStream).Dispose();
                 }
                 return JsonConvert.DeserializeObject<T>(responseData);
-                
+
             }
+        }
+        public static T HttpPostAsync(string apiUrl, object model)
+        {
+            string result = string.Empty;
+            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(@$"{Common.apiUrl}/{apiUrl}");
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "POST";
+            using (var streamWrite = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                var json = JsonConvert.SerializeObject(model);
+                streamWrite.Write(json);
+            }
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                result = streamReader.ReadToEnd();
+            }
+            return JsonConvert.DeserializeObject<T>(result);
         }
     }
 }

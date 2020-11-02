@@ -19,14 +19,19 @@ namespace CG.BAL.Implement
         }
 
 
-        public Task<ModuleChangeStatusRespone> ChangeStatusModuleByModuleId(int moduleId, int status)
+        public Task<ModuleChangeStatusRespone> ChangeStatusModuleByModuleId(ModuleChangeStatusRequest request)
         {
-            return moduleRepository.ChangeStatusModuleByModuleId(moduleId, status);
+            return moduleRepository.ChangeStatusModuleByModuleId(request);
         }
 
        public Task<ModuleChangeStatusRespone> GetModuleByModuleId(int moduleId)
         {
             return moduleRepository.GetModuleByModuleId(moduleId);
+        }
+
+        public Task<ModuleChangeStatusRespone> SaveModule(ModuleSaveRequest request)
+        {
+            return moduleRepository.SaveModule(request);
         }
     }
 }

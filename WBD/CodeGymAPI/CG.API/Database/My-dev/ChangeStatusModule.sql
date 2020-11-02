@@ -12,37 +12,70 @@ GO
 -- Author:		 My
 -- Create date: 23/10/2020
 -- Description:	Change Status Module By ModuleId
--- status: 1: inprocess, 2: granded, 3: deleted
+-- status: 1: active, 2: completed, 3: cancel
+-- ModifiedBy > 0 AND ModifiedBy <= 10
 -- =============================================
 ALTER PROC [dbo].[sp_ChangeStatusModuleByModuleId]( 
- @moduleId int,
- @status int
+ @moduleId		int,
+ @status		int,
+ @modifiedBy	int
  ) 
 AS 
- BEGIN 
- UPDATE [dbo].[Module] 
-SET [Status] = @status 
-WHERE [ModuleId] = @moduleId
-SELECT [ModuleId],[Status]
-FROM Module WHERE [ModuleId]=@moduleId
-END
-GO
+BEGIN
+	DECLARE @Message NVARCHAR(200) = 'Something went wrong, please try again!'
+	BEGIN TRY
+		
+		IF(NOT EXISTS(SELECT [ModuleId] FROM [dbo].[Module] WHERE [ModuleId]=@moduleId))
+		BEGIN
+			SET @Message = 'Module is not found!'		
+		END
+		ELSE --module exist
+		BEGIN
+			IF(@status IN(1,2,3))
+				BEGIN
+				IF(@modifiedBy>0 AND @modifiedBy<=10)
+					BEGIN
+						UPDATE [dbo].[Module] 
+						SET [Status] = @status,
+							[ModifiedBy]=@modifiedBy,
+							[ModifiedDate]=GETDATE()
+						WHERE [ModuleId] = @moduleId
+						IF(@status=2)
+							BEGIN 
+								SET @Message = 'Changed module status to completed!'
+							END
+						ELSE IF(@status=3)
+							BEGIN 
+								SET @Message = 'Changed status module to cancel!'
+							END
+							ELSE BEGIN 
+								SET @Message = 'Changed status module to active!'
+							END
+					END
+					ELSE
+				BEGIN 
+					SET @Message = 'ModifiedBy is not found!'
+				END		
+				END
+			ELSE
+				BEGIN 
+					SET @Message = 'Status invalid!'
+				END			
+		END
+		SELECT @moduleId AS ModuleId, @Message AS [Message]
 
-USE [CodeGymDb]
-GO
-/****** Object:  StoredProcedure [dbo].[sp_GetModuleByModuleId]    Script Date: 10/23/2020 11:19:41 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-ALTER PROC [dbo].[sp_GetModuleByModuleId]( 
- @moduleId int
- ) 
-AS 
- BEGIN 
- SELECT TOP(1) [ModuleId],[Status]
- FROM [dbo].[Module]
- WHERE [ModuleId]=@moduleId
- END
+	END TRY
+	BEGIN CATCH
+		SET @moduleId = 0
+		SELECT @moduleId AS ModuleId, @Message AS [Message]
+	END CATCH
+END
+
+
+
+
+
+
+
 
 

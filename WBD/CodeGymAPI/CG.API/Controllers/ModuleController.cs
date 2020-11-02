@@ -27,10 +27,16 @@ namespace CG.API.Controllers
             var module = await moduleService.GetModuleByModuleId(moduleId);
             return Ok(module);
         }
-        [HttpGet("api/module/changestatus")]
-        public async Task<OkObjectResult> ChangeStatus(int moduleId, int status)
+        [HttpPut("api/module/change")]
+        public async Task<OkObjectResult> ChangeStatus(ModuleChangeStatusRequest request)
         {
-            var module = await moduleService.ChangeStatusModuleByModuleId(moduleId,status);
+            var module = await moduleService.ChangeStatusModuleByModuleId(request);
+            return Ok(module);
+        }
+        [HttpPost("api/module/save")]
+        public async Task<OkObjectResult> Save(ModuleSaveRequest request)
+        {
+            var module = await moduleService.SaveModule(request);
             return Ok(module);
         }
     }

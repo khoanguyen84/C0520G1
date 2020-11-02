@@ -12,13 +12,14 @@ namespace CG.DAL.Implement
 {
     public class ModuleRepository : BaseRepository, IModuleRepository
     {
-        public async Task<ModuleChangeStatusRespone> ChangeStatusModuleByModuleId(int moduleId, int status)
+        public async Task<ModuleChangeStatusRespone> ChangeStatusModuleByModuleId(ModuleChangeStatusRequest request)
         {
             try
             {
                 DynamicParameters parameters = new DynamicParameters();
-                parameters.Add("@moduleId", moduleId);
-                parameters.Add("@status", status);
+                parameters.Add("@moduleId", request.ModuleId);
+                parameters.Add("@status", request.Status);
+                parameters.Add("@modifiedBy", request.ModifiedBy);
                 return (await SqlMapper.QueryFirstOrDefaultAsync<ModuleChangeStatusRespone>(cnn: connection,
                                  param: parameters,
                                 sql: "sp_ChangeStatusModuleByModuleId",
@@ -28,7 +29,8 @@ namespace CG.DAL.Implement
             {
                 return new ModuleChangeStatusRespone()
                 {
-                    ModuleId = 0
+                    ModuleId = 0,
+                    Message = "Something went wrong, please try again"
                 };
             }
             
@@ -44,6 +46,34 @@ namespace CG.DAL.Implement
                              param: parameters,
                             sql: "sp_GetModuleByModuleId",
                             commandType: CommandType.StoredProcedure));
+        }
+
+        public async Task<ModuleChangeStatusRespone> SaveModule(ModuleSaveRequest request)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@moduleId", request.ModuleId);
+                parameters.Add("@moduleName", request.ModuleName);
+                parameters.Add("@duration", request.Duration);
+                parameters.Add("@status", request.Status);
+                
+                parameters.Add("@createBy", request.CreateBy);
+                parameters.Add("@modidiedBy", request.ModifiedBy);
+                return (await SqlMapper.QueryFirstOrDefaultAsync<ModuleChangeStatusRespone>(cnn: connection,
+                                 param: parameters,
+                                sql: "sp_SaveModule",
+                                commandType: CommandType.StoredProcedure));
+            }
+            catch (Exception)
+            {
+
+                return new ModuleChangeStatusRespone()
+                {
+                    ModuleId = 0,
+                    Message = "Something went wrong, please try again"
+                };
+            }
         }
     }
 }

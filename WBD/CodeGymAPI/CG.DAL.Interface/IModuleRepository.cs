@@ -11,6 +11,7 @@ namespace CG.DAL.Interface
     {
         Task<ModuleChangeStatusRespone> GetModuleByModuleId(int moduleId);
 
-        Task<ModuleChangeStatusRespone> ChangeStatusModuleByModuleId(int moduleId, int status);
+        Task<ModuleChangeStatusRespone> ChangeStatusModuleByModuleId(ModuleChangeStatusRequest request);
+        Task<ModuleChangeStatusRespone> SaveModule(ModuleSaveRequest request);
     }
 }
