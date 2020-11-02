@@ -18,18 +18,40 @@
             </tr>
         </thead>
         <tbody>
-            @foreach(var item in Model)
+            @foreach (var item in Model)
             {
-            <tr>
-                <td>@item.CourseId</td>
-                <td>@item.CourseName</td>
-                <td>@item.StartDateStr</td>
-                <td>@item.EndDateStr</td>
-                <td><span class="@(item.Status == 1? "btn btn-primary": "btn btn-success")">@item.StatusName</span></td>
-                <td>
+                var actions = "";
+                switch (item.Status)
+                {
+                    case 1:
+                        {
+                            actions = $"<a href='{Url.Action("Edit","Course", new { id = item.CourseId})}'><i class='fas fa-edit'></i></a>";
+                            actions += $" <a href='#'><i class='fas fa-check-circle'></i></a>";
+                            break;
+                        }
+                    case 3:
+                        {
+                            actions = $"<a href='#'><i class='fas fa-trash'></i></a>";
+                            actions += $" <a href='#'><i class='fas fa-edit'></i></a>";
+                            actions += $" <a href='#'><i class='far fa-play-circle'></i></a>";
+                            break;
+                        }
+                }
 
-                </td>
-            </tr>
+
+                <tr>
+                    <td>@item.CourseId</td>
+                    <td>@item.CourseName</td>
+                    <td>@item.StartDateStr</td>
+                    <td>@item.EndDateStr</td>
+                    <td>
+                        <span class="@(item.Status == 1 ? "btn btn-primary" : (item.Status == 2 ? "btn btn-success" : "btn btn-warning"))">@item.StatusName</span>
+                    </td>
+                    <td>
+                        <a href="#"><i class="fas fa-eye"></i></a>
+                        @Html.Raw(actions)
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
