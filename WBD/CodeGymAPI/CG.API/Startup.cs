@@ -1,12 +1,19 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using CG.BAL.Implement;
 using CG.BAL.Interface;
 using CG.DAL.Implement;
 using CG.DAL.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace CG.API
 {
@@ -28,13 +35,8 @@ namespace CG.API
             services.AddScoped<ICourseRepository, CourseRepository>();
             services.AddScoped<IWikiService, WikiService>();
             services.AddScoped<IWikiRepository, WikiRepository>();
-
             services.AddScoped<IModuleService, ModuleService>();
             services.AddScoped<IModuleRepository, ModuleRepository>();
-            //add scoped for status
-            services.AddScoped<IStatusService, StatusService>();
-            services.AddScoped<IStatusRepository, StatusRepository>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

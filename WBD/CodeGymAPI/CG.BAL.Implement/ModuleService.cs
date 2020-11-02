@@ -1,10 +1,10 @@
 ﻿using CG.BAL.Interface;
 using CG.DAL.Interface;
-using CG.Domain;
+using CG.Domain.Request.Course;
+using CG.Domain.Response.Course;
 using CG.Domain.Response.Module;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CG.BAL.Implement
@@ -17,14 +17,10 @@ namespace CG.BAL.Implement
         {
             this.moduleRepository = moduleRepository;
         }
-
-        public int CreateModule(InputCreateModuleView inputCreateModule)
+        public async Task<IEnumerable<ModuleView>> Gets()
         {
-            return moduleRepository.CreateModule(inputCreateModule);
+            return await moduleRepository.Gets();
         }
 
-        public Task<ModuleViewModel> GetModuleById(int id) => moduleRepository.GetModuleViewModelById(id);
-
-        public Task<IEnumerable<ModuleViewModel>> Gets() => moduleRepository.Gets();
     }
 }

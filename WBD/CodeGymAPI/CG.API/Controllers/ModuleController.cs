@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CG.BAL.Interface;
-using CG.Domain.Response.Module;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CG.API.Controllers
 {
-    //[Route("api/[controller]")]
     [ApiController]
     public class ModuleController : ControllerBase
     {
@@ -21,31 +19,9 @@ namespace CG.API.Controllers
         }
 
         [HttpGet("api/module/gets")]
-        public async Task<OkObjectResult> GetCourses()
+        public async Task<OkObjectResult> GetModules()
         {
             var modules = await moduleService.Gets();
-            return Ok(modules);
-        }
-
-        [HttpGet("api/module/get/{id}")]
-        public async Task<OkObjectResult> GetModuleById(int id)
-        {
-            var modules = await moduleService.GetModuleById(id);
-
-            if (modules == null)
-                return Ok(new NotFoundModuleView()
-                {
-                    ModuleId = id,
-                    Message = "Not Found"
-                });
-
-            return Ok(modules);
-        }
-
-        [HttpPost("api/module/create")]
-        public OkObjectResult CreateModule(InputCreateModuleView inputCreateModule)
-        {
-            var modules = moduleService.CreateModule(inputCreateModule);
             return Ok(modules);
         }
     }
