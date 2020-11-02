@@ -1,29 +1,23 @@
 ﻿@model SaveCourseReq
 @{
     ViewData["Title"] = "Edit";
+    var status = ViewBag.Status != null ? ViewBag.Status as List<Status> : new List<Status>();
 }
 
 <h1>Edit</h1>
 <form asp-controller="Course" asp-action="Edit" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
-    <input hidden asp-for="CourseId" value="@Model.CourseId" />
-    <div class="row">
-        <div class="col-2 col-form-label">
-            <label asp-for="CourseName"></label>
-        </div>
-        <div class="col-10">
-            <input asp-for="CourseName" class="form-control" />
-            <span asp-validation-for="CourseName" class="text-danger"></span>
-        </div>
-    </div>
+    <input hidden asp-for="CourseId" value="@Model.CourseId" />    
     <div class="row">
         <div class="col-2 col-form-label">
             <label asp-for="Status"></label>
         </div>
         <div class="col-10">
             <select asp-for="Status" class="form-control">
-                <option value="1">Inprocess</option>
-                <option value="2">Completed</option>
+                @foreach (var item in status)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
             </select>
         </div>
     </div>

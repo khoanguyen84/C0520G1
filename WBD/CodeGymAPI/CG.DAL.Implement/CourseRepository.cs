@@ -11,6 +11,17 @@ namespace CG.DAL.Implement
 {
     public class CourseRepository : BaseRepository, ICourseRepository
     {
+        public async Task<SaveCourseRes> ChangeStatus(int id, int status)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@CourseId", id);
+            parameters.Add("@Status", status);
+            return await SqlMapper.QueryFirstOrDefaultAsync<SaveCourseRes>(cnn: connection,
+                                                        sql: "sp_ChangeStatus",
+                                                        param: parameters,
+                                                        commandType: CommandType.StoredProcedure);
+        }
+
         public async Task<CourseView> Get(int id)
         {
             DynamicParameters parameters = new DynamicParameters();

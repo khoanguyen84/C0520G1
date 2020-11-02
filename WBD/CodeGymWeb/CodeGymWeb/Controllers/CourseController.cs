@@ -14,6 +14,12 @@ namespace CodeGymWeb.Controllers
             return View(data);
         }
 
+        public IActionResult Detail(int id)
+        {
+            var data = ApiHelper<CourseView>.HttpGetAsync($"course/get/{id}");
+            return View(data);
+        }
+
         [HttpGet]
         public IActionResult Create()
         {
@@ -35,6 +41,48 @@ namespace CodeGymWeb.Controllers
                 ModelState.AddModelError("", result.Message);
             }
             return View(req);
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
+            SaveCourseReq saveCourseReq= ApiHelper<SaveCourseReq>.HttpGetAsync($"course/get/{id}");
+            return View(saveCourseReq);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(SaveCourseReq req)
+        {
+            var result = new SaveCourseRes();
+            if (ModelState.IsValid)
+            {
+                result = ApiHelper<SaveCourseRes>.HttpPostAsync("course/save", "POST", req);
+                if (result.CourseId != 0)
+                {
+                    return RedirectToAction("index");
+                }
+                ModelState.AddModelError("", result.Message);
+            }
+            return View(req);
+        }
+
+        public IActionResult ToInProcess(int id, SaveCourseReq req)
+        {
+            var result = ApiHelper<SaveCourseRes>.HttpPostAsync($"course/changeStatus/{id}/1", "Patch", req);
+            return RedirectToAction("index");
+        }
+
+        public IActionResult Delete(int id, SaveCourseReq req)
+        {
+            var result = ApiHelper<SaveCourseRes>.HttpPostAsync($"course/changeStatus/{id}/4", "Patch", req);
+            return RedirectToAction("index");
+        }
+
+        public IActionResult ToCompleted(int id, SaveCourseReq req)
+        {
+            var result = ApiHelper<SaveCourseRes>.HttpPostAsync($"course/changeStatus/{id}/2", "Patch", req);
+            return RedirectToAction("index");
         }
     }
 }
