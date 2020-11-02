@@ -3,6 +3,7 @@ using CodeGymWeb.Models.Wiki;
 using CodeGymWeb.Ultilities;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CodeGymWeb.Controllers
 {
@@ -67,6 +68,46 @@ namespace CodeGymWeb.Controllers
             }
             return View(req);
 
+        }
+
+        //[HttpPost]
+        public  IActionResult ChangeSTT(int Id)
+        {
+            var result = ApiHelper<SaveCourseRes>.HttpPatchAsync($@"course/ChangeStatus/{Id}");
+
+            if (result != null)
+            {
+                TempData["Message"] = result.Message;
+                return Ok(true);
+            }
+            TempData["Message"] = result.Message;
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult IsCompleted(int Id)
+        {
+            var result = ApiHelper<SaveCourseRes>.HttpPatchAsync($@"course/IsComplete/{Id}");
+
+            if (result != null)
+            {
+                TempData["Message"] = result.Message;
+                return Ok(true);
+            }
+            TempData["Message"] = result.Message;
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult DeleteCourse(int Id)
+        {
+            var result = ApiHelper<SaveCourseRes>.HttpPatchAsync($@"course/Delete/{Id}");
+
+            if (result != null)
+            {
+                TempData["Message"] = result.Message;
+                return Ok(true);
+            }
+            TempData["Message"] = result.Message;
+            return RedirectToAction("Index");
         }
 
     }

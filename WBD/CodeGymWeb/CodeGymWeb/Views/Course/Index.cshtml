@@ -3,10 +3,14 @@
     ViewData["Title"] = "Course page";
 }
 
-<div class=" row">
-    <a asp-controller="Course" asp-action="Create" class="btn btn-info">Create</a>
+@if (TempData["Message"] != null)
+{
+    <p class="alert alert-success">@TempData["Message"]</p>
+}
 
-    <table class="table table-bordered mt-2">
+    <a asp-controller="Course" asp-action="Create" class="btn btn-info" style="margin-bottom:10px">Create</a>
+
+    <table class="table table-bordered mt-2" id="tbTables">
         <thead class="thead-dark">
             <tr>
                 <th>Course Id</th>
@@ -25,15 +29,15 @@
                 {
                     case 1:
                         {
-                            actions = $"<a href='{Url.Action("Edit","Course", new { id = item.CourseId})}'><i class='fas fa-edit'></i></a>";
-                            actions += $" <a href='#'><i class='fas fa-check-circle'></i></a>";
+                            actions = $"<a <a class='text-warning' href='{Url.Action("Edit", "Course", new { id = item.CourseId })}'><i class='fas fa-edit'></i></a>";
+                            actions += $"<a href='javascript: void(0)' class='text-success' onclick='courses.IsCompleted({@item.CourseId},`{item.CourseName}`)'><i class='fas fa-check-circle'></i></a>";
                             break;
                         }
                     case 3:
                         {
-                            actions = $"<a href='#'><i class='fas fa-trash'></i></a>";
-                            actions += $" <a href='#'><i class='fas fa-edit'></i></a>";
-                            actions += $" <a href='#'><i class='far fa-play-circle'></i></a>";
+                            actions = $"<a href='javascript: void(0)' class='text-danger' onclick='courses.DeleteCourse({@item.CourseId},`{item.CourseName}`)'><i class='fas fa-trash'></i></a>";
+                           actions += $"<a class='text-warning' href='{Url.Action("Edit", "Course", new { id = item.CourseId })}'><i class='fas fa-edit'></i></a>";
+                            actions += $"<a href='javascript: void(0)' class='text-danger' onclick='courses.ChangeSTT({@item.CourseId},`{item.CourseName}`)'><i class='fas fa-play-circle'></i></a>";
                             break;
                         }
                 }
@@ -48,12 +52,19 @@
                         <span class="@(item.Status == 1 ? "btn btn-primary" : (item.Status == 2 ? "btn btn-success" : "btn btn-warning"))">@item.StatusName</span>
                     </td>
                     <td>
-                        <a href="#"><i class="fas fa-eye"></i></a>
+                        <a asp-controller="Course" asp-action="Details" asp-route-id="@item.CourseId"><i class="fas fa-eye"></i></a>
+                        
+
                         @Html.Raw(actions)
                     </td>
                 </tr>
             }
         </tbody>
     </table>
-</div>
+
+
+@section Scripts{
+    <script src="~/lib/bootbox.js/bootbox.min.js"></script>
+    <script src="~/js/Course.js"></script>
+}
 

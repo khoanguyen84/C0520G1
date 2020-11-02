@@ -10,9 +10,11 @@ namespace CG.DAL.Interface
     public interface ICourseRepository
     {
         Task<IEnumerable<CourseView>> Gets();
-        Task<CourseView> ChangeStatus(UpdateCourse request);
+        Task<SaveCourseRes> ChangeStatus(int id);
         Task<CourseView> Get(int request);
         Task<SaveCourseRes> Save(SaveCourseReq request);
+        Task<SaveCourseRes> DeleteCourse(int id);
+        Task<SaveCourseRes> IsCompleted(int id);
     }
    
 }

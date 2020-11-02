@@ -18,9 +18,14 @@ namespace CG.BAL.Implement
             this.courseRepository = courseRepository;
         }
 
-        public  async Task<CourseView> ChangeStatus(UpdateCourse request)
+        public  async Task<SaveCourseRes> ChangeStatus(int id)
         {
-            return await courseRepository.ChangeStatus(request);
+            return await courseRepository.ChangeStatus(id);
+        }
+
+        public async Task<SaveCourseRes> DeleteCourse(int id)
+        {
+            return await courseRepository.DeleteCourse(id);
         }
 
         public async Task<CourseView> Get(int id)
@@ -31,6 +36,11 @@ namespace CG.BAL.Implement
         public async Task<IEnumerable<CourseView>> Gets()
         {
             return await courseRepository.Gets();
+        }
+
+        public async Task<SaveCourseRes> IsCompleted(int id)
+        {
+            return await courseRepository.IsCompleted(id);
         }
 
         public async Task<SaveCourseRes> Save(SaveCourseReq request)

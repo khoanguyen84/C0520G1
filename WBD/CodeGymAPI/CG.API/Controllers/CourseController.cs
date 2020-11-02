@@ -35,10 +35,10 @@ namespace CG.API.Controllers
             var courses = await courseService.Gets();
             return Ok(courses);
         }
-        [HttpPut("api/course/ChangeStatus")]
-        public async  Task<CourseView> ChangeSTT([FromBody] UpdateCourse updateCourse)
+        [HttpPatch("api/course/ChangeStatus/{id}")]
+        public async  Task<SaveCourseRes> ChangeSTT( int id)
         {
-            return await courseService.ChangeStatus(updateCourse);
+            return await courseService.ChangeStatus(id);
         }
 
         [HttpGet("api/course/get/{id}")]
@@ -59,6 +59,17 @@ namespace CG.API.Controllers
         {
             var result = await courseService.Save(request);
             return Ok(result);
+        }
+        [HttpPatch("api/course/IsComplete/{id}")]
+        public async Task<SaveCourseRes> Complete(int id)
+        {
+            return await courseService.IsCompleted(id);
+        }
+
+        [HttpPatch("api/course/Delete/{id}")]
+        public async Task<SaveCourseRes> IsDelete(int id)
+        {
+            return await courseService.DeleteCourse(id);
         }
     }
 }
