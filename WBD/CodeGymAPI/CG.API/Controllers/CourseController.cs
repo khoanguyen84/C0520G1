@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using CG.BAL.Interface;
+using CG.Domain.Request.Course;
 using CG.Domain.Response.Course;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -34,11 +35,17 @@ namespace CG.API.Controllers
             return Ok(courses);
         }
 
-        [HttpGet("api/course/get/{id}")]
-        public async Task<OkObjectResult> GetCoursesById(int id)
+        /// <summary>
+        /// Save or update course
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost, HttpPatch]
+        [Route("api/course/save")]
+        public async Task<OkObjectResult> SaveCourse(SaveCourseReq request)
         {
-            var course = await courseService.Get(id);
-            return Ok(course);
+            var result = await courseService.Save(request);
+            return Ok(result);
         }
     }
 }
