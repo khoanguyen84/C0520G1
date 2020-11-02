@@ -8,8 +8,8 @@
 
     <table class="table table-bordered mt-2">
         <thead class="thead-dark">
-            <tr>
-                <th>Course Id</th>
+            <tr class="text-center">
+                <th>ID</th>
                 <th>Course Name</th>
                 <th>Start date</th>
                 <th>End date</th>
@@ -19,12 +19,12 @@
         <tbody>
             @foreach(var item in Model)
             {
-                <tr>
+                <tr class="text-center">
                     <td>@item.CourseId</td>
                     <td>@item.CourseName</td>
                     <td>@item.StartDateStr</td>
                     <td>@item.EndDateStr</td>
-                    <td><a class="text-center text-info" asp-controller="Course" asp-action="Details" asp-route-id="@item.CourseId">Info</a></td>
+                    <td><a class="text-info" asp-controller="Course" asp-action="Details" asp-route-id="@item.CourseId">View</a></td>
                 </tr>
             }
         </tbody>

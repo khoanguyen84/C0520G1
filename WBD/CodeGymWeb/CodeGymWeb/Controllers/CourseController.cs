@@ -23,5 +23,9 @@ namespace CodeGymWeb.Controllers
             var data = ApiHelper<CourseView>.HttpGetAsync($"course/get/{id}");
             return View(data);
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }
