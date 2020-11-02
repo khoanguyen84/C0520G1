@@ -1,0 +1,25 @@
+﻿@model CourseView
+@{
+    ViewData["Title"] = "Detail";
+}
+<div class=" row">
+    <table class="table table-bordered mt-2">
+        <thead class="thead-dark" style="text-align:center">
+            <tr>
+                <th>Course Id</th>
+                <th>Course Name</th>
+                <th>Start date</th>
+                <th>End date</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            <tr>
+                <td>@Model.CourseId</td>
+                <td>@Model.CourseName</td>
+                <td>@Model.StartDateStr</td>
+                <td>@Model.EndDateStr</td>
+            </tr>
+        </tbody>
+    </table>
+    <a asp-controller="Course" asp-action="Index" class="btn btn-danger">Back</a>
+</div>

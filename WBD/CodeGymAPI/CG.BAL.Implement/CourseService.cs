@@ -1,5 +1,6 @@
 ﻿using CG.BAL.Interface;
 using CG.DAL.Interface;
+using CG.Domain.Request.Course;
 using CG.Domain.Response.Course;
 using System;
 using System.Collections.Generic;
@@ -15,9 +16,20 @@ namespace CG.BAL.Implement
         {
             this.courseRepository = courseRepository;
         }
+
+        public async Task<CourseView> Get(int id)
+        {
+            return await courseRepository.Get(id);
+        }
+
         public async Task<IEnumerable<CourseView>> Gets()
         {
             return await courseRepository.Gets();
+        }
+
+        public async Task<SaveCourseRes> Save(SaveCourseReq request)
+        {
+            return await courseRepository.Save(request);
         }
     }
 }

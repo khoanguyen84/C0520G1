@@ -50,7 +50,7 @@ namespace CodeGymWeb
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Module}/{action=Index}");
+                    pattern: "{controller=Course}/{action=Index}");
             });
         }
     }

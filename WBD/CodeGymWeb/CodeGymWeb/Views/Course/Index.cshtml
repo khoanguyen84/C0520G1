@@ -4,29 +4,38 @@
 }
 
 <div class=" row">
-    <a asp-controller="Course" asp-action="Create" class="btn btn-info">Create</a>
+    <div style="left:100px">
+        <a asp-controller="Course" asp-action="Create" class="btn btn-info">Create</a>
+    </div>
 
-    <table class="table table-bordered mt-2">
+    <table class="table table-bordered mt-2 text-center">
         <thead class="thead-dark">
             <tr>
                 <th>Course Id</th>
                 <th>Course Name</th>
                 <th>Start date</th>
                 <th>End date</th>
+                <th>Status</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             @foreach(var item in Model)
             {
-                <tr>
-                    <td>@item.CourseId</td>
-                    <td>@item.CourseName</td>
-                    <td>@item.StartDateStr</td>
-                    <td>@item.EndDateStr</td>
-                    <td></td>
-                </tr>
+            <tr>
+                <td>@item.CourseId</td>
+                <td>@item.CourseName</td>
+                <td>@item.StartDateStr</td>
+                <td>@item.EndDateStr</td>
+                <td><span class="@(item.Status == 1? "btn btn-primary": "btn btn-success")">@item.StatusName</span></td>
+                <td>
+                    <a asp-controller="Course" asp-action="Edit" asp-route-id="@item.CourseId">Edit</a>||
+                    <a asp-controller="Course" asp-action="Detail" asp-route-id="@item.CourseId">Detail</a>||
+                    <a asp-controller="Course" asp-action="Delete" asp-route-id="@item.CourseId">delete</a>
+                </td>
+            </tr>
             }
         </tbody>
     </table>
 </div>
+
