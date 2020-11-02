@@ -11,5 +11,8 @@ namespace CG.BAL.Interface
         Task<IEnumerable<CourseView>> Gets();
         Task<CourseView> GetCourseById(int Id);
         Task<SaveCourseRes> Save(SaveCourseReq request);
+        Task<NotFound> ChangeInprocess(int Id);
+        Task<NotFound> ChangeCompleted(int Id);
+        Task<NotFound> ChangeDeleted(int Id);
     }
 }

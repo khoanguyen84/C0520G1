@@ -32,7 +32,6 @@ namespace CodeGymWeb.Controllers
                 {
                     return RedirectToAction("index");
                 }
-                ModelState.AddModelError("", result.Message);
             }
             return View(req);
         }
@@ -61,6 +60,24 @@ namespace CodeGymWeb.Controllers
         {
             var data = ApiHelper<CourseView>.HttpGetAsync($"course/GetCourseById/{id}");
             return View(data);
+        }
+        [Route("course/completed/{id}")]
+        public IActionResult Completed(int id, CourseView model)
+        {
+            var data = ApiHelper<CourseView>.HttpPutAsync($"course/completed/{id}", model);
+            return RedirectToAction("Index");
+        }
+        [Route("course/inprocess/{id}")]
+        public IActionResult Inprocess(int id, CourseView model)
+        {
+            var data = ApiHelper<CourseView>.HttpPutAsync($"course/inprocess/{id}", model);
+            return RedirectToAction("Index");
+        }
+        [Route("course/deleted/{id}")]
+        public IActionResult Deleted(int id, CourseView model)
+        {
+            var data = ApiHelper<CourseView>.HttpPutAsync($"course/deleted/{id}", model);
+            return RedirectToAction("Index");
         }
     }
 }

@@ -3,7 +3,6 @@
     ViewData["Title"] = "Create course";
     var status = ViewBag.Status != null ? ViewBag.Status as List<Status> : new List<Status>();
 }
-
 <form asp-controller="Course" asp-action="Create" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="row">

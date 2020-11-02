@@ -11,6 +11,39 @@ namespace CG.DAL.Implement
 {
     public class CourseRepository : BaseRepository, ICourseRepository
     {
+        public async Task<NotFound> ChangeCompleted(int Id)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@CourseId", Id);
+            var result = await SqlMapper.QueryFirstOrDefaultAsync<NotFound>(cnn: connection,
+                                                                            sql: "sp_CompleteCourse",
+                                                                            parameters,
+                                                                            commandType: CommandType.StoredProcedure);
+            return result;
+        }
+
+        public async Task<NotFound> ChangeDeleted(int Id)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@CourseId", Id);
+            var result = await SqlMapper.QueryFirstOrDefaultAsync<NotFound>(cnn: connection,
+                                                                            sql: "sp_CourseDelete",
+                                                                            parameters,
+                                                                            commandType: CommandType.StoredProcedure);
+            return result;
+        }
+
+        public async Task<NotFound> ChangeInprocess(int Id)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@CourseId", Id);
+            var result = await SqlMapper.QueryFirstOrDefaultAsync<NotFound>(cnn: connection,
+                                                                            sql: "sp_InprocessCourse",
+                                                                            parameters,
+                                                                            commandType: CommandType.StoredProcedure);
+            return result;
+        }
+
         public async Task<CourseView> GetCourseById(int Id)
         {
             DynamicParameters parameters = new DynamicParameters();

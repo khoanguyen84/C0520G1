@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace CG.Domain.Response.Course
+namespace CodeGymWeb.Models.Course
 {
     public class NotFound
     {
         public int CourseId { get; set; }
-        public string Message { get; set; }
+        public int Message { get; set; }
     }
 }

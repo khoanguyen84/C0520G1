@@ -44,8 +44,8 @@ namespace CG.API.Controllers
 
             return Ok(new NotFound()
             {
-                Id = id,
-                ErrorMessage = "Not Found !"
+                CourseId = id,
+                Message = "Not Found !"
             });
         }
 
@@ -60,6 +60,21 @@ namespace CG.API.Controllers
         {
             var result = await courseService.Save(request);
             return Ok(result);
+        }
+        [HttpPut("api/course/inprocess/{Id}")]
+        public async Task<NotFound> ChangeInprocess(int Id)
+        {
+            return await courseService.ChangeInprocess(Id);
+        }
+        [HttpPut("api/course/completed/{Id}")]
+        public async Task<NotFound> ChangeCompleted(int Id)
+        {
+            return await courseService.ChangeCompleted(Id);
+        }
+        [HttpPut("api/course/deleted/{Id}")]
+        public async Task<NotFound> ChangeDeleted(int Id)
+        {
+            return await courseService.ChangeDeleted(Id);
         }
     }
 }

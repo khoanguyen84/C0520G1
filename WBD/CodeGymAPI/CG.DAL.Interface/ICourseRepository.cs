@@ -10,6 +10,9 @@ namespace CG.DAL.Interface
     {
         Task<IEnumerable<CourseView>> Gets();
         Task<SaveCourseRes> Save(SaveCourseReq request);
-        Task<CourseView> GetCourseById(int id);
+        Task<CourseView> GetCourseById(int Id);
+        Task<NotFound> ChangeInprocess(int Id);
+        Task<NotFound> ChangeCompleted(int Id);
+        Task<NotFound> ChangeDeleted(int Id);
     }
 }
