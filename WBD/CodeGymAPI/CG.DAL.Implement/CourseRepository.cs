@@ -24,6 +24,16 @@ namespace CG.DAL.Implement
             //return result;
         }
 
+        public async Task<CourseView> Get(int courseId)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@CourseId", courseId);
+            return (await SqlMapper.QueryFirstOrDefaultAsync<CourseView>(cnn: connection,
+                             param: parameters,
+                            sql: "sp_GetCourseById",
+                            commandType: CommandType.StoredProcedure));
+        }
+
         public async Task<SaveCourseRes> Save(SaveCourseReq request)
         {
             var result = new SaveCourseRes()

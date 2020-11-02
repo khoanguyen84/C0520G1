@@ -32,7 +32,7 @@
                     case 3:
                         {
                             actions = $"<a href='#'><i class='fas fa-trash'></i></a>";
-                            actions += $" <a href='#'><i class='fas fa-edit'></i></a>";
+                            actions += $"<a href='{Url.Action("Edit", "Course", new { id = item.CourseId })}'><i class='fas fa-edit'></i></a>";
                             actions += $" <a href='#'><i class='far fa-play-circle'></i></a>";
                             break;
                         }

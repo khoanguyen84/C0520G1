@@ -20,6 +20,10 @@ namespace CG.BAL.Implement
         {
             return await courseRepository.Gets();
         }
+        public async Task<CourseView> Get(int courseId)
+        {
+            return await courseRepository.Get(courseId);
+        }
 
         public async Task<SaveCourseRes> Save(SaveCourseReq request)
         {
