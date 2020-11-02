@@ -2,83 +2,83 @@
 @{
     ViewData["Title"] = "Course page";
 }
+<link href="~/datatables/css/jquery.dataTables.min.css" rel="stylesheet" />
+<a asp-controller="Course" asp-action="Create" class="btn btn-info">Create</a>
 
-    <a asp-controller="Course" asp-action="Create" class="btn btn-info">Create</a>
-
-    <table id="table_id" class="table table-bordered mt-2">
-        <thead class="thead-dark">
-            <tr>
-                <th>Course Id</th>
-                <th>Course Name</th>
-                <th>Start date</th>
-                <th>End date</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
+<table id="table_id" class="table table-bordered mt-2">
+    <thead class="thead-dark">
+        <tr>
+            <th>Course Id</th>
+            <th>Course Name</th>
+            <th>Start date</th>
+            <th>End date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            var actions = "";
+            switch (item.Status)
             {
-                var actions = "";
-                switch (item.Status)
-                {
-                    case 1:
-                        {
-                            actions = $"<a href='{Url.Action("Edit", "Course", new { id = item.CourseId })}'><i class='fas fa-edit'></i></a>";
-                            actions += $" <a href='course/completed/{item.CourseId}' onclick='Complete({item.CourseId},\"" + item.CourseName + "\")'><i class='fas fa-check-circle'></i></a>";
-                            break;
-                        }
-                    case 3:
-                        {
-                            actions = $"<a href='course/deleted/{item.CourseId}' onclick='Delete({item.CourseId},\"" + item.CourseName + "\")'><i class='fas fa-trash'></i></a>";
-                            actions += $" <a href='{Url.Action("Edit", "Course", new { id = item.CourseId })}'><i class='fas fa-edit'></i></a>";
-                            actions += $" <a href='course/inprocess/{item.CourseId}' onclick='Active({item.CourseId},\"" + item.CourseName + "\")'><i class='far fa-play-circle'></i></a>";
-                            break;
-                        }
-                }
-
-
-                <tr>
-                    <td>@item.CourseId</td>
-                    <td>@item.CourseName</td>
-                    <td>@item.StartDateStr</td>
-                    <td>@item.EndDateStr</td>
-                    <td>
-                        <span class="@(item.Status == 1 ? "btn btn-primary" : (item.Status == 2 ? "btn btn-success" : "btn btn-warning"))">@item.StatusName</span>
-                    </td>
-                    <td>
-                        <a asp-controller="Course" asp-action="Detail" asp-route-id="@item.CourseId"><i class="fas fa-eye"></i></a>
-                        @Html.Raw(actions)
-                    </td>
-                </tr>
+                case 1:
+                    {
+                        actions = $"<a href='{Url.Action("Edit", "Course", new { id = item.CourseId })}'><i class='fas fa-edit'></i></a>";
+                        actions += $" <a href='course/completed/{item.CourseId}' onclick='Complete({item.CourseId},\"" + item.CourseName + "\")'><i class='fas fa-check-circle'></i></a>";
+                        break;
+                    }
+                case 3:
+                    {
+                        actions = $"<a href='course/deleted/{item.CourseId}' onclick='Delete({item.CourseId},\"" + item.CourseName + "\")'><i class='fas fa-trash'></i></a>";
+                        actions += $" <a href='{Url.Action("Edit", "Course", new { id = item.CourseId })}'><i class='fas fa-edit'></i></a>";
+                        actions += $" <a href='course/inprocess/{item.CourseId}' onclick='Active({item.CourseId},\"" + item.CourseName + "\")'><i class='far fa-play-circle'></i></a>";
+                        break;
+                    }
             }
-        </tbody>
-    </table>
+
+
+            <tr>
+                <td>@item.CourseId</td>
+                <td>@item.CourseName</td>
+                <td>@item.StartDateStr</td>
+                <td>@item.EndDateStr</td>
+                <td>
+                    <span class="@(item.Status == 1 ? "btn btn-primary" : (item.Status == 2 ? "btn btn-success" : "btn btn-warning"))">@item.StatusName</span>
+                </td>
+                <td>
+                    <a asp-controller="Course" asp-action="Detail" asp-route-id="@item.CourseId"><i class="fas fa-eye"></i></a>
+                    @Html.Raw(actions)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 @section Scripts{
     <script src="~/datatables/js/jquery.dataTables.min.js"></script>
     <script>
         function Delete(id, name) {
-            var r = confirm("Do you want to delete " + name);
+            var r = confirm("Do you want to change status to delete " + name);
             if (r == true) {
-                window.location.href = "course/deleted/{id}" + id;
-                alert(name + "changed status to deleted ");
+                window.location.href = "Course/Deleted?id=" + id;
+                toastr.success(name + 'changed status to deleted');
             }
         };
         function Active(id, name) {
-            var r = confirm("Do you want to active " + name);
+            var r = confirm("Do you want to change status to inprocess " + name);
             if (r == true) {
-                window.location.href = "course/inprocess/{id}" + id;
-                alert(name + "changed status to inprocess ");
+                window.location.href = "Course/Inprocess?id=" + id;
+                toastr.success(name + 'changed status to inprocess');
             }
         };
         function Complete(id, name) {
-            var r = confirm("Do you want to Complete " + name);
+            var r = confirm("Do you want to change status to completed " + name);
             if (r == true) {
-                window.location.href = "course/completed/{id}" + id;
-                alert(name + "changed status to completed ");
+                window.location.href = "Course/Completed?id=" + id;
+                toastr.success(name + 'changed status to completed');
             }
         };
-    </script>   
+    </script>
     <script>
         $(document).ready(function () {
             $('#table_id').DataTable();

@@ -17,6 +17,8 @@ namespace CodeGymWeb.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            TempData["success"] = null;
+            TempData["error"] = null;
             ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
             return View();
         }
@@ -24,20 +26,27 @@ namespace CodeGymWeb.Controllers
         [HttpPost]
         public IActionResult Create(SaveCourseReq req)
         {
+            ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
             var result = new SaveCourseRes();
             if (ModelState.IsValid)
             {
                 result = ApiHelper<SaveCourseRes>.HttpPostAsync("course/save", "POST", req);
-                if (result.CourseId != 0)
+                if(result.CourseId != 0)
                 {
-                    return RedirectToAction("index");
-                }
+                    TempData["success"] = result.Message;
+                }    
+                else
+                {
+                    TempData["error"] = result.Message;
+                }    
             }
             return View(req);
         }
         [HttpGet]
         public IActionResult Edit(int id)
         {
+            TempData["success"] = null;
+            TempData["error"] = null;
             var data = ApiHelper<SaveCourseReq>.HttpGetAsync($"course/GetCourseById/{id}");
             return View(data);
         }
@@ -47,11 +56,14 @@ namespace CodeGymWeb.Controllers
             if (ModelState.IsValid)
             {
                 var result = ApiHelper<SaveCourseRes>.HttpPostAsync("course/save", "PATCH", req);
-                if (result.CourseId != 0)
+                if(result.CourseId != 0)
                 {
-                    return RedirectToAction("index");
-                }
-                ModelState.AddModelError("", result.Message);
+                    TempData["success"] = result.Message;
+                }    
+                else
+                {
+                    TempData["error"] = result.Message;
+                }  
             }
             return View(req);
         }

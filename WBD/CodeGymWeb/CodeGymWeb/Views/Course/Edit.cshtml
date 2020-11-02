@@ -2,6 +2,18 @@
 @{
     ViewData["Title"] = "Edit course";
 }
+<div>
+    @if (TempData["success"] != null)
+    {
+        <p class="alert alert-success">
+            @TempData["success"]
+        </p>
+    }
+    else if (TempData["error"] != null)
+    { <p class="alert alert-danger">
+            @TempData["error"]
+        </p>
+    }
 </div>
 <form asp-controller="Course" asp-action="Edit" method="post">
     <input hidden asp-for="CourseId">
