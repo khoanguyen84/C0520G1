@@ -11,6 +11,22 @@ namespace CG.DAL.Implement
 {
     public class CourseRepository : BaseRepository, ICourseRepository
     {
+        public async Task<CourseNotFound> ActiveCourse(int id)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@CourseId", id);
+            var data = await SqlMapper.QueryFirstOrDefaultAsync<CourseNotFound>(connection, "Active_Course", parameters, commandType: CommandType.StoredProcedure);
+            return data;
+        }
+
+        public async Task<CourseNotFound> CompleteCourse(int id)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@CourseId", id);
+            var data = await SqlMapper.QueryFirstOrDefaultAsync<CourseNotFound>(connection, "Complete_Course", parameters, commandType: CommandType.StoredProcedure);
+            return data;
+        }
+
         public async Task<CourseNotFound> CreateCourse(CreateCourse request)
         {
             try

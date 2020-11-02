@@ -57,6 +57,16 @@ namespace CG.API.Controllers
         {
             return await courseService.DeleteCourse(id);
         }
+        [HttpPut("api/Course/Active/{id}")]
+        public async Task<CourseNotFound> Active(int id)
+        {
+            return await courseService.ActiveCourse(id);
+        }
+        [HttpPut("api/Course/Complete/{id}")]
+        public async Task<CourseNotFound> Complete(int id)
+        {
+            return await courseService.CompleteCourse(id);
+        }
 
         /// <summary>
         /// Save or update course

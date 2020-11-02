@@ -3,7 +3,15 @@
     ViewData["Title"] = "Create course";
     var status = ViewBag.Status != null ? ViewBag.Status as List<Status> : new List<Status>();
 }
-
+<div>
+    @if (@TempData["thanhcong"] != null)
+    {<p class="alert alert-success">@TempData["thanhcong"]</p>}
+    else if (@TempData["loi"] != null)
+    {
+        <p class="alert alert-danger">@TempData["loi"]</p>
+    }
+</div>
+<a asp-controller="Course" asp-action="index" class="btn btn-outline-secondary">Back</a>
 <form asp-controller="Course" asp-action="Create" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="row">

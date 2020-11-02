@@ -22,5 +22,6 @@ namespace CodeGymWeb.Models.Course
         [DataType(DataType.Date)]
         [Display(Name = "End date")]
         public DateTime EndDate { get; set; }
+        public string Message { get; set; }
     }
 }

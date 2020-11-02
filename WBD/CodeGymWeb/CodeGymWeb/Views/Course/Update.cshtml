@@ -1,6 +1,7 @@
 ﻿@model SaveCourseReq
 @{
-    ViewBag.Title = "Thay đổi thông tin thương hiệu";
+    ViewBag.Title = "Update Course";
+    var status = ViewBag.Status != null ? ViewBag.Status as List<Status> : new List<Status>();
 }
 <link href="~/js/toastr.js/toastr.css" rel="stylesheet" />
 <link href="~/css/toast-css/grid.css" rel="stylesheet" />
@@ -14,6 +15,18 @@
         <p class="alert alert-danger">@TempData["loi"]</p>
     }
     </div>
+    <h3>
+        @foreach (var item in status)
+        {
+            if (Model != null) {
+                if (item.Id == @Model.Status)
+                {
+                <span>@Model.CourseName is in status @item.Name</span>
+                }
+            }
+        }
+    </h3>
+    <a asp-controller="Course" asp-action="index" class="btn btn-outline-secondary">Back</a>
 <form asp-controller="Course" asp-action="Update" method="post" class=" bg-light rounded container">
     <div asp-validation-summary="All" class="text-danger"></div>
     @Html.HiddenFor(m => m.CourseId)
@@ -32,8 +45,10 @@
         </div>
         <div class="col-10">
             <select asp-for="Status" class="form-control">
-                <option value="1">Inprocess</option>
-                <option value="2">Completed</option>
+                @foreach (var item in status)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
             </select>
         </div>
     </div>
@@ -58,6 +73,7 @@
     <div class="row">
         <button id="btn-update" class="btn btn-success mr-3" type="submit">Update</button>
         <button class="btn btn-warning" type="reset">Cancel</button>
+
     </div>
 </form>
 </div>

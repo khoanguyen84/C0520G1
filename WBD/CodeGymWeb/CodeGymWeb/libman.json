@@ -9,16 +9,14 @@
     {
       "library": "toastr.js@2.1.4",
       "destination": "wwwroot/js/toastr.js/"
-    }
-  ]
-}
-{
-  "version": "1.0",
-  "defaultProvider": "cdnjs",
-  "libraries": [
+    },
     {
       "library": "font-awesome@5.15.1",
       "destination": "wwwroot/lib/font-awesome"
+    },
+    {
+      "library": "datatables@1.10.21",
+      "destination": "wwwroot/lib/datatables"
     }
   ]
 }

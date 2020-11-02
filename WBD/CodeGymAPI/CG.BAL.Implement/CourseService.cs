@@ -17,6 +17,16 @@ namespace CG.BAL.Implement
             this.courseRepository = courseRepository;
         }
 
+        public async Task<CourseNotFound> ActiveCourse(int id)
+        {
+            return await courseRepository.ActiveCourse(id);
+        }
+
+        public async Task<CourseNotFound> CompleteCourse(int id)
+        {
+            return await courseRepository.CompleteCourse(id);
+        }
+
         public async Task<CourseNotFound> CreateCourse(CreateCourse request)
         {
             return await courseRepository.CreateCourse(request);

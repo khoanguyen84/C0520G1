@@ -35,7 +35,7 @@ namespace CodeGymWeb.Ultilities
                 
             }
         }
-        public static T HttpPostAsync(string apiName, T model)
+        public static T HttpPostAsync(string apiName, object model)
         {
             string result;
             HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(@$"{Common.apiUrl}/{apiName}");
@@ -71,7 +71,7 @@ namespace CodeGymWeb.Ultilities
             }
             return result;
         }
-        public static T HttpPutAsync(string apiName, T model)
+        public static T HttpPutAsync(string apiName, object model)
         {
             string result;
             HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(@$"{Common.apiUrl}/{apiName}");

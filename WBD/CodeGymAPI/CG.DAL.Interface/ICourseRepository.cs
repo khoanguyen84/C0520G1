@@ -13,6 +13,8 @@ namespace CG.DAL.Interface
         Task<CourseNotFound> CreateCourse(CreateCourse request);
         //Task<CourseNotFound> EditTeacher(EditTeacher request);
         Task<CourseNotFound> DeleteCourse(int id);
+        Task<CourseNotFound> ActiveCourse(int id);
+        Task<CourseNotFound> CompleteCourse(int id);
         Task<SaveCourseRes> Save(SaveCourseReq request);
     }
 }

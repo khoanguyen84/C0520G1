@@ -13,5 +13,7 @@ namespace CG.BAL.Interface
         Task<CourseNotFound> CreateCourse(CreateCourse request);
         Task<CourseNotFound> DeleteCourse(int id);
         Task<SaveCourseRes> Save(SaveCourseReq request);
+        Task<CourseNotFound> ActiveCourse(int id);
+        Task<CourseNotFound> CompleteCourse(int id);
     }
 }

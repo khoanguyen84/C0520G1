@@ -3,10 +3,8 @@
     ViewData["Title"] = "Course page";
 }
 <h4>@TempData["thanhcong"]</h4>
-<div class=" row">
     <a asp-controller="Course" asp-action="Create" class="btn btn-info">Create</a>
-
-    <table class="table table-bordered mt-2">
+    <table id="table_id" class="table table-bordered mt-2">
         <thead class="thead-dark">
             <tr>
                 <th>Course Id</th>
@@ -25,15 +23,15 @@
                 {
                     case 1:
                         {
-                            actions = $"<a href='{Url.Action("Edit","Course", new { id = item.CourseId})}'><i class='fas fa-edit'></i></a>";
-                            actions += $" <a href='#'><i class='fas fa-check-circle'></i></a>";
+                            actions = $"<a href='{Url.Action("Update", "Course", new { id = item.CourseId })}'><i class='fas fa-edit'></i></a>";
+                            actions += $" <a href='#' onclick='Complete({item.CourseId},\"" + item.CourseName + "\")'><i class='fas fa-check-circle'></i></a>";
                             break;
                         }
                     case 3:
                         {
-                            actions = $"<a href='#'><i class='fas fa-trash'></i></a>";
-                            actions += $" <a href='#'><i class='fas fa-edit'></i></a>";
-                            actions += $" <a href='#'><i class='far fa-play-circle'></i></a>";
+                            actions = $"<a href='#' onclick='Delete({item.CourseId},\"" + item.CourseName + "\")'><i class='fas fa-trash'></i></a>";
+                            actions += $" <a href='{Url.Action("Update", "Course", new { id = item.CourseId })}'><i class='fas fa-edit'></i></a>";
+                            actions += $" <a href='#' onclick='Active({item.CourseId},\"" + item.CourseName + "\")'><i class='far fa-play-circle'></i></a>";
                             break;
                         }
                 }
@@ -48,12 +46,42 @@
                         <span class="@(item.Status == 1 ? "btn btn-primary" : (item.Status == 2 ? "btn btn-success" : "btn btn-warning"))">@item.StatusName</span>
                     </td>
                     <td>
-                        <a href="#"><i class="fas fa-eye"></i></a>
+                        <a asp-controller="Course" asp-action="Detail" asp-route-id="@item.CourseId"><i class="fas fa-eye"></i></a>
                         @Html.Raw(actions)
                     </td>
                 </tr>
             }
         </tbody>
     </table>
-</div>
-
+@section scripts{ 
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/datatables/js/jquery.dataTables.js"></script>
+<script>
+    function Delete(id, name) {
+        var r = confirm("Do you want to delete " + name);
+        if (r == true) {
+            window.location.href = "Course/Delete?id=" + id;
+            alert("Delete completed " + name);
+        }
+    };
+    function Active(id, name) {
+        var r = confirm("Do you want to active " + name);
+        if (r == true) {
+            window.location.href = "Course/Active?id=" + id;
+            alert("active completed " + name);
+        }
+    };
+    function Complete(id, name) {
+        var r = confirm("Do you want to Complete " + name);
+        if (r == true) {
+            window.location.href = "Course/Complete?id=" + id;
+            alert("completed " + name);
+        }
+    };
+</script>
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable();
+    });
+</script>
+}
