@@ -9,6 +9,6 @@ namespace CG.BAL.Interface
 {
     public interface IWikiService
     {
-        Task<IEnumerable<Status>> GetStatus(int tableId);
+        Task<IEnumerable<Status>> GetStatus(int tableId, bool isUpdate);
     }
 }

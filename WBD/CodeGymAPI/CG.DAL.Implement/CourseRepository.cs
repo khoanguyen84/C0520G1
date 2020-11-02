@@ -89,5 +89,71 @@ namespace CG.DAL.Implement
                 return result;
             }
         }
+        public async Task<SaveCourseRes> ChangeStatusToInProcess(int id)
+        {
+            var result = new SaveCourseRes()
+            {
+                CourseId = 0,
+                Message = "Something went wrong, please contact administrator."
+            };
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@CourseId", id);
+                result = await SqlMapper.QueryFirstOrDefaultAsync<SaveCourseRes>(cnn: connection,
+                                                                    sql: "sp_ChangeStatusToInProcess",
+                                                                    param: parameters,
+                                                                    commandType: CommandType.StoredProcedure);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return result;
+            }
+        }
+        public async Task<SaveCourseRes> ChangeStatusToCompleted(int id)
+        {
+            var result = new SaveCourseRes()
+            {
+                CourseId = 0,
+                Message = "Something went wrong, please contact administrator."
+            };
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@CourseId", id);
+                result = await SqlMapper.QueryFirstOrDefaultAsync<SaveCourseRes>(cnn: connection,
+                                                                    sql: "sp_ChangeStatusToCompleted",
+                                                                    param: parameters,
+                                                                    commandType: CommandType.StoredProcedure);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return result;
+            }
+        }
+        public async Task<SaveCourseRes> Delete(int id)
+        {
+            var result = new SaveCourseRes()
+            {
+                CourseId = 0,
+                Message = "Something went wrong, please contact administrator."
+            };
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@CourseId", id);
+                result = await SqlMapper.QueryFirstOrDefaultAsync<SaveCourseRes>(cnn: connection,
+                                                                    sql: "sp_DeleteCourse",
+                                                                    param: parameters,
+                                                                    commandType: CommandType.StoredProcedure);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return result;
+            }
+        }
     }
 }

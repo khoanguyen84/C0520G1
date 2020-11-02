@@ -9,6 +9,6 @@ namespace CG.DAL.Interface
 {
     public interface IWikiRepository
     {
-        Task<IEnumerable<Status>> GetStatus(int tableId);
+        Task<IEnumerable<Status>> GetStatus(int tableId, bool isUpdate);
     }
 }

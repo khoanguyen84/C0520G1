@@ -31,5 +31,17 @@ namespace CG.BAL.Implement
         {
             return await courseRepository.Save(request);
         }
+        public async Task<SaveCourseRes> ChangeStatusToInProcess(int id)
+        {
+            return await courseRepository.ChangeStatusToInProcess(id);
+        }
+        public async Task<SaveCourseRes> ChangeStatusToCompleted(int id)
+        {
+            return await courseRepository.ChangeStatusToCompleted(id);
+        }
+        public async Task<SaveCourseRes> Delete(int id)
+        {
+            return await courseRepository.Delete(id);
+        }
     }
 }

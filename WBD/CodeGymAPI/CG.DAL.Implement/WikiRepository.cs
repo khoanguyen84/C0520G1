@@ -12,10 +12,11 @@ namespace CG.DAL.Implement
 {
     public class WikiRepository : BaseRepository, IWikiRepository
     {
-        public async Task<IEnumerable<Status>> GetStatus(int tableId)
+        public async Task<IEnumerable<Status>> GetStatus(int tableId, bool isUpdate)
         {
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add("@TableId", tableId);
+            parameters.Add("@IsUpdate", isUpdate);
             return await SqlMapper.QueryAsync<Status>(cnn: connection,
                                                         sql: "sp_GetStatus",
                                                         param: parameters,
