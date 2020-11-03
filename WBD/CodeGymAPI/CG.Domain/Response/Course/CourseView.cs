@@ -14,6 +14,5 @@ namespace CG.Domain.Response.Course
         public string StartDateStr { get; set; }
         public string EndDateStr { get; set; }
         public string StatusName { get; set; }
-        public int Status { get; set; }
     }
 }
