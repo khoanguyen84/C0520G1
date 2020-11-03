@@ -17,6 +17,7 @@ namespace CG.API.Controllers
             this.moduleService = moduleService;
         }
         [HttpPut("api/module/update")]
+
         public int UpdateModule([FromBody] UpdateModule request)
         {
             return moduleService.UpdatesModule(request);

@@ -11,7 +11,61 @@ namespace CG.DAL.Implement
 {
     public class CourseRepository : BaseRepository, ICourseRepository
     {
-       
+        public async Task<SaveCourseRes> CompleteCourse(int id)
+        {
+            var result = new SaveCourseRes()
+            {
+                CourseId = 0,
+                Message = "Something went wrong, please contact administrator."
+            };
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@ID", id);
+
+                result = await SqlMapper.QueryFirstOrDefaultAsync<SaveCourseRes>(cnn: connection,
+                                                                    sql: "sp_ChangeCourseStatusComplete",
+                                                                    param: parameters,
+                                                                    commandType: CommandType.StoredProcedure);
+                return result;
+            }
+            catch (Exception ex)
+            {
+
+                return result;
+            }
+
+        }
+
+
+
+        public async Task<SaveCourseRes> Delete(int id)
+        {
+            var result = new SaveCourseRes()
+            {
+                CourseId = 0,
+                Message = "Something went wrong, please contact administrator."
+            };
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@CourseId", id);
+
+                result = await SqlMapper.QueryFirstOrDefaultAsync<SaveCourseRes>(cnn: connection,
+                                                                    sql: "sp_DeleteCourse",
+                                                                    param: parameters,
+                                                                    commandType: CommandType.StoredProcedure);
+                return result;
+            }
+            catch (Exception ex)
+            {
+
+                return result;
+            }
+        }
+
+
+
 
         public async Task<CourseView> Get(int id)
         {
@@ -23,13 +77,38 @@ namespace CG.DAL.Implement
                                                         commandType: CommandType.StoredProcedure);
         }
 
+
+
         public async Task<IEnumerable<CourseView>> Gets()
         {
             return await SqlMapper.QueryAsync<CourseView>(cnn: connection,
                                                         sql: "sp_GetCourses",
                                                         commandType: CommandType.StoredProcedure);
+        }
 
-           
+        public async Task<SaveCourseRes> PendingCourse(int id)
+        {
+            var result = new SaveCourseRes()
+            {
+                CourseId = 0,
+                Message = "Something went wrong, please contact administrator."
+            };
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@ID", id);
+
+                result = await SqlMapper.QueryFirstOrDefaultAsync<SaveCourseRes>(cnn: connection,
+                                                                    sql: "sp_Pending",
+                                                                    param: parameters,
+                                                                    commandType: CommandType.StoredProcedure);
+                return result;
+            }
+            catch (Exception ex)
+            {
+
+                return result;
+            }
         }
 
         public async Task<SaveCourseRes> Save(SaveCourseReq request)

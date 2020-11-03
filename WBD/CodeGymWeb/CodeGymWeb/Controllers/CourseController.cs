@@ -22,8 +22,8 @@ namespace CodeGymWeb.Controllers
 
         public IActionResult Delete(int id)
         {
-            var data = ApiHelper<CourseView>.HttpGetAsync($"course/get/{id}");
-            return View(data);
+            var data = ApiHelper<SaveCourseRes>.HttpPatchAsync($"course/delete/{id}");
+            return RedirectToAction("index");
         }
 
         [HttpGet]
@@ -52,6 +52,7 @@ namespace CodeGymWeb.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
+            ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
             var data = ApiHelper<SaveCourseReq>.HttpGetAsync($"course/get/{id}");
             return View(data);
         }
@@ -68,7 +69,21 @@ namespace CodeGymWeb.Controllers
                 }
                 ModelState.AddModelError("", result.Message);
             }
+
             return View(req);
+        }
+
+        public IActionResult Complete(int id)
+        {
+            var data = ApiHelper<CourseView>.HttpPatchAsync($"course/completeCourse/{id}");
+            return RedirectToAction("index");
+        }
+
+
+        public IActionResult Pending(int id)
+        {
+            var data = ApiHelper<CourseView>.HttpPatchAsync($"course/PendingCourse/{id}");
+            return RedirectToAction("index");
         }
     }
 }

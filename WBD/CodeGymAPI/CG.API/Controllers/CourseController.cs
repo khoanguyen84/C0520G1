@@ -54,5 +54,30 @@ namespace CG.API.Controllers
             var course = await courseService.Get(id);
             return Ok(course);
         }
+
+        [HttpPatch]
+        [Route("api/course/delete/{id}")]
+        public async Task<OkObjectResult> Delete(int id)
+        {
+            var result = await courseService.Delete(id);
+            return Ok(result);
+        }
+
+
+        [HttpPatch]
+        [Route("api/course/completeCourse/{id}")]
+        public async Task<OkObjectResult> CompleteCourse(int id)
+        {
+            var result = await courseService.CompleteCourse(id);
+            return Ok(result);
+        }
+
+        [HttpPatch]
+        [Route("api/course/PendingCourse/{id}")]
+        public async Task<OkObjectResult> PendingCourse(int id)
+        {
+            var result = await courseService.PendingCourse(id);
+            return Ok(result);
+        }
     }
 }

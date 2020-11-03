@@ -9,11 +9,14 @@ namespace CodeGymWeb.Models.Course
     public class SaveCourseReq
     {
         public int CourseId { get; set; }
+
         [Required]
         [Display(Name = "Course name")]
         public string CourseName { get; set; }
+
         [Display(Name = "Status")]
         public int Status { get; set; }
+
         [Required]
         [DataType(DataType.Date)]
         [Display(Name = "Start date")]
