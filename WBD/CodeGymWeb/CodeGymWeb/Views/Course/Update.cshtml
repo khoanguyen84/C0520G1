@@ -8,12 +8,14 @@
 <link href="~/css/site.css" rel="stylesheet" />
 <div class="col-8 container">
     <div id="hidden" style="opacity: 1; transition: opacity 1000ms;">
-        @if (@TempData["thanhcong"] != null)
-        {<p class="alert alert-success">@TempData["thanhcong"]</p>}
-    else if (@TempData["loi"] != null)
-    {
-        <p class="alert alert-danger">@TempData["loi"]</p>
-    }
+        @if (Model.CourseId != 0 && Model.Message !=null)
+        {
+            <p class="alert alert-success">@Model.Message</p>
+        }
+        else if((Model.CourseId == 0 && Model.Message != null))
+        {
+            <p class="alert alert-danger">@Model.Message</p>
+        }
     </div>
     <h3>
         @foreach (var item in status)

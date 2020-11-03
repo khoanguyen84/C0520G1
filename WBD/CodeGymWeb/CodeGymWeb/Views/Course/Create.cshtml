@@ -3,59 +3,66 @@
     ViewData["Title"] = "Create course";
     var status = ViewBag.Status != null ? ViewBag.Status as List<Status> : new List<Status>();
 }
-<div>
-    @if (@TempData["thanhcong"] != null)
-    {<p class="alert alert-success">@TempData["thanhcong"]</p>}
-    else if (@TempData["loi"] != null)
-    {
-        <p class="alert alert-danger">@TempData["loi"]</p>
-    }
+<div class="col-8 container">
+    <div>
+        @if (Model != null)
+        {
+            @if (Model.CourseId != 0 && Model.Message != null)
+            {
+                <p class="alert alert-success">@Model.Message</p>
+            }
+            else if ((Model.CourseId == 0 && Model.Message != null))
+            {
+                <p class="alert alert-danger">@Model.Message</p>
+            }
+        }
+    </div>
+    <a asp-controller="Course" asp-action="index" class="btn btn-outline-secondary">Back</a>
+    <form asp-controller="Course" asp-action="Create" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="row">
+            <div class="col-2 col-form-label">
+                <label asp-for="CourseName"></label>
+            </div>
+            <div class="col-10">
+                <input asp-for="CourseName" class="form-control" />
+                <span asp-validation-for="CourseName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 col-form-label">
+                <label asp-for="Status"></label>
+            </div>
+            <div class="col-10">
+                <select asp-for="Status" class="form-control">
+                    @foreach (var item in status)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 col-form-label">
+                <label asp-for="StartDate"></label>
+            </div>
+            <div class="col-10">
+                <input asp-for="StartDate" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 col-form-label">
+                <label asp-for="EndDate"></label>
+            </div>
+            <div class="col-10">
+                <input asp-for="EndDate" class="form-control" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <button class="btn btn-success mr-3" type="submit">Create</button>
+            <button class="btn btn-warning" type="reset">Cancel</button>
+        </div>
+    </form>
 </div>
-<a asp-controller="Course" asp-action="index" class="btn btn-outline-secondary">Back</a>
-<form asp-controller="Course" asp-action="Create" method="post">
-    <div asp-validation-summary="All" class="text-danger"></div>
-    <div class="row">
-        <div class="col-2 col-form-label">
-            <label asp-for="CourseName"></label>
-        </div>
-        <div class="col-10">
-            <input asp-for="CourseName" class="form-control" />
-            <span asp-validation-for="CourseName" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-2 col-form-label">
-            <label asp-for="Status"></label>
-        </div>
-        <div class="col-10">
-            <select asp-for="Status" class="form-control">
-                @foreach(var item in status)
-                {
-                    <option value="@item.Id">@item.Name</option>
-                }
-            </select>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-2 col-form-label">
-            <label asp-for="StartDate"></label>
-        </div>
-        <div class="col-10">
-            <input asp-for="StartDate" class="form-control" />
-            <span asp-validation-for="StartDate" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-2 col-form-label">
-            <label asp-for="EndDate"></label>
-        </div>
-        <div class="col-10">
-            <input asp-for="EndDate" class="form-control" />
-            <span asp-validation-for="EndDate" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="row">
-        <button class="btn btn-success mr-3" type="submit">Create</button>
-        <button class="btn btn-warning" type="reset">Cancel</button>
-    </div>
-</form>

@@ -22,8 +22,6 @@ namespace CodeGymWeb.Controllers
         public IActionResult Create()
         {
             ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
-            TempData["thanhcong"] = null;
-            TempData["loi"] = null;
             return View();
         }
         [HttpPost]
@@ -31,26 +29,24 @@ namespace CodeGymWeb.Controllers
         {
             var data = ApiHelper<SaveCourseReq>.HttpPostAsync("course/save",model);
             ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
-            if(data.CourseId >0)
-                TempData["thanhcong"] = data.Message;
-            else
-                TempData["loi"] = data.Message;
+            model.Message = data.Message;
+            model.CourseId = data.CourseId;
 
             return View(model);
         }
-        public IActionResult Delete(int id, CourseView model)
+        public IActionResult Delete(int id)
         {
-            var data = ApiHelper<CourseView>.HttpPutAsync($"course/Delete/{id}", model);
+            var data = ApiHelper<CourseView>.HttpPutAsync($"course/Delete/{id}");
             return RedirectToAction("index");
         }
-        public IActionResult Active(int id, CourseView model)
+        public IActionResult Active(int id)
         {
-            var data = ApiHelper<CourseView>.HttpPutAsync($"course/Active/{id}", model);
+            var data = ApiHelper<CourseView>.HttpPutAsync($"course/Active/{id}");
             return RedirectToAction("index");
         }
-        public IActionResult Complete(int id, CourseView model)
+        public IActionResult Complete(int id)
         {
-            var data = ApiHelper<CourseView>.HttpPutAsync($"course/Complete/{id}", model);
+            var data = ApiHelper<CourseView>.HttpPutAsync($"course/Complete/{id}");
             return RedirectToAction("index");
         }
         [HttpGet]
@@ -58,8 +54,6 @@ namespace CodeGymWeb.Controllers
         {
             ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
             var data = ApiHelper<SaveCourseReq>.HttpGetAsync($"course/gets/{id}");
-            TempData["thanhcong"] = null;
-            TempData["loi"] = null;
             return View(data);
         }
         [HttpPost]
@@ -67,10 +61,8 @@ namespace CodeGymWeb.Controllers
         {
             ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
             var data = ApiHelper<SaveCourseRes>.HttpPostAsync("Course/save", "PATCH", model);
-            if(data.CourseId!=0)
-                TempData["thanhcong"] = data.Message;
-            else
-                TempData["loi"] = data.Message;
+            model.Message = data.Message;
+            model.CourseId = data.CourseId;
             return View(model);
         }
     }
