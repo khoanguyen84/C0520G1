@@ -40,7 +40,6 @@ namespace CodeGymWeb.Controllers
                 }
                 ModelState.AddModelError("", result.Message);
             }
-            TempData["Message"] = "Course was not create successfully";
             //req.statuses = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course},{false}");
             ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course},{false}");
             return View(req);
@@ -72,8 +71,8 @@ namespace CodeGymWeb.Controllers
                     return Redirect(@$"~/Course/Details/{result.CourseId}");
                 }
                 ModelState.AddModelError("", result.Message);
-                TempData["Message"] = "Course was not update successfully";
             }
+            ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync(@$"wiki/status/{(int)Common.Table.Course},{true}");
             return View(req);
         }
         [HttpPatch]
