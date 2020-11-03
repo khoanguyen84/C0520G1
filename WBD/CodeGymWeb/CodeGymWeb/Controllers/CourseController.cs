@@ -30,10 +30,10 @@ namespace CodeGymWeb.Controllers
         [HttpPost]
         public IActionResult Create(SaveCourseReq req)
         {
-            var result = new SaveCourseRes();
+            //var result = new SaveCourseRes();
             if (ModelState.IsValid)
             {
-                result = ApiHelper<SaveCourseRes>.HttpPostAsync("course/save", "POST", req);
+               var result = ApiHelper<SaveCourseRes>.HttpPostAsync("course/save", "POST", req);
                 if (result.CourseId != 0)
                 {
                     TempData["Message"] = result.Message;
@@ -41,6 +41,7 @@ namespace CodeGymWeb.Controllers
                 }
                 ModelState.AddModelError("", result.Message);
             }
+            ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
             return View(req);
 
         }
