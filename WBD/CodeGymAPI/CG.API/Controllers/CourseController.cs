@@ -47,5 +47,20 @@ namespace CG.API.Controllers
             var result = await courseService.Save(request);
             return Ok(result);
         }
+        [HttpPost("api/course/delete/{id}")]
+        public async Task<ChangeStatusRes> Delete(int id)
+        {
+            return await courseService.ChangeStatusCourse(id, 4);
+        }
+        [HttpPost("api/course/active/{id}")]
+        public async Task<ChangeStatusRes> Active(int id)
+        {
+            return await courseService.ChangeStatusCourse(id, 1);
+        }
+        [HttpPost("api/course/complete/{id}")]
+        public async Task<ChangeStatusRes> Complete(int id)
+        {
+            return await courseService.ChangeStatusCourse(id, 2);
+        }
     }
 }

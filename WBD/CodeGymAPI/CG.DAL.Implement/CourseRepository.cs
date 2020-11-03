@@ -11,17 +11,35 @@ namespace CG.DAL.Implement
 {
     public class CourseRepository : BaseRepository, ICourseRepository
     {
+        public async Task<ChangeStatusRes> ChangeStatusCourse(int courseId, int status, int modifiedBy = 1)
+        {
+            var result = new ChangeStatusRes()
+            {
+                CourseId = 0,
+                Message = "Something went wrong, please contact administrator."
+            };
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@courseId", courseId);
+                parameters.Add("@status", status);
+                parameters.Add("@modifiedBy", modifiedBy);
+                return (await SqlMapper.QueryFirstOrDefaultAsync<ChangeStatusRes>(cnn: connection,
+                                 param: parameters,
+                                sql: "sp_ChangeStatusCourseByCourseId",
+                                commandType: CommandType.StoredProcedure));
+            }
+            catch (Exception)
+            {
+                return result;
+            }
+        }
+
         public async Task<IEnumerable<CourseView>> Gets()
         {
             return await SqlMapper.QueryAsync<CourseView>(cnn: connection,
                                                         sql: "sp_GetCourses",
-                                                        commandType: CommandType.StoredProcedure);
-
-            //var query = "SELECT [CourseId],[CourseName],[Status],[StartDate],[EndDate] FROM[dbo].[Course] WHERE[Status] = 1";
-            //var result = await SqlMapper.QueryAsync<CourseView>(cnn: connection,
-            //                                                    sql: query,
-            //                                                    commandType: CommandType.Text);
-            //return result;
+                                                        commandType: CommandType.StoredProcedure); 
         }
 
         public async Task<SaveCourseRes> Save(SaveCourseReq request)

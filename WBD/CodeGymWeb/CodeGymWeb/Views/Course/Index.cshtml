@@ -25,20 +25,18 @@
                 {
                     case 1:
                         {
-                            actions = $"<a href='{Url.Action("Edit","Course", new { id = item.CourseId})}'><i class='fas fa-edit'></i></a>";
-                            actions += $" <a href='#'><i class='fas fa-check-circle'></i></a>";
+                            actions = $"<a href='{Url.Action("Edit", "Course", new { id = item.CourseId })}'><i class='fas fa-edit'></i></a>";
+                            actions += $" <a href='#' onclick ='course.complete( {item.CourseId})'><i class='fas fa-check-circle'></i></a>";
                             break;
                         }
                     case 3:
                         {
-                            actions = $"<a href='#'><i class='fas fa-trash'></i></a>";
-                            actions += $" <a href='#'><i class='fas fa-edit'></i></a>";
-                            actions += $" <a href='#'><i class='far fa-play-circle'></i></a>";
+                            actions = $"<a href='#' onclick ='course.delete( {item.CourseId})'><i class='fas fa-trash'></i></a>";
+                            actions += $" <a href='{Url.Action("Edit", "Course", new { id = item.CourseId })}'><i class='fas fa-edit'></i></a>";
+                            actions += $" <a href='#' onclick ='course.active( {item.CourseId})'><i class='far fa-play-circle'></i></a>";
                             break;
                         }
                 }
-
-
                 <tr>
                     <td>@item.CourseId</td>
                     <td>@item.CourseName</td>
@@ -56,4 +54,4 @@
         </tbody>
     </table>
 </div>
-
+<script src="~/js/site.js" asp-append-version="true"></script>
