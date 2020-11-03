@@ -12,8 +12,8 @@ namespace CodeGymWeb.Ultilities
         public enum Table
         {
             Course = 1,
-            Teacher = 2,
-            Module = 3,
+            Module = 2,
+            Teacher = 3,
             Student = 4
         }
     }
