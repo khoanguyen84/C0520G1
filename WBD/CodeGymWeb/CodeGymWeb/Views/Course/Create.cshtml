@@ -21,7 +21,7 @@
         </div>
         <div class="col-10">
             <select asp-for="Status" class="form-control">
-                @foreach(var item in status)
+                @foreach (var item in status)
                 {
                     <option value="@item.Id">@item.Name</option>
                 }
@@ -33,7 +33,7 @@
             <label asp-for="StartDate"></label>
         </div>
         <div class="col-10">
-            <input type="date" my-date-format="dd/MM/yyyy" asp-for="StartDate" class="form-control" />
+            <input type="date" my-date-format="dd/MM/yyyy" asp-for="StartDate" class="form-control"/>
             <span asp-validation-for="StartDate" class="text-danger"></span>
         </div>
     </div>
@@ -42,7 +42,7 @@
             <label asp-for="EndDate"></label>
         </div>
         <div class="col-10">
-            <input type="date" my-date-format="dd/MM/yyyy" asp-for="EndDate" class="form-control" />
+            <input type="date" my-date-format="dd/MM/yyyy" asp-for="EndDate" class="form-control"/>
             <span asp-validation-for="EndDate" class="text-danger"></span>
         </div>
     </div>

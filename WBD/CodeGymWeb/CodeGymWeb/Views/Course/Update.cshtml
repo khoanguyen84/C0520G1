@@ -1,11 +1,12 @@
 ﻿@model SaveCourseReq
 @{
     ViewData["Title"] = "Update course";
+    var status = ViewBag.Status != null ? ViewBag.Status as List<Status> : new List<Status>();
 }
 
 <form asp-controller="Course" asp-action="Update" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
-    <input asp-for="CourseId" value="@Model.CourseId" hidden/>
+    <input asp-for="CourseId" value="@Model.CourseId" hidden />
     <div class="row">
         <div class="col-2 col-form-label">
             <label asp-for="CourseName"></label>
@@ -21,10 +22,10 @@
         </div>
         <div class="col-10">
             <select asp-for="Status" class="form-control">
-                <option value="1">Active</option>
-                <option value="2">Inactive</option>
-                <option value="3">Deleted</option>
-                <option value="4">Completed</option>
+                @foreach (var item in status)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
             </select>
         </div>
     </div>

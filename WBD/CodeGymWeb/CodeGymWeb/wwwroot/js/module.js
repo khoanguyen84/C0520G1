@@ -26,10 +26,25 @@ module.openModal = function () {
     $('#addEditModuleModal').modal('show');
 }
 
+//module.dataTable = function () {
+//    $("#tbModule").dataTable(
+//        {
+//            "columnDefs": [
+//                {
+//                    "targets": 4,
+//                    "orderable": false,
+//                    "searchable": false
+//                }
+//            ]
+//        }
+//    );
+//};
+
 module.init = function () {
     module.showData();
 }
 
 $(document).ready(function () {
     module.init();
+    //module.dataTable();
 });
