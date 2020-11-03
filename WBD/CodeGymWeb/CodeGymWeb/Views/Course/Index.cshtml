@@ -39,21 +39,99 @@
             }
 
 
-                <tr>
-                    <td>@item.CourseId</td>
-                    <td>@item.CourseName</td>
-                    <td>@item.StartDateStr</td>
-                    <td>@item.EndDateStr</td>
-                    <td>
-                        <span class="@(item.Status == 1 ? "btn btn-primary" : (item.Status == 2 ? "btn btn-success" : "btn btn-warning"))">@item.StatusName</span>
-                    </td>
-                    <td>
-                        <a href="#"><i class="fas fa-eye"></i></a>
-                        @Html.Raw(actions)
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+            <tr>
+                <td>@item.CourseId</td>
+                <td>@item.CourseName</td>
+                <td>@item.StartDateStr</td>
+                <td>@item.EndDateStr</td>
+                <td>
+                    <span class="@(item.Status == 1 ? "btn btn-primary" : (item.Status == 2 ? "btn btn-success" : "btn btn-warning"))">@item.StatusName</span>
+                </td>
+                <td>
+                    <a href="#"><i class="fas fa-eye"></i></a>
+                    @Html.Raw(actions)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 </div>
-
+@section scripts{
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/datatables/js/jquery.dataTables.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <script>
+        function Delete(id, name) {
+            $.confirm({
+                title: 'Confirm!',
+                content: "Do you want to delete " + name,
+                buttons: {
+                    btnClass: 'btn-red',
+                    confirm: {
+                        btnClass: 'btn-blue',
+                        action: function () {
+                            $.confirm({
+                                title: 'Message',
+                                content: "Completed delete " + name,
+                                buttons: {
+                                    somethingElse: {
+                                        btnClass: 'btn-blue',
+                                        text: 'Ok',
+                                        action: function () {
+                                            window.location.href = "Course/Delete?id=" + id;
+                                        }
+                                    }
+                                }
+                            });
+                        }
+                    },
+                    cancel: function () {
+                        $.alert('Canceled!');
+                    }
+                }
+            });
+        };
+        function Active(id, name) {
+            $.confirm({
+                title: 'Confirm!',
+                content: "Do you want to active " + name,
+                buttons: {
+                    btnClass: 'btn-red',
+                    confirm: {
+                        btnClass: 'btn-blue',
+                        action: function () {
+                            $.confirm({
+                                title: 'Message',
+                                content: "Completed active " + name,
+                                buttons: {
+                                    somethingElse: {
+                                        btnClass: 'btn-blue',
+                                        text: 'Ok',
+                                        action: function () {
+                                            window.location.href = "Course/active?id=" + id;
+                                        }
+                                    }
+                                }
+                            });
+                        }
+                    },
+                    cancel: function () {
+                        $.alert('Canceled!');
+                    }
+                }
+            });
+        };
+        function Complete(id, name) {
+            var r = confirm("Do you want to Complete " + name);
+            if (r == true) {
+                window.location.href = "Course/Complete?id=" + id;
+                alert("completed " + name);
+            }
+        };
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#table_id').DataTable();
+        });
+    </script>
+}

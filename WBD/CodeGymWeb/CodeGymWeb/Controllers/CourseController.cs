@@ -27,10 +27,13 @@ namespace CodeGymWeb.Controllers
         [HttpPost]
         public IActionResult Create(SaveCourseReq model)
         {
-            var data = ApiHelper<SaveCourseReq>.HttpPostAsync("course/save",model);
             ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
-            model.Message = data.Message;
-            model.CourseId = data.CourseId;
+            if (ModelState.IsValid)
+            {
+                var data = ApiHelper<SaveCourseReq>.HttpPostAsync("course/save",model);
+                model.Message = data.Message;
+                model.CourseId = data.CourseId;
+            }
 
             return View(model);
         }
