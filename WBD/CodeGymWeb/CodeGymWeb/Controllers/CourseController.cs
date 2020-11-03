@@ -85,6 +85,7 @@ namespace CodeGymWeb.Controllers
             var data = ApiHelper<CourseView>.HttpPutAsync($"course/inprocess/{id}", model);
             return RedirectToAction("Index");
         }
+        [HttpPut]
         [Route("course/deleted/{id}")]
         public IActionResult Deleted(int id, CourseView model)
         {

@@ -15,11 +15,11 @@ namespace CodeGymWeb.Models.Course
         public string CourseName { get; set; }
         [Display(Name = "Status")]
         public int Status { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Invalid Date")]
         [DataType(DataType.Date)]
         [Display(Name = "Start date")]
         public DateTime StartDate { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Invalid Date")]
         [DataType(DataType.Date)]
         [Display(Name = "End date")]
         public DateTime EndDate { get; set; }

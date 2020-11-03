@@ -4,8 +4,7 @@
 }
 <link href="~/datatables/css/jquery.dataTables.min.css" rel="stylesheet" />
 <a asp-controller="Course" asp-action="Create" class="btn btn-info">Create</a>
-
-<table id="table_id" class="table table-bordered mt-2">
+<table id="tbCourse" class="table table-bordered mt-2">
     <thead class="thead-dark">
         <tr>
             <th>Course Id</th>
@@ -25,14 +24,14 @@
                 case 1:
                     {
                         actions = $"<a href='{Url.Action("Edit", "Course", new { id = item.CourseId })}'><i class='fas fa-edit'></i></a>";
-                        actions += $" <a href='course/completed/{item.CourseId}' onclick='Complete({item.CourseId},\"" + item.CourseName + "\")'><i class='fas fa-check-circle'></i></a>";
+                        actions += $" <a href='javascript: void(0)' onclick='courses.Completed({@item.CourseId},`{@item.CourseName}`)'><i class='fas fa-check-circle'></i></a>";
                         break;
                     }
                 case 3:
                     {
-                        actions = $"<a href='course/deleted/{item.CourseId}' onclick='Delete({item.CourseId},\"" + item.CourseName + "\")'><i class='fas fa-trash'></i></a>";
+                        actions = $"<a href='javascript: void(0)' onclick='courses.Deleted({item.CourseId},\"" + item.CourseName + "\")'><i class='fas fa-trash'></i></a>";
                         actions += $" <a href='{Url.Action("Edit", "Course", new { id = item.CourseId })}'><i class='fas fa-edit'></i></a>";
-                        actions += $" <a href='course/inprocess/{item.CourseId}' onclick='Active({item.CourseId},\"" + item.CourseName + "\")'><i class='far fa-play-circle'></i></a>";
+                        actions += $" <a href='javascript: void(0)' onclick='courses.Inprocess({item.CourseId},\"" + item.CourseName + "\")'><i class='far fa-play-circle'></i></a>";
                         break;
                     }
             }
@@ -56,32 +55,7 @@
 </table>
 @section Scripts{
     <script src="~/datatables/js/jquery.dataTables.min.js"></script>
-    <script>
-        function Delete(id, name) {
-            var r = confirm("Do you want to change status to delete " + name);
-            if (r == true) {
-                window.location.href = "Course/Deleted?id=" + id;
-                toastr.success(name + 'changed status to deleted');
-            }
-        };
-        function Active(id, name) {
-            var r = confirm("Do you want to change status to inprocess " + name);
-            if (r == true) {
-                window.location.href = "Course/Inprocess?id=" + id;
-                toastr.success(name + 'changed status to inprocess');
-            }
-        };
-        function Complete(id, name) {
-            var r = confirm("Do you want to change status to completed " + name);
-            if (r == true) {
-                window.location.href = "Course/Completed?id=" + id;
-                toastr.success(name + 'changed status to completed');
-            }
-        };
-    </script>
-    <script>
-        $(document).ready(function () {
-            $('#table_id').DataTable();
-        });
-    </script>
+    <script src="~/lib/bootbox/bootbox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="~/js/course.js" asp-append-version="true"></script>
 }
