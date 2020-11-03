@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using CG.BAL.Interface;
-using CG.Domain.Request;
+using CG.Domain.Request.Course;
 using CG.Domain.Response.Course;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -33,26 +33,6 @@ namespace CG.API.Controllers
         {
             var courses = await courseService.Gets();
             return Ok(courses);
-        }
-        [HttpGet]
-        [Route("api/course/get/{id}")]
-        public async Task<OkObjectResult> Get(int id)
-        {
-            var course = await courseService.GetCourseById(id);
-            if (course.CourseName != null)
-                return Ok(course);
-            return Ok(new CourseNotFound()
-            {
-                CourseId = id,
-                Message = "Course Id Not Found !"
-            });
-        }
-
-        [HttpPost("api/course/save")]
-        public async Task<OkObjectResult> Save(CourseSaveRequest request)
-        {
-            var course = await courseService.SaveCourse(request);
-            return Ok(course);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using CG.BAL.Interface;
 using CG.DAL.Interface;
-using CG.Domain.Request;
+using CG.Domain.Request.Course;
 using CG.Domain.Response.Course;
 using System;
 using System.Collections.Generic;
@@ -25,11 +25,6 @@ namespace CG.BAL.Implement
         public async Task<IEnumerable<CourseView>> Gets()
         {
             return await courseRepository.Gets();
-        }
-
-        public async Task<CourseNotFound> SaveCourse(CourseSaveRequest request)
-        {
-            return await courseRepository.SaveCourse(request);
         }
     }
 }
