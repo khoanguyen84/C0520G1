@@ -1,4 +1,4 @@
-﻿@model CourseView
+﻿@model SaveCourseReq
 
 @{
     ViewBag.Title = "Thay đổi thông tin khóa học";
@@ -8,11 +8,9 @@
 
 <div class=" col-8 container">
     <form asp-controller="Course" asp-action="Edit" method="post" class=" bg-light rounded container">
-
+        <div asp-validation-summary="All" class="text-danger"></div>
         <input hidden asp-for="CourseId" />
-        <h3 class=" text-danger text-center">Update Course</h3><br />
-        @*<br /> <h6 class=" text-info" id="check" style="display: none">@ViewData["Message"]</h6><br />*@
-        <br /> <h6 class=" text-danger" >@ViewData["Message"]</h6><br />
+        <h3 class=" text-danger text-center">Update Course</h3><br />     
         <div class="form-group">
             <label asp-for="CourseName"></label>
             <input asp-for="CourseName" class="form-control" />

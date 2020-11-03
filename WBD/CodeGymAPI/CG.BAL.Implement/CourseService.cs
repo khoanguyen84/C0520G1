@@ -28,14 +28,18 @@ namespace CG.BAL.Implement
             return await courseRepository.Gets();
         }
 
-        public Task<SaveCourseRes> Save(SaveCourseReq request)
+        public async Task<SaveCourseRes> Save(SaveCourseReq request)
         {
-            throw new NotImplementedException();
+            return await courseRepository.Save(request);
         }
 
-        public Task<CourseNotFound> SaveCourse(CourseSaveRequest request)
+        public async Task<CourseNotFound> SaveCourse(CourseSaveRequest request)
         {
-            throw new NotImplementedException();
+            return await courseRepository.SaveCourse(request);
+        }
+        public async Task<CourseNotFound> ChangeStatusCourse(int courseId, int status, int modifiedBy = 1)
+        {
+            return await courseRepository.ChangeStatusCourse(courseId, status);
         }
     }
 }

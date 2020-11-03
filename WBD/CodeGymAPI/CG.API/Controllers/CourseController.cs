@@ -22,16 +22,39 @@ namespace CG.API.Controllers
             this.courseService = courseService;
         }
 
-        //[Route("/gets")]
-        //[HttpGet]
-        /// <summary>
-        /// Get all Courses with status is inprocess
-        /// </summary>
-        /// <returns></returns>
+     
         [HttpGet("api/course/gets")]
         public async Task<OkObjectResult> GetCourses()
         {
             var courses = await courseService.Gets();
+            return Ok(courses);
+        }
+        [HttpPost, HttpPatch]
+        [Route("api/course/save")]
+        public async Task<OkObjectResult> SaveCourse(SaveCourseReq request)
+        {
+            var result = await courseService.Save(request);
+            return Ok(result);
+        }
+        [HttpPost("api/course/delete/{id}")]
+        public async Task<CourseNotFound> Delete(int id)
+        {
+            return await courseService.ChangeStatusCourse(id, 4);
+        }
+        [HttpPost("api/course/active/{id}")]
+        public async Task<CourseNotFound> Active(int id)
+        {
+            return await courseService.ChangeStatusCourse(id, 1);
+        }
+        [HttpPut("api/course/complete/{id}")]
+        public async Task<CourseNotFound> Complete(int id)
+        {
+            return await courseService.ChangeStatusCourse(id, 2);
+        }
+        [HttpGet("api/course/get/{courseId}")]
+        public async Task<OkObjectResult> Get(int courseId)
+        {
+            var courses = await courseService.GetCourseById(courseId);
             return Ok(courses);
         }
     }

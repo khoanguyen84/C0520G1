@@ -18,44 +18,30 @@ namespace CodeGymWeb.Controllers
             var data = ApiHelper<CourseView>.HttpGetAsync($"course/get/{id}");
             return View(data);
         }
-        [HttpGet]
-        public IActionResult Create()
-        {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Create(CourseSaveRequest request)
-        {
-            if (ModelState.IsValid)
-            {
-
-                var result = ApiHelper<CourseNotFound>.HttpPostAsync($"course/save", request);
-                if (result.Message == "Course Name created successfully")
-                {
-                    return RedirectToAction("Index", "Course");
-                }
-                ViewData["Message"] = result.Message;
-            }
-
-            return View();
-        }
+       
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var edit = ApiHelper<CourseView>.HttpGetAsync($"course/get/{id}");
-            return View(edit);
+            ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
+            var edit = ApiHelper<SaveCourseReq>.HttpGetAsync($"course/get/{id}");
+            if (edit.Status > 0)
+            {
+                return View(edit);
+            }
+            return RedirectToAction("Index", "Course");
         }
         [HttpPost]
-        public IActionResult Edit(CourseSaveRequest request)
+        public IActionResult Edit(SaveCourseReq request)
         {
             if (ModelState.IsValid)
             {
-                var result = ApiHelper<CourseNotFound>.HttpPostAsync($"course/save", request);
-                //if (result.Message == "Course Name updated successfully")
-                //{
-                //    return RedirectToAction("Index", "Course");
-                //}
-                ViewData["Message"] = result.Message;
+                var result = ApiHelper<CourseNotFound>.HttpPostAsync($"course/save", "POST", request);
+                if (result.CourseId > 0)
+                {
+                    return RedirectToAction("Index", "Course");
+                }
+                ModelState.AddModelError("", result.Message);
+                ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
             }
 
             return View();
@@ -80,7 +66,9 @@ namespace CodeGymWeb.Controllers
                     return RedirectToAction("index");
                 }
                 ModelState.AddModelError("", result.Message);
+               
             }
+            ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
             return View(req);
         }
     }

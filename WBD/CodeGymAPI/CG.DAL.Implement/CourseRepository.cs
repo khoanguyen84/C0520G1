@@ -18,10 +18,11 @@ namespace CG.DAL.Implement
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@courseId", courseId);
              
-                return (await SqlMapper.QueryFirstOrDefaultAsync<CourseView>(cnn: connection,
+                var result = (await SqlMapper.QueryFirstOrDefaultAsync<CourseView>(cnn: connection,
                                  param: parameters,
                                 sql: "sp_GetCourseByCourseId",
                                 commandType: CommandType.StoredProcedure));
+                return result;
                        
         }
 
@@ -75,6 +76,17 @@ namespace CG.DAL.Implement
 
                 return result;
             }
+        }
+        public async Task<CourseNotFound> ChangeStatusCourse(int courseId, int status, int modifiedBy = 1)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@courseId", courseId);
+            parameters.Add("@status", status);
+            parameters.Add("@modifiedBy", modifiedBy);
+            return (await SqlMapper.QueryFirstOrDefaultAsync<CourseNotFound>(cnn: connection,
+                             param: parameters,
+                            sql: "sp_ChangeStatusCourseByCourseId",
+                            commandType: CommandType.StoredProcedure));
         }
     }
 }
