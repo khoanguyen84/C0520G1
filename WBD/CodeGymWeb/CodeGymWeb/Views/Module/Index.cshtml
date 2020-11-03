@@ -21,7 +21,7 @@
     </div>
 <!-- The Modal -->
 <div class="modal" id="addEditModuleModal">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
             <!-- Modal Header -->
@@ -32,11 +32,43 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                Modal body..
+                <form id="frmAddEditModule">
+                    <input hidden name="ModuleId" id="ModuleId" value="0" />
+                    <div class="row form-group">
+                        <label for="ModuleName" class="col-3">Module name:</label>
+                        <div class="col-9">
+                            <input type="text" class="form-control" placeholder="Module name" 
+                                   id="ModuleName" name="ModuleName"
+                                   data-rule-required="true"
+                                   data-msg-required="Module name is required">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="Duration" class="col-3">Duration:</label>
+                        <div class="col-9">
+                            <input type="number" class="form-control" placeholder="Duration" 
+                                   id="Duration" name="Duration"
+                                   data-rule-required="true"
+                                   data-msg-required="Duration is required"
+                                   data-rule-range="2,8"
+                                   data-msg-range="Duration between 2 and 8.">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="Status" class="col-3">Duration:</label>
+                        <div class="col-9">
+                            <select class="form-control" id="Status" name="Status">
+
+                            </select>
+                        </div>
+                    </div>
+                </form>
+                
             </div>
 
             <!-- Modal footer -->
             <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-success" onclick="module.save()">Save</a>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </div>
 
