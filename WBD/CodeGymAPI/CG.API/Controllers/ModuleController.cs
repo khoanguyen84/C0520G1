@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using CG.BAL.Interface;
-using CG.Domain.Response.Module;
+using CG.Domain.Request.Module;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CG.API.Controllers
 {
-    //[Route("api/[controller]")]
     [ApiController]
     public class ModuleController : ControllerBase
     {
@@ -20,25 +18,20 @@ namespace CG.API.Controllers
         {
             this.moduleService = moduleService;
         }
-        [HttpGet]
-        [Route("api/module/get/{id}")]
-        public async Task<OkObjectResult> Get(int id)
-        {
-            var status = await moduleService.Get(id);
-            if(status.ModuleName!=null)
-                return Ok(status);
 
-            return Ok(new NotFound()
-            {
-                ID = id,
-                ErrorMessage = "Not Found !"
-            });
-        }
         [HttpGet("api/module/gets")]
-        public async Task<OkObjectResult> GetCourses()
+        public async Task<OkObjectResult> GetModules()
         {
-            var module = await moduleService.Gets();
-            return Ok(module);
+            var modules = await moduleService.Gets();
+            return Ok(modules);
+        }
+
+        [HttpPost, HttpPatch]
+        [Route("api/module/save")]
+        public async Task<OkObjectResult> SaveModule(SaveModuleReq request)
+        {
+            var result = await moduleService.Save(request);
+            return Ok(result);
         }
     }
 }

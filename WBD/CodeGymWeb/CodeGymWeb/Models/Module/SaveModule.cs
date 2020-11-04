@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace CG.Domain.Response.Module
+namespace CodeGymWeb.Models.Module
 {
-    public  class ModuleView
+    public class SaveModule
     {
         public int ModuleId { get; set; }
         public string ModuleName { get; set; }
-        public int Duration { get; set; }
         public int Status { get; set; }
-        public string StatusName { get; set; }
+        public int Duration { get; set; }
     }
 }

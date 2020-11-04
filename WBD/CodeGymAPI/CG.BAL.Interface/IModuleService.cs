@@ -1,5 +1,5 @@
-﻿using CG.Domain.Response.Module;
-using System;
+﻿using CG.Domain.Request.Module;
+using CG.Domain.Response.Module;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -7,7 +7,7 @@ namespace CG.BAL.Interface
 {
     public interface IModuleService
     {
-        Task<ModuleView> Get(int id);
-        Task<IEnumerable<ModuleView>> Gets();                                                                                                                                                                                                                                                                                                                                  
+        Task<IEnumerable<ModuleView>> Gets();
+        Task<SaveModuleRes> Save(SaveModuleReq request);
     }
 }

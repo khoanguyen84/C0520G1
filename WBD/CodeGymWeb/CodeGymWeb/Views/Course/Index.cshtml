@@ -23,8 +23,8 @@
                 {
                     case 1:
                         {
-                            actions = $"<a href='{Url.Action("Update", "Course", new { id = item.CourseId })}'><i class='fas fa-edit'></i></a>";
-                            actions += $" <a href='#' onclick='Complete({item.CourseId},\"" + item.CourseName + "\")'><i class='fas fa-check-circle'></i></a>";
+                            actions = $"<a href='{Url.Action("Edit","Course", new { id = item.CourseId})}'><i class='fas fa-edit'></i></a>";
+                            actions += $" <a href='#'><i class='fas fa-check-circle'></i></a>";
                             break;
                         }
                     case 3:
@@ -53,35 +53,5 @@
             }
         </tbody>
     </table>
-@section scripts{ 
-<script src="~/lib/jquery/dist/jquery.js"></script>
-<script src="~/lib/datatables/js/jquery.dataTables.js"></script>
-<script>
-    function Delete(id, name) {
-        var r = confirm("Do you want to delete " + name + "?");
-        if (r == true) {
-            window.location.href = "Course/Delete?id=" + id;
-            alert("Delete completed " + name + "!");
-        }
-    };
-    function Active(id, name) {
-        var r = confirm("Do you want to active " + name + "?");
-        if (r == true) {
-            window.location.href = "Course/Active?id=" + id;
-            alert("active completed " + name + "!");
-        }
-    };
-    function Complete(id, name) {
-        var r = confirm("Do you want to Complete " + name + "?");
-        if (r == true) {
-            window.location.href = "Course/Complete?id=" + id;
-            alert("completed " + name + "!");
-        }
-    };
-</script>
-<script>
-    $(document).ready(function () {
-        $('#table_id').DataTable();
-    });
-</script>
-}
+</div>
+

@@ -1,0 +1,81 @@
+﻿@{
+    ViewData["Title"] = "Module page";
+}
+
+<div class=" row">
+    <a href="javascript:void(0);" class="btn btn-info" onclick="module.openModal()">Create</a>
+
+    <table id="tbModule" class="table table-bordered mt-2">
+        <thead class="thead-dark">
+            <tr>
+                <th>Module Id</th>
+                <th>Module Name</th>
+                <th>Duration</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+<!-- The Modal -->
+<div class="modal" id="addEditModuleModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Create module</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="frmAddEditModule">
+                    <input hidden name="ModuleId" id="ModuleId" value="0" />
+                    <div class="row form-group">
+                        <label for="ModuleName" class="col-3">Module name:</label>
+                        <div class="col-9">
+                            <input type="text" class="form-control" placeholder="Module name" 
+                                   id="ModuleName" name="ModuleName"
+                                   data-rule-required="true"
+                                   data-msg-required="Module name is required">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="Duration" class="col-3">Duration:</label>
+                        <div class="col-9">
+                            <input type="number" class="form-control" placeholder="Duration" 
+                                   id="Duration" name="Duration"
+                                   data-rule-required="true"
+                                   data-msg-required="Duration is required"
+                                   data-rule-range="2,8"
+                                   data-msg-range="Duration between 2 and 8.">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="Status" class="col-3">Duration:</label>
+                        <div class="col-9">
+                            <select class="form-control" id="Status" name="Status">
+
+                            </select>
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-success" onclick="module.save()">Save</a>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/module.js" asp-append-version="true"></script>
+}
