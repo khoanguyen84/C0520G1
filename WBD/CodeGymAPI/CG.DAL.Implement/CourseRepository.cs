@@ -2,6 +2,7 @@
 using CG.Domain.Request.Course;
 using CG.Domain.Response.Course;
 using Dapper;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
@@ -10,6 +11,17 @@ namespace CG.DAL.Implement
 {
     public class CourseRepository : BaseRepository, ICourseRepository
     {
+        public async Task<SaveCourseRes> ChangeStatus(int id, int status)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@CourseId", id);
+            parameters.Add("@Status", status);
+            return await SqlMapper.QueryFirstOrDefaultAsync<SaveCourseRes>(cnn: connection,
+                                                        sql: "sp_ChangeStatus",
+                                                        param: parameters,
+                                                        commandType: CommandType.StoredProcedure);
+        }
+
         public async Task<CourseView> Get(int id)
         {
             DynamicParameters dynamicParameters = new DynamicParameters();
@@ -50,9 +62,8 @@ namespace CG.DAL.Implement
                                                                     commandType: CommandType.StoredProcedure);
                 return result;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
                 return result;
             }
         }

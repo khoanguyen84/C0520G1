@@ -1,6 +1,26 @@
 ﻿@model CourseView
-
-    <p>@Model.CourseId</p>
-    <p>@Model.CourseName</p>
-    <p>@Model.StartDate</p>
-    <p>@Model.EndDate</p>
+@{
+    ViewData["Title"] = "Course Detail";
+}
+<div class="row justify-content-center">
+    <div class="col-sm-6">
+        <div class="card my-2">
+            <div class="card-header text-center">
+                <h3>Course Id: @Model.CourseId</h3>
+                <h3>Course Name: @Model.CourseName</h3>
+            </div>
+            <div class="card-body text-center">
+                <h3>
+                    Status:@(Model.Status == 1 ? "InProcess" : "Completed")
+                </h3>
+                <h3>Start Date: @Model.StartDateStr</h3>
+                <h3>End Date: @Model.EndDateStr</h3>
+            </div>
+            <div class="card-footer text-center">
+                <a asp-controller="Course" asp-action="Index" class="btn btn-warning">Back</a>
+                <a asp-controller="Course" asp-action="Edit" asp-route-id="@Model.CourseId" class="btn btn-primary">Edit</a>
+                @*<a asp-controller="Course" asp-action="Delete" asp-route-id="@Model.CourseId" class="btn btn-info">Delete</a>*@
+            </div>
+        </div>
+    </div>
+</div>

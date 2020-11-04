@@ -35,6 +35,13 @@ namespace CG.API.Controllers
             return Ok(courses);
         }
 
+        [HttpGet("api/course/get/{id}")]
+        public async Task<OkObjectResult> Get(int id)
+        {
+            var course = await courseService.Get(id);
+            return Ok(course);
+        }
+
         /// <summary>
         /// Save or update course
         /// </summary>
@@ -45,6 +52,14 @@ namespace CG.API.Controllers
         public async Task<OkObjectResult> SaveCourse(SaveCourseReq request)
         {
             var result = await courseService.Save(request);
+            return Ok(result);
+        }
+
+        [HttpPatch]
+        [Route("api/course/changeStatus/{id}/{status}")]
+        public async Task<OkObjectResult> changeStatus(int id, int status)
+        {
+            var result = await courseService.ChangeStatus(id, status);
             return Ok(result);
         }
     }
