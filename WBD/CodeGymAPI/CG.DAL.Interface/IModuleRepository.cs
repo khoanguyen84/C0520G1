@@ -1,4 +1,5 @@
 ﻿using CG.Domain.Request.Course;
+using CG.Domain.Request.Module;
 using CG.Domain.Response.Course;
 using CG.Domain.Response.Module;
 using System;
@@ -10,5 +11,6 @@ namespace CG.DAL.Interface
     public interface IModuleRepository
     {
         Task<IEnumerable<ModuleView>> Gets();
+        Task<SaveModuleRes> Save(SaveModuleReq request);
     }
 }
