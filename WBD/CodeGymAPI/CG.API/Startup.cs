@@ -38,7 +38,6 @@ namespace CG.API
             services.AddScoped<IWikiService, WikiService>();
             services.AddScoped<IWikiRepository, WikiRepository>();
             services.AddScoped<IModuleService, ModuleService>();
-            services.AddScoped<IModuleRepository, ModuleRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

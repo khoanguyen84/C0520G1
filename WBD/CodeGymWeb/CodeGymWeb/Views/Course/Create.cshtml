@@ -1,7 +1,7 @@
 ﻿@model SaveCourseReq
 @{
     ViewData["Title"] = "Create course";
-    var status = ViewBag.Status != null ? ViewBag.Status as List<Status> : new List<Status>();
+    //var status = != null ? ViewBag.Status as List<Status> : new List<Status>();
 }
 
 <form asp-controller="Course" asp-action="Create" method="post">
@@ -21,7 +21,7 @@
         </div>
         <div class="col-10">
             <select asp-for="Status" class="form-control">
-                @foreach(var item in status)
+                @foreach(var item in Model.Statuses)
                 {
                     <option value="@item.Id">@item.Name</option>
                 }
@@ -33,7 +33,7 @@
             <label asp-for="StartDate"></label>
         </div>
         <div class="col-10">
-            <input asp-for="StartDate" class="form-control" />
+            <input asp-for="StartDate" class="form-control"/>
             <span asp-validation-for="StartDate" class="text-danger"></span>
         </div>
     </div>

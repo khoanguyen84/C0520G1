@@ -2,6 +2,7 @@
 using CodeGymWeb.Models.Wiki;
 using CodeGymWeb.Ultilities;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 
 namespace CodeGymWeb.Controllers
@@ -16,7 +17,7 @@ namespace CodeGymWeb.Controllers
 
         public IActionResult Detail(int id)
         {
-            var data = ApiHelper<CourseView>.HttpGetAsync($"course/get/{id}"); 
+            var data = ApiHelper<CourseView>.HttpGetAsync($"course/get/{id}");
             return View(data);
         }
 
@@ -27,11 +28,12 @@ namespace CodeGymWeb.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult Create() => View(new SaveCourseReq()
         {
-            ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
-            return View();
-        }
+            StartDate=DateTime.Today,
+            EndDate = DateTime.Today,
+            Statuses = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}")
+        });
 
         [HttpPost]
         public IActionResult Create(SaveCourseReq req)
@@ -46,6 +48,8 @@ namespace CodeGymWeb.Controllers
                 }
                 ModelState.AddModelError("", result.Message);
             }
+            req.Statuses = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
+
             return View(req);
         }
 
@@ -69,7 +73,7 @@ namespace CodeGymWeb.Controllers
                 }
                 ModelState.AddModelError("", result.Message);
             }
-
+            ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
             return View(req);
         }
 

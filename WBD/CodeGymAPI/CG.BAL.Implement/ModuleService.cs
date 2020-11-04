@@ -1,8 +1,9 @@
 ﻿using CG.BAL.Interface;
 using CG.DAL.Interface;
+using CG.Domain;
+using CG.Domain.Request;
 using CG.Domain.Request.Course;
 using CG.Domain.Response.Course;
-using CG.Domain.Response.Module;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -22,5 +23,14 @@ namespace CG.BAL.Implement
             return await moduleRepository.Gets();
         }
 
+        public int UpdatesModule(UpdateModule request)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<IEnumerable<ModuleViewModel>> IModuleService.Gets()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
