@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using CodeGymWeb.Models.Course;
+﻿using CodeGymWeb.Models.Course;
+using CodeGymWeb.Models.Wiki;
 using CodeGymWeb.Ultilities;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace CodeGymWeb.Controllers
 {
@@ -17,6 +12,29 @@ namespace CodeGymWeb.Controllers
         {
             var data = ApiHelper<List<CourseView>>.HttpGetAsync("course/gets");
             return View(data);
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(SaveCourseReq req)
+        {
+            var result = new SaveCourseRes();
+            if (ModelState.IsValid)
+            {
+                result = ApiHelper<SaveCourseRes>.HttpPostAsync("course/save", "POST", req);
+                if (result.CourseId != 0)
+                {
+                    return RedirectToAction("index");
+                }
+                ModelState.AddModelError("", result.Message);
+            }
+            return View(req);
         }
         public IActionResult Details(int id)
         {

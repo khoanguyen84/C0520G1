@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using CG.BAL.Interface;
+using CG.Domain.Request.Course;
 using CG.Domain.Response.Course;
 using CG.Domain.Response.Module;
 using Microsoft.AspNetCore.Http;
@@ -47,6 +48,19 @@ namespace CG.API.Controllers
                 ID = id,
                 ErrorMessage = "Not Found !"
             });
+        }
+
+        /// <summary>
+        /// Save or update course
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost, HttpPatch]
+        [Route("api/course/save")]
+        public async Task<OkObjectResult> SaveCourse(SaveCourseReq request)
+        {
+            var result = await courseService.Save(request);
+            return Ok(result);
         }
     }
 }

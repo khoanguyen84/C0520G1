@@ -35,6 +35,8 @@ namespace CG.API
             services.AddScoped<ICourseRepository, CourseRepository>();
             services.AddScoped<IModuleRepository, ModuleRepository>();
             services.AddScoped<IModuleService, ModuleService>();
+            services.AddScoped<IWikiService, WikiService>();
+            services.AddScoped<IWikiRepository, WikiRepository>();
 
         }
 
