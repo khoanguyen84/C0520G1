@@ -1,7 +1,6 @@
 ﻿using CG.BAL.Interface;
 using CG.DAL.Interface;
-using CG.Domain.Request.Course;
-using CG.Domain.Response.Course;
+using CG.Domain.Request.Module;
 using CG.Domain.Response.Module;
 using System;
 using System.Collections.Generic;
@@ -22,5 +21,9 @@ namespace CG.BAL.Implement
             return await moduleRepository.Gets();
         }
 
+        public async Task<SaveModuleRes> Save(SaveModuleReq request)
+        {
+            return await moduleRepository.Save(request);
+        }
     }
 }
