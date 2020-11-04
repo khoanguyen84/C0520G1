@@ -26,7 +26,8 @@
                 {
                     case 1:
                         {
-                            actions = $"<a href='{Url.Action("Edit", "Course", new { id = item.CourseId })}'><i class='fas fa-edit'></i></a>";
+                            actions = $"<a href='{Url.Action("Edit", "Course", new { id = item.CourseId })}'>" +
+                                          $"<i class='fas fa-edit'></i>" + $"</a>";
 
                             actions += $" <a href='#' onclick='ToCompleted({item.CourseId},\"" + item.CourseName + "\")'>" +
                                 "<i class='fas fa-check-circle'></i></a>";

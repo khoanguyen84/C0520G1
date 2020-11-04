@@ -14,7 +14,11 @@ module.showData = function () {
                         <td>${v.moduleName}</td>
                         <td>${v.duration}</td>
                         <td>${v.statusName}</td>
-                        <td></td>
+                        <td>
+                            <button class="btn btn-info"
+                            onclick="module.edit(${v.moduleId},'${v.moduleName}',${v.duration},${v.status})">Edit</button>
+                            <button class="btn btn-danger" onclick="module.delete(${v.moduleId})">Delete</button>
+                        </td>
                     </tr>`
                 );
             });
@@ -22,11 +26,23 @@ module.showData = function () {
     });
 }
 
+module.edit = function (moduleId, moduleName, duration,status) {
+    $("#ModuleName").val(moduleName);
+    $("#Duration").val(duration);
+    $("#ModuleId").val(moduleId);
+    module.initStatus(status);
+    module.openModal();
+}
+
+module.delete = function (moduleId) {
+
+}
+
 module.openModal = function () {
     $('#addEditModuleModal').modal('show');
 }
 
-module.initStatus = function () {
+module.initStatus = function (defaultStatus) {
     $.ajax({
         url: '/module/status/gets',
         method: 'GET',
@@ -37,6 +53,7 @@ module.initStatus = function () {
                 $('#Status').append(
                     `<option value=${v.id}>${v.name}</option>`
                 );
+                $('#Status').val(defaultStatus);
             });
         }
     });
@@ -59,12 +76,20 @@ module.save = function () {
                 bootbox.alert(response.data.message);
                 if (response.data.moduleId > 0) {
                     $('#addEditModuleModal').modal('hide');
+                    $("#frmAddEditModule").trigger("reset");
                     module.showData();
                 }
             }
         });
     }
 }
+
+$('#closeButton').on('click', function () {
+    //Close Modal
+    $(".modal").modal("hide");
+    //Reset Values
+    $("#frmAddEditModule").trigger("reset");
+});
 
 module.init = function () {
     module.showData();

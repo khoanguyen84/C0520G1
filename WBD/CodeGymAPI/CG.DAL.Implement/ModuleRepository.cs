@@ -32,6 +32,7 @@ namespace CG.DAL.Implement
                 parameters.Add("@ModuleName", request.ModuleName);
                 parameters.Add("@Status", request.Status);
                 parameters.Add("@Duration", request.Duration);
+                parameters.Add("@SavedBy", request.@SavedBy);
 
                 result = await SqlMapper.QueryFirstOrDefaultAsync<SaveModuleRes>(cnn: connection,
                                                                     sql: "sp_SaveModule",
@@ -39,9 +40,8 @@ namespace CG.DAL.Implement
                                                                     commandType: CommandType.StoredProcedure);
                 return result;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
                 return result;
             }
         }
