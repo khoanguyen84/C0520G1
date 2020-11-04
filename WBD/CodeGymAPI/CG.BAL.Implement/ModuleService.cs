@@ -16,6 +16,17 @@ namespace CG.BAL.Implement
         {
             this.moduleRepository = moduleRepository;
         }
+
+        public async Task<DeleteModuleResult> Delete(int moduleId)
+        {
+            return await moduleRepository.Delete(moduleId);
+        }
+
+        public async Task<ModuleView> Get(int moduleId)
+        {
+            return await moduleRepository.Get(moduleId);
+        }
+
         public async Task<IEnumerable<ModuleView>> Gets()
         {
             return await moduleRepository.Gets();

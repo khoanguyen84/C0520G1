@@ -39,5 +39,28 @@ namespace CodeGymWeb.Controllers
             var result = ApiHelper<SaveModuleResult>.HttpPostAsync($"module/save", "POST", request);
             return Json(new { data = result });
         }
+
+        [HttpGet]
+        [Route("/module/get/{id}")]
+        public JsonResult Get(int id)
+        {
+            var result = ApiHelper<ModuleView>.HttpGetAsync($"module/get/{id}");
+            return Json(new { result });
+        }
+
+        [Route("/module/delete/{id}")]
+        public JsonResult Delete(int id)
+        {
+            var result = ApiHelper<DeleteModuleResult>.HttpGetAsync($"module/delete/{id}");
+            return Json(new { result });
+        }
+
+        [HttpGet]
+        [Route("/module/detail/{id}")]
+        public JsonResult Detail(int id)
+        {
+            var result = ApiHelper<ModuleView>.HttpGetAsync($"module/get/{id}");
+            return Json(new { result });
+        }
     }
 }

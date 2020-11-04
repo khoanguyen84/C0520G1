@@ -67,7 +67,8 @@ namespace CodeGymWeb.Controllers
             }
             return View(req);
         }
-        [Route("/Course/Delete/{id}")]
+        [Route("/course/delete/{id}")]
+        [HttpGet]
         public JsonResult Delete(int id)
         {   
             var result = ApiHelper<DeleteCourseResult>.HttpGetAsync($"course/delete/{id}");

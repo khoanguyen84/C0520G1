@@ -14,7 +14,7 @@ course.delete = (id) => {
         callback: function (result) {
             if (result) {
                 $.ajax({
-                    url: `/Course/Delete/${id}`,
+                    url: `/course/delete/${id}`,
                     method: 'GET',
                     dataType: 'JSON',
                     success: function (data) {

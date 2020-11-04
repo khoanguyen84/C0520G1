@@ -33,5 +33,20 @@ namespace CG.API.Controllers
             var result = await moduleService.Save(request);
             return Ok(result);
         }
+
+        [HttpGet]
+        [Route("api/module/get/{id}")]
+        public async Task<OkObjectResult> GetModuleById(int id)
+        {
+            var module = await moduleService.Get(id);
+            return Ok(module);
+        }
+        [HttpGet]
+        [Route("api/module/delete/{id}")]
+        public async Task<OkObjectResult> Delete(int id)
+        {
+            var delModule = await moduleService.Delete(id);
+            return Ok(delModule);
+        }
     }
 }

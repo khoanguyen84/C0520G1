@@ -54,7 +54,7 @@ namespace CG.API.Controllers
             return Ok(result);
         }
 
-        [HttpDelete]
+        [HttpGet]
         [Route("api/course/delete/{id}")]
         public async Task<OkObjectResult> DeleleCourse(int id)
         {
