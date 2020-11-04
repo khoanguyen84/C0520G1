@@ -5,7 +5,7 @@
 <div class=" row">
     <a href="javascript:void(0);" class="btn btn-info" onclick="module.openModal()">Create</a>
 
-    <table id="tbModule" class="table table-bordered mt-2">
+    <table id="tbModule" class="table table-bordered mt-2" style="text-align:center">
         <thead class="thead-dark">
             <tr>
                 <th>Module Id</th>
@@ -26,18 +26,47 @@
 
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Create module</h4>
+                <h4 class="modal-title">Create and update module</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
             <!-- Modal body -->
+            <input hidden id="ModuleId" name="ModuleId">
             <div class="modal-body">
-                Modal body..
+                <div class="row form-group">
+                    <div class="col-3">
+                        <label>Module Name</label>
+                    </div>
+                    <div class="col-9">
+                        <input type="text" id="ModuleName" name="ModuleName" class="form-control"
+                               data-rule-required="true">
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-3">
+                        <label>Duration</label>
+                    </div>
+                    <div class="col-9">
+                        <input type="number" min="1" max="10" id="Duration" name="Duration" class="form-control"
+                               data-rule-required="true">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-3">
+                        <label>Status</label>
+                    </div>
+                    <div class="col-9">
+                        <input type="number" max="2" min="1" id="Status" name="Status" class="form-control"
+                               data-rule-required="true">
+                    </div>
+                </div>
             </div>
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                <a href="javascript:;" class="btn btn-danger" onclick="module.save()">Save</a>
             </div>
 
         </div>

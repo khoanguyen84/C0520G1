@@ -64,7 +64,7 @@ namespace CG.DAL.Implement
                                                                     commandType: CommandType.StoredProcedure);
                 return result;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 return result;
