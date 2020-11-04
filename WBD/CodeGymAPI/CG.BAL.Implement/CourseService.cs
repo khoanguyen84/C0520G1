@@ -29,5 +29,10 @@ namespace CG.BAL.Implement
         {
             return await courseRepository.Save(request);
         }
+
+        public async Task<DeleteCourseResult> Delete(int CourseId)
+        {
+            return await courseRepository.Delete(CourseId);
+        }
     }
 }

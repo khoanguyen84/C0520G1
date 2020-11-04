@@ -40,7 +40,7 @@ namespace CG.API.Controllers
             var course = await courseService.Get(CourseId);
             return Ok(course);
         }
-
+        
         /// <summary>
         /// Save or update course
         /// </summary>
@@ -52,6 +52,14 @@ namespace CG.API.Controllers
         {
             var result = await courseService.Save(request);
             return Ok(result);
+        }
+
+        [HttpDelete]
+        [Route("api/course/delete/{id}")]
+        public async Task<OkObjectResult> DeleleCourse(int id)
+        {
+            var delCourse = await courseService.Delete(id);
+            return Ok(delCourse);
         }
     }
 }

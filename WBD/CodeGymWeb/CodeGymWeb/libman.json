@@ -7,8 +7,12 @@
       "destination": "wwwroot/lib/font-awesome"
     },
     {
-      "library": "bootbox.js@5.4.1",
-      "destination": "wwwroot/lib/bootbox"
+        "library": "bootbox.js@5.4.1",
+        "destination": "wwwroot/lib/bootbox"
+    },
+    {
+        "library": "datatables@1.10.21",
+        "destination": "wwwroot/lib/dataTable"
     }
   ]
 }

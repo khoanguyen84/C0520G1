@@ -1,0 +1,23 @@
+﻿@model CourseView
+@{ 
+    ViewBag.Title = "Detail Course";
+}
+<a asp-controller="Course" asp-action="Index" class="text-dark">Course</a><i class="fas fa-angle-double-right mx-1" style="font-size: 16px;"></i>@Model.CourseName
+<div class="row justify-content-center m-auto">
+    <div class="col-4 pl-5 detail-course">
+        <h4>Course Id: @Model.CourseId</h4>
+        <h4>Course Name: @Model.CourseName</h4>
+        <h4>Start Date: @Model.StartDateStr</h4>
+        <h4>End Date: @Model.EndDateStr</h4>
+        <h4>Status Name: @Model.StatusName</h4>
+    </div>
+</div>
+
+<style>
+    .detail-course {
+        border: 1px solid #808080;
+        height: 70vh;
+        padding-top: 100px;
+        border-radius: 10px;
+    }
+</style>

@@ -62,5 +62,15 @@ namespace CG.DAL.Implement
                 return result;
             }
         }
+
+        public async Task<DeleteCourseResult> Delete(int CourseId)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@CourseId", CourseId);
+            return await SqlMapper.QueryFirstOrDefaultAsync<DeleteCourseResult>(cnn: connection,
+                                                                            sql: "sp_DeleteCourseById",
+                                                                            param: parameters,
+                                                                            commandType: CommandType.StoredProcedure);
+        }
     }
 }
