@@ -53,5 +53,23 @@ namespace CodeGymWeb.Ultilities
             }
             return JsonConvert.DeserializeObject<T>(result);
         }
+        public static T HttpPutAsync(string apiName, object model)
+        {
+            string result;
+            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(@$"{Common.apiUrl}/{apiName}");
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "PUT";
+            using (var streamWrite = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                var json = JsonConvert.SerializeObject(model);
+                streamWrite.Write(json);
+            }
+            var httpReponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpReponse.GetResponseStream()))
+            {
+                result = streamReader.ReadToEnd();
+            }
+            return JsonConvert.DeserializeObject<T>(result);
+        }
     }
 }

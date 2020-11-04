@@ -1,11 +1,23 @@
 ﻿@model SaveCourseReq
 @{
-    ViewData["Title"] = "Create course";
+    ViewBag.Title = "Update Course";
     var status = ViewBag.Status != null ? ViewBag.Status as List<Status> : new List<Status>();
 }
-<h1 class="text-center">Create</h1>
-<form asp-controller="Course" asp-action="Create" method="post">
+<link href="~/js/toastr.js/toastr.css" rel="stylesheet" />
+<link href="~/css/toast-css/grid.css" rel="stylesheet" />
+<link href="~/css/site.css" rel="stylesheet" />
+<div class="col-8 container">
+    <div id="hidden" style="opacity: 1; transition: opacity 1000ms;">
+        @if (@TempData["thanhcong"] != null)
+        {<p class="alert alert-success">@TempData["thanhcong"]</p>}
+    else if (@TempData["loi"] != null)
+    {
+        <p class="alert alert-danger">@TempData["loi"]</p>
+    }
+    </div>
+<form asp-controller="Course" asp-action="Update" method="post" class=" bg-light rounded container">
     <div asp-validation-summary="All" class="text-danger"></div>
+    @Html.HiddenFor(m => m.CourseId)
     <div class="row">
         <div class="col-2 col-form-label">
             <label asp-for="CourseName"></label>
@@ -21,7 +33,7 @@
         </div>
         <div class="col-10">
             <select asp-for="Status" class="form-control">
-                @foreach(var item in status)
+                @foreach (var item in status)
                 {
                     <option value="@item.Id">@item.Name</option>
                 }
@@ -47,9 +59,18 @@
         </div>
     </div>
     <div class="row">
-        <button class="btn btn-success mr-3" type="submit">Create</button>
-        <button class="btn btn-warning" type="reset">Cancel</button>
+        <button id="btn-update" class="btn btn-success mr-3" type="submit">Update</button>
+        <a asp-controller="Course" asp-action="index" class="btn btn-warning">Cancel</a>
     </div>
 </form>
-
-
+</div>
+@section scripts{ 
+<script src="~/js/toastr.js/toastr.min.js"></script>
+<script>
+    $("#btn-update").click(function () {
+        toastr.success("success");
+        setTimeout(function () { document.getElementById("hidden").style.display = "none" }, 3000);
+    });
+    setTimeout(function () { document.getElementById("hidden").style.display = "none" }, 3000);
+</script>
+}

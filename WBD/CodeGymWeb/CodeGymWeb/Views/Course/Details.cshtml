@@ -16,10 +16,19 @@
             </div>
             <div class="card-footer text-center">
                 <a asp-controller="Course" asp-action="Index" class="btn btn-warning">Back</a>
-                <a asp-controller="Home" asp-action="Edit" asp-route-id="@Model.CourseId" class="btn btn-primary">Edit</a>
-                <a asp-controller="Home" asp-action="Delete" asp-route-id="@Model.CourseId" class="btn btn-info">Delete</a>
+                <a asp-controller="Course" asp-action="Update" asp-route-id="@Model.CourseId" class="btn btn-primary">Edit</a>
+                <a onclick="Delete()" asp-controller="Course" asp-action="Delete" asp-route-id="@Model.CourseId" class="btn btn-info">Delete</a>
             </div>
         </div>
     </div>
 </div>
+<script>
+    function Delete(id) {
+        var r = confirm("Do you want to delete ?");
+        if (r == true) {
+            window.location.href = "Course/Delete?id=" + id;
+            alert("Delete completed !");
+        }
+    };
+</script>
 

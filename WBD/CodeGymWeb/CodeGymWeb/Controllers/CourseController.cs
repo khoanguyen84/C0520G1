@@ -41,9 +41,40 @@ namespace CodeGymWeb.Controllers
             var data = ApiHelper<CourseView>.HttpGetAsync($"course/get/{id}");
             return View(data);
         }
-        public IActionResult Create()
+        [HttpGet]
+        public IActionResult Update(int id)
         {
-            return View();
+            ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
+            var data = ApiHelper<SaveCourseReq>.HttpGetAsync($"course/get/{id}");
+            TempData["thanhcong"] = null;
+            TempData["loi"] = null;
+            return View(data);
+        }
+        [HttpPost]
+        public IActionResult Update(SaveCourseReq model)
+        {
+            ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
+            var data = ApiHelper<SaveCourseRes>.HttpPostAsync("Course/save", "PATCH", model);
+            if (data.CourseId != 0)
+                TempData["thanhcong"] = data.Message;
+            else
+                TempData["loi"] = data.Message;
+            return View(model);
+        }
+        public IActionResult Delete(int id, CourseView model)
+        {
+            var data = ApiHelper<CourseView>.HttpPutAsync($"Course/Delete/{id}", model);
+            return RedirectToAction("Index");
+        }
+        public IActionResult Complete(int id, CourseView model)
+        {
+            var data = ApiHelper<CourseView>.HttpPutAsync($"course/Complete/{id}", model);
+            return RedirectToAction("Index");
+        }
+        public IActionResult Active(int id, CourseView model)
+        {
+            var data = ApiHelper<CourseView>.HttpPutAsync($"course/Active/{id}", model);
+            return RedirectToAction("Index");
         }
     }
 }

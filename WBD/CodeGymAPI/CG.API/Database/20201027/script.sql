@@ -39,8 +39,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 -- =============================================
--- Author:		Lê Huy Hiệu
--- Create date: 26/10/2020
+-- Author:		Phan Tiến Long
+-- Create date: 2/11/2020
 -- Description:	Create or update Course
 -- Status : 1 - Actived; 2 -Inactived; 3-Deleted
 -- =============================================
