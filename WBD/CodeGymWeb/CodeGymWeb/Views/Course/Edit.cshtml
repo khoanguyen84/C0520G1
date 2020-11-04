@@ -7,7 +7,8 @@
 <h1>Edit</h1>
 <form asp-controller="Course" asp-action="Edit" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
-    <input hidden asp-for="CourseId" value="@Model.CourseId" />    
+    <input hidden asp-for="CourseId" value="@Model.CourseId" />
+    <input hidden asp-for="CourseName" value="@Model.CourseName" />
     <div class="row">
         <div class="col-2 col-form-label">
             <label asp-for="Status"></label>

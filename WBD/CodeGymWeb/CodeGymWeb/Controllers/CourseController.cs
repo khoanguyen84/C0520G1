@@ -35,11 +35,12 @@ namespace CodeGymWeb.Controllers
             {
                 result = ApiHelper<SaveCourseRes>.HttpPostAsync("course/save", "POST", req);
                 if (result.CourseId != 0)
-                {
+                {               
                     return RedirectToAction("index");
-                }
-                ModelState.AddModelError("", result.Message);
+                }             
+                ModelState.AddModelError("", result.Message);               
             }
+            ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
             return View(req);
         }
 
