@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.IO;
 using System.Threading.Tasks;
-using CodeGymWeb.Models.Course;
 using CodeGymWeb.Models.Module;
 using CodeGymWeb.Ultilities;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace CodeGymWeb.Controllers
 {
@@ -15,8 +12,15 @@ namespace CodeGymWeb.Controllers
     {
         public IActionResult Index()
         {
-            var data = ApiHelper<List<ModuleView>>.HttpGetAsync("Module/gets");
-            return View(data);
+            return View();
+        }
+
+        [HttpGet]
+        [Route("/module/gets")]
+        public JsonResult Gets()
+        {
+            var modules = ApiHelper<List<ModuleView>>.HttpGetAsync("module/gets");
+            return Json(new { data = modules });
         }
     }
 }

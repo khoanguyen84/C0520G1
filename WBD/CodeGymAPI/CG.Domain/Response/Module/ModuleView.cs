@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace CodeGymWeb.Models.Module
+namespace CG.Domain.Response.Module
 {
-    public class ModuleView
+    public  class ModuleView
     {
         public int ModuleId { get; set; }
         public string ModuleName { get; set; }

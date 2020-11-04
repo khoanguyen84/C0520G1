@@ -1,30 +1,25 @@
 ﻿using CG.BAL.Interface;
 using CG.DAL.Interface;
-using CG.Domain;
-using CG.Domain.Request;
+using CG.Domain.Request.Course;
+using CG.Domain.Response.Course;
+using CG.Domain.Response.Module;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CG.BAL.Implement
 {
     public class ModuleService : IModuleService
     {
-        private readonly IModuleIRepository iRepository;
+        private readonly IModuleRepository moduleRepository;
 
-        public ModuleService(IModuleIRepository  iRepository)
+        public ModuleService(IModuleRepository moduleRepository)
         {
-            this.iRepository = iRepository;
+            this.moduleRepository = moduleRepository;
         }
-        public int UpdatesModule(UpdateModule request)
+        public async Task<IEnumerable<ModuleView>> Gets()
         {
-            return iRepository.UpdateModule(request);
-        }
-
-        public async Task<IEnumerable<ModuleViewModel>> Gets()
-        {
-            return await iRepository.Gets();
+            return await moduleRepository.Gets();
         }
 
     }

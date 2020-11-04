@@ -5,9 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace CG.BAL.Interface
+namespace CG.DAL.Interface
 {
-    public interface IModuleService
+    public interface IModuleRepository
     {
         Task<IEnumerable<ModuleView>> Gets();
     }

@@ -1,38 +1,49 @@
-﻿@model List<ModuleView>
-@{
-    ViewData["Title"] = "Course page";
+﻿@{
+    ViewData["Title"] = "Module page";
 }
 
 <div class=" row">
-    <a asp-controller="Course" asp-action="Create" class="btn btn-info">Create</a>
+    <a href="javascript:void(0);" class="btn btn-info" onclick="module.openModal()">Create</a>
 
-    <table class="table table-bordered mt-2">
+    <table id="tbModule" class="table table-bordered mt-2">
         <thead class="thead-dark">
             <tr>
                 <th>Module Id</th>
                 <th>Module Name</th>
                 <th>Duration</th>
                 <th>Status</th>
-                <th>Created By</th>
-                <th>Modified Date</th>
-                <th>ModifiedBy</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
-            {
-            <tr>
-                <td>@item.ModuleId</td>
-                <td>@item.ModuleName</td>
-                <td>@item.Duration</td>
-                <td>@item.Status</td>
-                <td>
-                @*<button asp-controller="Module" asp-action="Update">
-                    Update
-                     </button>
-                </td>*@
-            </tr>
-            }
         </tbody>
     </table>
 </div>
+<!-- The Modal -->
+<div class="modal" id="addEditModuleModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Create module</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                Modal body..
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/module.js" asp-append-version="true"></script>
+}
