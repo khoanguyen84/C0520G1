@@ -17,7 +17,9 @@ module.showData = function () {
                         <td>
                             <button class="btn btn-info"
                             onclick="module.edit(${v.moduleId},'${v.moduleName}',${v.duration},${v.status})">Edit</button>
-                            <button class="btn btn-danger" onclick="module.delete(${v.moduleId})">Delete</button>
+                            <a href="javascript:void(0)" onclick="module.delete(${v.moduleId},'${v.moduleName}')"
+                                class="btn btn-danger"> Delete
+                            </a>
                         </td>
                     </tr>`
                 );
@@ -34,33 +36,44 @@ module.edit = function (moduleId, moduleName, duration, status) {
     module.openModal();
 }
 
-module.delete = function (moduleId) {
+module.delete = function (moduleId, moduleName) {
     bootbox.confirm({
-        message: "Do you want changed status to Deleted?}",
+        message: "Delete <span class='text-danger'>" + moduleName + "</span> ?",
         buttons: {
             confirm: {
                 label: 'Yes',
-                className: 'btn-info'
+                className: 'btn-success'
             },
             cancel: {
                 label: 'No',
-                className: 'btn-waning'
+                className: 'btn-danger'
             }
         },
         callback: function (result) {
             if (result) {
                 $.ajax({
-                    url: `/module/deleted/${moduleId}`,
-                    method: 'POST',
+                    url: `/module/delete/${moduleId}`,
+                    method: 'GET',
                     dataType: 'json',
-                    success: function (data) {
-                        window.location.href = "/Module/Index/";
+                    success: function (response) {
+                        if (response.data.message == "success") {
+                            window.location.href = "/module/Index/";
+                        }
+                        else {
+                            bootbox.alert({
+                                message: "Something wrong",
+                                callback: function () {
+                                    window.location.href = "/module/Index/";
+                                }
+                            })
+                        }
                     }
                 });
             }
         }
     });
 }
+
 module.openModal = function () {
     $('#addEditModuleModal').modal('show');
 }
