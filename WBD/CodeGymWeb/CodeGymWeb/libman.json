@@ -11,16 +11,16 @@
       "destination": "wwwroot/datatables/"
     },
     {
-      "library": "bootbox.js@5.4.1",
-      "destination": "wwwroot/lib/bootbox"
-    },
-    {
       "library": "toastr.js@2.1.4",
       "destination": "wwwroot/toastr.js/"
     },
     {
       "library": "toast-css@1.1.0",
       "destination": "wwwroot/toast-css/"
+    },
+    {
+      "library": "bootbox.js@5.4.1",
+      "destination": "wwwroot/bootbox.js/"
     }
   ]
 }

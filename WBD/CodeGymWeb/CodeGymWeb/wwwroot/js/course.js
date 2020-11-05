@@ -32,7 +32,7 @@ courses.Deleted = function (courseId, courseName) {
                     method: "PUT",
                     contentType: 'JSON',
                     success: function (data) {
-                        alert(`Delete ${courseName} success!`);
+                        bootbox.alert(`Delete ${courseName} success!`);
                         console.log(data);
                         if (data) {
                             window.location.href = `/Course/Index`;
@@ -63,7 +63,7 @@ courses.Inprocess = function (courseId, courseName) {
                     method: "PUT",
                     contentType: 'JSON',
                     success: function (data) {
-                        alert(`Changed status ${courseName} to Inprocess success!`);
+                        bootbox.alert(`Changed status ${courseName} to Inprocess success!`);
                         console.log(data);
                         if (data) {
                             window.location.href = `/Course/Index`;
@@ -93,7 +93,8 @@ courses.Completed = function (courseId, courseName) {
                     method: "PUT",
                     contentType: 'JSON',
                     success: function (data) {
-                        alert(`Changed status ${courseName} to Completed success!`);
+                        bootbox.alert(`Changed status ${courseName} to Completed success!`);
+                        }, 3000);
                         console.log(data);
                         if (data) {
                             window.location.href = `/Course/Index`;
