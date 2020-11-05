@@ -32,11 +32,13 @@ courses.Deleted = function (courseId, courseName) {
                     method: "PUT",
                     contentType: 'JSON',
                     success: function (data) {
-                        bootbox.alert(`Delete ${courseName} success!`);
                         console.log(data);
-                        if (data) {
-                            window.location.href = `/Course/Index`;
-                        }
+                        bootbox.alert(`Delete ${courseName} success!`);
+                        setTimeout(function () {
+                            if (data) {
+                                window.location.href = `/Course/Index`;
+                            }
+                        }, 2000);
                     }
                 });
             }
@@ -63,11 +65,13 @@ courses.Inprocess = function (courseId, courseName) {
                     method: "PUT",
                     contentType: 'JSON',
                     success: function (data) {
-                        bootbox.alert(`Changed status ${courseName} to Inprocess success!`);
                         console.log(data);
-                        if (data) {
-                            window.location.href = `/Course/Index`;
-                        }
+                        bootbox.alert(`Changed status ${courseName} to Inprocess success!`);
+                        setTimeout(function () {
+                            if (data) {
+                                window.location.href = `/Course/Index`;
+                            }
+                        }, 2000);
                     }
                 });
             }
@@ -93,12 +97,13 @@ courses.Completed = function (courseId, courseName) {
                     method: "PUT",
                     contentType: 'JSON',
                     success: function (data) {
-                        bootbox.alert(`Changed status ${courseName} to Completed success!`);
-                        }, 3000);
                         console.log(data);
-                        if (data) {
-                            window.location.href = `/Course/Index`;
-                        }
+                        bootbox.alert(`Changed status ${courseName} to Completed success!`);
+                        setTimeout(function () {
+                            if (data) {
+                                window.location.href = `/Course/Index`;
+                            }
+                        }, 2000);
                     }
                 });
             }
