@@ -4,49 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script LANGUAGE="JavaScript">
-        function a_plus_b(form) {
-        a=eval(form.a.value)
-        b=eval(form.b.value)
-        c=a+b
-        form.ans.value = c
-        }
-        function a_minus_b(form) {
-        a=eval(form.a.value)
-        b=eval(form.b.value)
-        c=a-b
-        form.ans.value=c
-        }
-        function a_times_b(form) {
-        a=eval(form.a.value)
-        b=eval(form.b.value)
-        c=a*b
-        form.ans.value=c
-        }
-        function a_div_b(form) {
-        a=eval(form.a.value)
-        b=eval(form.b.value)
-        c=a/b
-        form.ans.value = c
-        }
-        function a_pow_b(form) {
-        a=eval(form.a.value)
-        b=eval(form.b.value)
-        c=Math.pow(a, b)
-        form.ans.value = c
-        }
-        </script>
+    <script type="text/javascript" language="javascript">
+      
+
+      $(document).ready(function() {
+            $("#myimg").attr("src", "/images/jquery.jpg");
+         });
+
+    </script>
 </head>
 <body>
-    <form name="formx">
-        <p><input type="text" size="4" value="12" name="a"> <input type="button" value=" + "
-        onClick="a_plus_b(this.form)"> <input type="button" value=" - "
-        onClick="a_minus_b(this.form)"> <input type="button" value=" x "
-        onClick="a_times_b(this.form)"> <input type="button" value=" / "
-        onClick="a_div_b(this.form)"> <input type="button" value=" ^ "
-        onClick="a_pow_b(this.form)"> <input type="number" size="14" value="3" name="b"> =
-        <input
-        type "number" value="0" name="ans" size="9"> </p>
-        </form>
+
+
+    <div>
+        <img id="myimg" src="wrongpath.jpg" alt="Sample image" />
+     </div>
 </body>
 </html>

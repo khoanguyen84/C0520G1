@@ -13,7 +13,7 @@ namespace CG.DAL.Interface
         Task<SaveCourseRes> Save(SaveCourseReq request);
 
         Task<CourseView> GetCourseById(int courseId);
-        Task<CourseNotFound> SaveCourse(CourseSaveRequest request);
-        Task<CourseNotFound> ChangeStatusCourse(int courseId, int status, int modifiedBy = 1);
+        Task<SaveCourseRes> SaveCourse(SaveCourseReq request);
+        Task<SaveCourseRes> ChangeStatusCourse(int courseId, int status, int modifiedBy = 1);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using CG.BAL.Interface;
 using CG.DAL.Interface;
+using CG.Domain.Request;
 using CG.Domain.Request.Module;
 using CG.Domain.Response.Module;
 using System;
@@ -19,7 +20,7 @@ namespace CG.BAL.Implement
         }
 
 
-        public Task<ModuleChangeStatusRespone> ChangeStatusModuleByModuleId(ModuleChangeStatusRequest request)
+        public Task<SaveModuleRes> ChangeStatusModuleByModuleId(ModuleChangeStatusRequest request)
         {
             return moduleRepository.ChangeStatusModuleByModuleId(request);
         }
@@ -29,7 +30,7 @@ namespace CG.BAL.Implement
             return moduleRepository.GetModuleByModuleId(moduleId);
         }
 
-        public Task<ModuleChangeStatusRespone> SaveModule(ModuleSaveRequest request)
+        public Task<SaveModuleRes> SaveModule(SaveModuleReq request)
         {
             return moduleRepository.SaveModule(request);
         }

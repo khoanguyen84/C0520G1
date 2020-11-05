@@ -37,17 +37,17 @@ namespace CG.API.Controllers
             return Ok(result);
         }
         [HttpPost("api/course/delete/{id}")]
-        public async Task<CourseNotFound> Delete(int id)
+        public async Task<SaveCourseRes> Delete(int id)
         {
             return await courseService.ChangeStatusCourse(id, 4);
         }
         [HttpPost("api/course/active/{id}")]
-        public async Task<CourseNotFound> Active(int id)
+        public async Task<SaveCourseRes> Active(int id)
         {
             return await courseService.ChangeStatusCourse(id, 1);
         }
         [HttpPut("api/course/complete/{id}")]
-        public async Task<CourseNotFound> Complete(int id)
+        public async Task<SaveCourseRes> Complete(int id)
         {
             return await courseService.ChangeStatusCourse(id, 2);
         }

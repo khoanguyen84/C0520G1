@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using CG.BAL.Interface;
-using CG.Domain.Request.Module;
 using CG.Domain.Request;
-using Microsoft.AspNetCore.Http;
+using CG.Domain.Request.Module;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CG.API.Controllers
@@ -22,10 +18,10 @@ namespace CG.API.Controllers
         }
 
 
-        [HttpGet("api/module/get")]
-        public async Task<OkObjectResult> Get(int moduleId)
+        [HttpGet("api/module/get/{id}")]
+        public async Task<OkObjectResult> Get(int id)
         {
-            var module = await moduleService.GetModuleByModuleId(moduleId);
+            var module = await moduleService.GetModuleByModuleId(id);
             return Ok(module);
         }
         [HttpPut("api/module/change")]
@@ -36,7 +32,7 @@ namespace CG.API.Controllers
         }
         [HttpPost("api/module/save")]
         [HttpPatch("api/module/save")]
-        public async Task<OkObjectResult> Save(ModuleSaveRequest request)
+        public async Task<OkObjectResult> Save(SaveModuleReq request)
         {
             var module = await moduleService.SaveModule(request);
             return Ok(module);
@@ -46,14 +42,7 @@ namespace CG.API.Controllers
         {
             var modules = await moduleService.Gets();
             return Ok(modules);
-        }
-
-        [HttpPost, HttpPatch]
-        [Route("api/module/save")]
-        public async Task<OkObjectResult> SaveModule(SaveModuleReq request)
-        {
-            var result = await moduleService.Save(request);
-            return Ok(result);
-        }
+        }      
+       
     }
 }

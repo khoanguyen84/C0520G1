@@ -1,6 +1,4 @@
-﻿using CG.Domain.Request.Course;
-using CG.Domain.Request.Module;
-using CG.Domain.Response.Course;
+﻿using CG.Domain.Request.Module;
 using CG.Domain.Request;
 using CG.Domain.Response.Module;
 using System;
@@ -14,8 +12,8 @@ namespace CG.DAL.Interface
     {
         Task<ModuleView> GetModuleByModuleId(int moduleId);
 
-        Task<ModuleChangeStatusRespone> ChangeStatusModuleByModuleId(ModuleChangeStatusRequest request);
-        Task<ModuleChangeStatusRespone> SaveModule(ModuleSaveRequest request);
+        Task<SaveModuleRes> ChangeStatusModuleByModuleId(ModuleChangeStatusRequest request);
+        Task<SaveModuleRes> SaveModule(SaveModuleReq request);
         Task<IEnumerable<ModuleView>> Gets();
         Task<SaveModuleRes> Save(SaveModuleReq request);
     }

@@ -16,7 +16,7 @@
       "destination": "wwwroot/lib/font-awesome"
     },
     {
-      "library": "bootbox.js@5.4.1",
+      "library": "bootbox.js@5.4.1" ,
       "destination": "wwwroot/lib/bootbox"
     }
   ]

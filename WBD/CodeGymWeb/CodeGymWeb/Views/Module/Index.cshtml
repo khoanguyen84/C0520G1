@@ -37,7 +37,7 @@
                     <div class="row form-group">
                         <label for="ModuleName" class="col-3">Module name:</label>
                         <div class="col-9">
-                            <input type="text" class="form-control" placeholder="Module name" 
+                            <input type="text" class="form-control" placeholder="Module name"
                                    id="ModuleName" name="ModuleName"
                                    data-rule-required="true"
                                    data-msg-required="Module name is required">
@@ -46,7 +46,7 @@
                     <div class="row form-group">
                         <label for="Duration" class="col-3">Duration:</label>
                         <div class="col-9">
-                            <input type="number" class="form-control" placeholder="Duration" 
+                            <input type="number" class="form-control" placeholder="Duration"
                                    id="Duration" name="Duration"
                                    data-rule-required="true"
                                    data-msg-required="Duration is required"
@@ -58,12 +58,11 @@
                         <label for="Status" class="col-3">Duration:</label>
                         <div class="col-9">
                             <select class="form-control" id="Status" name="Status">
-
                             </select>
                         </div>
                     </div>
                 </form>
-                
+
             </div>
 
             <!-- Modal footer -->
@@ -76,6 +75,36 @@
     </div>
 </div>
 
+
+<div class="modal" id="DetailModuleModal">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Detail module</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div id="bodydetail">
+
+                </div>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 @section Scripts{
+
+    <script src="~/lib/bootbox.js/bootbox.js"></script>
     <script src="~/js/module.js" asp-append-version="true"></script>
 }

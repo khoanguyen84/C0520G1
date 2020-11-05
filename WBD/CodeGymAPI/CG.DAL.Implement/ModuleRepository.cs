@@ -1,4 +1,5 @@
 ﻿using CG.DAL.Interface;
+using CG.Domain.Request;
 using CG.Domain.Request.Module;
 using CG.Domain.Response.Course;
 using CG.Domain.Response.Module;
@@ -13,7 +14,7 @@ namespace CG.DAL.Implement
 {
     public class ModuleRepository : BaseRepository, IModuleRepository
     {
-        public async Task<ModuleChangeStatusRespone> ChangeStatusModuleByModuleId(ModuleChangeStatusRequest request)
+        public async Task<SaveModuleRes> ChangeStatusModuleByModuleId(ModuleChangeStatusRequest request)
         {
             try
             {
@@ -21,14 +22,14 @@ namespace CG.DAL.Implement
                 parameters.Add("@moduleId", request.ModuleId);
                 parameters.Add("@status", request.Status);
                 parameters.Add("@modifiedBy", request.ModifiedBy);
-                return (await SqlMapper.QueryFirstOrDefaultAsync<ModuleChangeStatusRespone>(cnn: connection,
+                return (await SqlMapper.QueryFirstOrDefaultAsync<SaveModuleRes>(cnn: connection,
                                  param: parameters,
                                 sql: "sp_ChangeStatusModuleByModuleId",
                                 commandType: CommandType.StoredProcedure));
             }
             catch (Exception)
             {
-                return new ModuleChangeStatusRespone()
+                return new SaveModuleRes()
                 {
                     ModuleId = 0,
                     Message = "Something went wrong, please try again"
@@ -49,7 +50,7 @@ namespace CG.DAL.Implement
                             commandType: CommandType.StoredProcedure));
         }
 
-        public async Task<ModuleChangeStatusRespone> SaveModule(ModuleSaveRequest request)
+        public async Task<SaveModuleRes> SaveModule(SaveModuleReq request)
         {
             try
             {
@@ -59,9 +60,9 @@ namespace CG.DAL.Implement
                 parameters.Add("@duration", request.Duration);
                 parameters.Add("@status", request.Status);
                 
-                parameters.Add("@createBy", request.CreateBy);
-                parameters.Add("@modidiedBy", request.ModifiedBy);
-                return (await SqlMapper.QueryFirstOrDefaultAsync<ModuleChangeStatusRespone>(cnn: connection,
+                //parameters.Add("@createBy", request.CreateBy);
+                //parameters.Add("@modidiedBy", request.ModifiedBy);
+                return (await SqlMapper.QueryFirstOrDefaultAsync<SaveModuleRes>(cnn: connection,
                                  param: parameters,
                                 sql: "sp_SaveModule",
                                 commandType: CommandType.StoredProcedure));
@@ -69,7 +70,7 @@ namespace CG.DAL.Implement
             catch (Exception)
             {
 
-                return new ModuleChangeStatusRespone()
+                return new SaveModuleRes()
                 {
                     ModuleId = 0,
                     Message = "Something went wrong, please try again"
@@ -103,7 +104,7 @@ namespace CG.DAL.Implement
                                                                     commandType: CommandType.StoredProcedure);
                 return result;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 return result;

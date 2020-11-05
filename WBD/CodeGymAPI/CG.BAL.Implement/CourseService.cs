@@ -34,11 +34,11 @@ namespace CG.BAL.Implement
             return await courseRepository.Save(request);
         }
 
-        public async Task<CourseNotFound> SaveCourse(CourseSaveRequest request)
+        public async Task<SaveCourseRes> SaveCourse(SaveCourseReq request)
         {
             return await courseRepository.SaveCourse(request);
         }
-        public async Task<CourseNotFound> ChangeStatusCourse(int courseId, int status, int modifiedBy = 1)
+        public async Task<SaveCourseRes> ChangeStatusCourse(int courseId, int status, int modifiedBy = 1)
         {
             return await courseRepository.ChangeStatusCourse(courseId, status);
         }

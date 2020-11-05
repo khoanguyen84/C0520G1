@@ -34,7 +34,7 @@ namespace CG.DAL.Implement
             
         }
 
-        public async Task<CourseNotFound> SaveCourse(CourseSaveRequest request)
+        public async Task<SaveCourseRes> SaveCourse(SaveCourseReq request)
         {
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add("@courseId", request.CourseId);
@@ -43,7 +43,7 @@ namespace CG.DAL.Implement
             parameters.Add("@startDate", request.StartDate);
             parameters.Add("@endDate", request.EndDate);
 
-            return (await SqlMapper.QueryFirstOrDefaultAsync<CourseNotFound>(cnn: connection,
+            return (await SqlMapper.QueryFirstOrDefaultAsync<SaveCourseRes>(cnn: connection,
                              param: parameters,
                             sql: "sp_SaveCourse",
                             commandType: CommandType.StoredProcedure));
@@ -77,13 +77,13 @@ namespace CG.DAL.Implement
                 return result;
             }
         }
-        public async Task<CourseNotFound> ChangeStatusCourse(int courseId, int status, int modifiedBy = 1)
+        public async Task<SaveCourseRes> ChangeStatusCourse(int courseId, int status, int modifiedBy = 1)
         {
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add("@courseId", courseId);
             parameters.Add("@status", status);
             parameters.Add("@modifiedBy", modifiedBy);
-            return (await SqlMapper.QueryFirstOrDefaultAsync<CourseNotFound>(cnn: connection,
+            return (await SqlMapper.QueryFirstOrDefaultAsync<SaveCourseRes>(cnn: connection,
                              param: parameters,
                             sql: "sp_ChangeStatusCourseByCourseId",
                             commandType: CommandType.StoredProcedure));
