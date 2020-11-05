@@ -1,0 +1,40 @@
+﻿@model Students
+@{
+    ViewData["Title"] = "Student page";
+}
+
+<div class=" row">
+    <a asp-controller="Course" asp-action="Create" class="btn btn-info">Create</a>
+    <a asp-controller="Course" asp-action="index" class="btn btn-link">Back to Course</a>
+    <table class="table table-bordered mt-2">
+        <caption style="caption-side:top;" class="text-warning">DANH SÁCH HỌC VIÊN LỚP @Model.CourseName</caption>
+        <thead class="thead-dark">
+            <tr>
+                <th>Student Id</th>
+                <th>Fullname</th>
+                <th>Gender</th>
+                <th>DoB</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.StudentList)
+            {
+                
+            <tr>
+                <td>@item.StudentId</td>
+                <td>@item.Fullname</td>
+                <td>@item.GenderStr</td>
+                <td>@item.DobStr</td>
+                <td>@item.Email</td>
+                <td>@item.PhoneNumber</td>
+                <td>@item.StatusName</td>
+                <td></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
