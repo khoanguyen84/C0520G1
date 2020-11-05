@@ -9,5 +9,7 @@ namespace CG.BAL.Interface
     {
         Task<IEnumerable<ModuleView>> Gets();
         Task<SaveModuleRes> Save(SaveModuleReq request);
+        Task<ModuleView> Get(int id);
+        Task<SaveModuleRes> DeleteModule(int id);
     }
 }
