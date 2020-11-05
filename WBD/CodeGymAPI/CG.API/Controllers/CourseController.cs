@@ -56,7 +56,7 @@ namespace CG.API.Controllers
         }
 
         [HttpPatch]
-        [Route("api/course/changeStatus/{id}/{status}")]
+        [Route("api/course/ChangeCourseStatus/{id}/{status}")]
         public async Task<OkObjectResult> changeStatus(int id, int status)
         {
             var result = await courseService.ChangeStatus(id, status);

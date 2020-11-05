@@ -17,7 +17,7 @@ module.showData = function () {
                         <td>
                             <button class="btn btn-info"
                             onclick="module.edit(${v.moduleId},'${v.moduleName}',${v.duration},${v.status})">Edit</button>
-                            <button class="btn btn-danger" onclick="module.delete(${v.moduleId})">Delete</button>
+                            <a href="javascript:void(0)" onclick="module.delete(${v.moduleId})" class="btn btn-danger">Delete</button>
                         </td>
                     </tr>`
                 );
@@ -26,7 +26,7 @@ module.showData = function () {
     });
 }
 
-module.edit = function (moduleId, moduleName, duration,status) {
+module.edit = function (moduleId, moduleName, duration, status) {
     $("#ModuleName").val(moduleName);
     $("#Duration").val(duration);
     $("#ModuleId").val(moduleId);
@@ -35,7 +35,31 @@ module.edit = function (moduleId, moduleName, duration,status) {
 }
 
 module.delete = function (moduleId) {
-
+    bootbox.confirm({
+        message: "delete this record?",
+        buttons: {
+            confirm: {
+                label: 'Yes',
+                className: 'btn-success'
+            },
+            cancel: {
+                label: 'No',
+                className: 'btn-danger'
+            }
+        },
+        callback: function (result) {
+            if (result) {
+                $.ajax({
+                    url: `/module/delete/${moduleId}`,
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        window.location.href = "/module/Index/";
+                    }
+                });
+            }
+        }
+    });
 }
 
 module.openModal = function () {

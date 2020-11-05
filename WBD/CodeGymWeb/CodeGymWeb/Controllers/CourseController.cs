@@ -69,19 +69,19 @@ namespace CodeGymWeb.Controllers
 
         public IActionResult ToInProcess(int id, SaveCourseReq req)
         {
-            var result = ApiHelper<SaveCourseRes>.HttpPostAsync($"course/changeStatus/{id}/1", "Patch", req);
+            var result = ApiHelper<SaveCourseRes>.HttpPostAsync($"course/ChangeCourseStatus/{id}/1", "Patch", req);
             return RedirectToAction("index");
         }
 
         public IActionResult Delete(int id, SaveCourseReq req)
         {
-            var result = ApiHelper<SaveCourseRes>.HttpPostAsync($"course/changeStatus/{id}/4", "Patch", req);
+            var result = ApiHelper<SaveCourseRes>.HttpPostAsync($"course/ChangeCourseStatus/{id}/4", "Patch", req);
             return RedirectToAction("index");
         }
 
         public IActionResult ToCompleted(int id, SaveCourseReq req)
         {
-            var result = ApiHelper<SaveCourseRes>.HttpPostAsync($"course/changeStatus/{id}/2", "Patch", req);
+            var result = ApiHelper<SaveCourseRes>.HttpPostAsync($"course/ChangeCourseStatus/{id}/2", "Patch", req);
             return RedirectToAction("index");
         }
     }

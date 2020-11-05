@@ -33,5 +33,13 @@ namespace CG.API.Controllers
             var result = await moduleService.Save(request);
             return Ok(result);
         }
+
+        [HttpPost,HttpPatch] 
+        [Route("api/module/ChangeModuleStatus/{id}/{status}")]
+        public async Task<OkObjectResult> changeModuleStatus(int id, int status)
+        {
+            var result = await moduleService.ChangeStatus(id, status);
+            return Ok(result);
+        }
     }
 }

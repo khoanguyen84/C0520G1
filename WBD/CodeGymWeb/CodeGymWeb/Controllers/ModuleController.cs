@@ -39,5 +39,13 @@ namespace CodeGymWeb.Controllers
             var result = ApiHelper<SaveModuleResult>.HttpPostAsync($"module/save", "POST", request);
             return Json(new { data = result });
         }
+
+        [Route("/module/delete/{moduleId}")]
+        public JsonResult Delete(int moduleId)
+        {
+            SaveModule req = new SaveModule();
+            var result = ApiHelper<SaveModuleResult>.HttpPostAsync($"module/ChangeModuleStatus/{moduleId}/4", "POST", req);
+            return Json(new { data = result });
+        }
     }
 }

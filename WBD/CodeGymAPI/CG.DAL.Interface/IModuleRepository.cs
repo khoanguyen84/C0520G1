@@ -12,5 +12,6 @@ namespace CG.DAL.Interface
     {
         Task<IEnumerable<ModuleView>> Gets();
         Task<SaveModuleRes> Save(SaveModuleReq request);
+        Task<SaveModuleRes> ChangeModuleStatus(int id, int status);
     }
 }

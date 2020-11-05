@@ -17,7 +17,7 @@ namespace CG.DAL.Implement
             parameters.Add("@CourseId", id);
             parameters.Add("@Status", status);
             return await SqlMapper.QueryFirstOrDefaultAsync<SaveCourseRes>(cnn: connection,
-                                                        sql: "sp_ChangeStatus",
+                                                        sql: "sp_ChangeCourseStatus",
                                                         param: parameters,
                                                         commandType: CommandType.StoredProcedure);
         }
