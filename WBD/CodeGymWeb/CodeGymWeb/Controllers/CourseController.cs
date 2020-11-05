@@ -63,9 +63,12 @@ namespace CodeGymWeb.Controllers
         public IActionResult Update(SaveCourseReq model)
         {
             ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
-            var data = ApiHelper<SaveCourseRes>.HttpPostAsync("Course/save", "PATCH", model);
-            model.Message = data.Message;
-            model.CourseId = data.CourseId;
+            if (ModelState.IsValid)
+            {
+                var data = ApiHelper<SaveCourseRes>.HttpPostAsync("Course/save", "PATCH", model);
+                model.Message = data.Message;
+                model.CourseId = data.CourseId;
+            }
             return View(model);
         }
     }
