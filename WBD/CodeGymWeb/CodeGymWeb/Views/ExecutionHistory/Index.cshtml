@@ -1,0 +1,46 @@
+﻿@model List<ExecutionHistoryView>
+@{
+    ViewData["Title"] = "Execution HistoryView page";
+}
+
+
+@*@if (TempData["Message"] != null)
+{
+    <p class="alert alert-success">@TempData["Message"]</p>
+}*@
+@*<a asp-controller="Course" asp-action="Create" class="btn btn-info my-1">Create</a>*@
+<div class="text-center my-2">
+    <table id="tbTables" class="table table-bordered mt-2">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Table Name</th>
+                <th>Column Name</th>
+                <th>Old Value</th>
+                <th>New Value</th>
+                <th>Execution Date</th>
+                <th>ModifiedBy</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.TableName</td>
+                <td>@item.ColumnName</td>
+                <td>@item.OldValue</td>
+                <td>@item.NewValue</td>
+                <td>@item.ExecutionDate.ToString("dd-MM-yyyy hh:mm")</td>
+                <td>@item.ModifiedBy</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts{
+    <script src="~/lib/bootbox.js/bootbox.min.js"></script>
+    <script src="~/js/exhis.js" asp-append-version=" true"></script>
+}
+

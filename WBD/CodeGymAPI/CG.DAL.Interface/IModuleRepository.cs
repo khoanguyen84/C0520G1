@@ -11,6 +11,8 @@ namespace CG.DAL.Interface
     public interface IModuleRepository
     {
         Task<IEnumerable<ModuleView>> Gets();
+        Task<ModuleView> Get(int id);
         Task<SaveModuleRes> Save(SaveModuleReq request);
+        Task<SaveModuleRes> Delete(int id);
     }
 }

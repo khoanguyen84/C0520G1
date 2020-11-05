@@ -21,9 +21,18 @@ namespace CG.BAL.Implement
             return await moduleRepository.Gets();
         }
 
+        public async Task<ModuleView> Get(int id)
+        {
+            return await moduleRepository.Get(id);
+        }
+
         public async Task<SaveModuleRes> Save(SaveModuleReq request)
         {
             return await moduleRepository.Save(request);
+        }
+        public async Task<SaveModuleRes> Delete(int id)
+        {
+            return await moduleRepository.Delete(id);
         }
     }
 }

@@ -1,0 +1,30 @@
+﻿@model ModuleView
+@{
+    ViewData["Title"] = "Details module";
+}
+
+@*@if (TempData["Message"] != null)
+{
+    <p class="alert alert-success">@TempData["Message"]</p>
+}*@
+<div class="row justify-content-center">
+    <div class="col-sm-6">
+        <div class="card my-2">
+            <div class="card-header">
+                <h3 style="text-align: center;">Module: @Model.ModuleName</h3>
+            </div>
+            <div class="card-body">
+                <p><b>ID:</b> @Model.ModuleId</p>
+                <p><b>Duration:</b> @Model.Duration</p>
+                <p><b>Status:</b> @Model.StatusName</p>
+                <p><b>Created Date:</b> @Model.CreatedDateStr</p>
+                <p><b>Created By:</b> @Model.CreatedBy</p>
+                <p><b>Modified Date:</b> @Model.ModifiedDateStr</p>
+                <p><b>Modified By:</b> @Model.ModifiedBy</p>
+            </div>
+            <div class="card-footer text-center">
+                <a asp-controller="Module" asp-action="Index" class="btn btn-warning">Back</a>
+            </div>
+        </div>
+    </div>
+</div>
