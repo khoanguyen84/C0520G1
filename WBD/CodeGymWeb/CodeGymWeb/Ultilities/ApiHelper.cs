@@ -30,7 +30,6 @@ namespace CodeGymWeb.Ultilities
                     ((IDisposable)responseStream).Dispose();
                 }
                 return JsonConvert.DeserializeObject<T>(responseData);
-                
             }
         }
 

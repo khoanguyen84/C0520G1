@@ -17,7 +17,9 @@ module.showData = function () {
                         <td>
                             <button class="btn btn-info"
                             onclick="module.edit(${v.moduleId},'${v.moduleName}',${v.duration},${v.status})">Edit</button>
-                            <a href="javascript:void(0)" onclick="module.delete(${v.moduleId})" class="btn btn-danger">Delete</button>
+                            <a href="javascript:void(0)" onclick="module.delete(${v.moduleId},'${v.moduleName}')"
+                                class="btn btn-danger"> Delete
+                            </a>
                         </td>
                     </tr>`
                 );
@@ -34,9 +36,9 @@ module.edit = function (moduleId, moduleName, duration, status) {
     module.openModal();
 }
 
-module.delete = function (moduleId) {
+module.delete = function (moduleId, moduleName) {
     bootbox.confirm({
-        message: "delete this record?",
+        message: "Delete <span class='text-danger'>" + moduleName +"</span> ?",
         buttons: {
             confirm: {
                 label: 'Yes',
@@ -53,8 +55,18 @@ module.delete = function (moduleId) {
                     url: `/module/delete/${moduleId}`,
                     method: 'GET',
                     dataType: 'json',
-                    success: function (data) {
-                        window.location.href = "/module/Index/";
+                    success: function (response) {
+                        if (response.data.message == "success") {
+                            window.location.href = "/module/Index/";
+                        }
+                        else {
+                            bootbox.alert({
+                                message: "Something wrong",
+                                callback: function () {
+                                    window.location.href = "/module/Index/";
+                                }
+                            })
+                        }
                     }
                 });
             }
