@@ -11,6 +11,7 @@
             <th>Course Name</th>
             <th>Start date</th>
             <th>End date</th>
+            <th>Students</th>
             <th>Status</th>
             <th>Actions</th>
         </tr>
@@ -37,19 +38,20 @@
             }
 
 
-            <tr>
-                <td>@item.CourseId</td>
-                <td>@item.CourseName</td>
-                <td>@item.StartDateStr</td>
-                <td>@item.EndDateStr</td>
-                <td>
-                    <span class="@(item.Status == 1 ? "btn btn-primary" : (item.Status == 2 ? "btn btn-success" : "btn btn-warning"))">@item.StatusName</span>
-                </td>
-                <td>
-                    <a asp-controller="Course" asp-action="Detail" asp-route-id="@item.CourseId"><i class="fas fa-eye"></i></a>
-                    @Html.Raw(actions)
-                </td>
-            </tr>
+        <tr>
+            <td>@item.CourseId</td>
+            <td>@item.CourseName</td>
+            <td>@item.StartDateStr</td>
+            <td>@item.EndDateStr</td>
+            <td><a asp-controller="Student" asp-action="index" asp-route-id="@item.CourseId">@item.Students</a></td>
+            <td>
+                <span class="@(item.Status == 1 ? "btn btn-primary" : (item.Status == 2 ? "btn btn-success" : "btn btn-warning"))">@item.StatusName</span>
+            </td>
+            <td>
+                <a asp-controller="Course" asp-action="Detail" asp-route-id="@item.CourseId"><i class="fas fa-eye"></i></a>
+                @Html.Raw(actions)
+            </td>
+        </tr>
         }
     </tbody>
 </table>
