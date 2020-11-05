@@ -1,6 +1,5 @@
-﻿using CG.Domain.Request;
+﻿using CG.Domain.Request.Module;
 using CG.Domain.Response.Module;
-using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +14,7 @@ namespace CG.BAL.Interface
 
         Task<ModuleChangeStatusRespone> SaveModule(ModuleSaveRequest request);
         Task<IEnumerable<ModuleView>> Gets();
+        Task<SaveModuleRes> Save(SaveModuleReq request);
     }
 }
 
