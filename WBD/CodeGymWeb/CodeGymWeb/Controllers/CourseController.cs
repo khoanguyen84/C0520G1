@@ -19,14 +19,32 @@ namespace CodeGymWeb.Controllers
         {
             TempData["success"] = null;
             TempData["error"] = null;
-            ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
-            return View();
+            SaveCourseReq result = new SaveCourseReq()
+            {
+                Statuses = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}")
+            };
+            return View(result);
         }
+        //[HttpGet]
+        //public IActionResult Create()
+        //{
+        //    TempData["success"] = null;
+        //    TempData["error"] = null;
+        //    ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
+        //    return View();
+        //} --su dung view bag
+
+        //[HttpGet]
+        //public IActionResult Create() => View(new SaveCourseReq()
+        //{
+        //    Statuses = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}")
+        //});--strongly typed view =>
+
 
         [HttpPost]
         public IActionResult Create(SaveCourseReq req)
         {
-            ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
+            //ViewBag.Status = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}"); viewbag;
             var result = new SaveCourseRes();
             if (ModelState.IsValid)
             {
@@ -40,6 +58,7 @@ namespace CodeGymWeb.Controllers
                     TempData["error"] = result.Message;
                 }    
             }
+            req.Statuses = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}"); //strongly typed view
             return View(req);
         }
         [HttpGet]
@@ -48,14 +67,16 @@ namespace CodeGymWeb.Controllers
             TempData["success"] = null;
             TempData["error"] = null;
             var data = ApiHelper<SaveCourseReq>.HttpGetAsync($"course/GetCourseById/{id}");
+            data.Statuses = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
             return View(data);
         }
         [HttpPost]
         public IActionResult Edit(SaveCourseReq req)
         {
+            var result = new SaveCourseRes();
             if (ModelState.IsValid)
             {
-                var result = ApiHelper<SaveCourseRes>.HttpPostAsync("course/save", "PATCH", req);
+                result = ApiHelper<SaveCourseRes>.HttpPostAsync("course/save", "PATCH", req);
                 if(result.CourseId != 0)
                 {
                     TempData["success"] = result.Message;
@@ -65,6 +86,7 @@ namespace CodeGymWeb.Controllers
                     TempData["error"] = result.Message;
                 }  
             }
+            req.Statuses = ApiHelper<List<Status>>.HttpGetAsync($"wiki/status/{(int)Common.Table.Course}");
             return View(req);
         }
         [Route("/course/GetCourseById/{id}")]

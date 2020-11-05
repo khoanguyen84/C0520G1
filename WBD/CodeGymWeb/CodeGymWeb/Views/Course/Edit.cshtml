@@ -33,8 +33,10 @@
         </div>
         <div class="col-10">
             <select asp-for="Status" class="form-control">
-                <option value="1">Inprocess</option>
-                <option value="2">Completed</option>
+                @foreach(var item in Model.Statuses)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
             </select>
         </div>
     </div>

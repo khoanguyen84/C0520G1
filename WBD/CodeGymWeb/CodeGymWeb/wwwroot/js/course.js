@@ -16,7 +16,7 @@ var courses = courses || {};
 courses.Deleted = function (courseId, courseName) {
     bootbox.confirm({
         title: '<h2 class="text-warning">Warning</h2>',
-        message: `Do you want to <b class="text-danger">Delete</b> this <b class="text-info">${courseName}</b> course?`,
+        message: `Do you want to change status into <b class="text-danger">Delete</b> this <b class="text-info">${courseName}</b> course?`,
         buttons: {
             cancel: {
                 label: '<i class="fa fa-times"></i> No'
@@ -49,7 +49,7 @@ courses.Deleted = function (courseId, courseName) {
 courses.Inprocess = function (courseId, courseName) {
     bootbox.confirm({
         title: '<h2 class="text-warning">Warning</h2>',
-        message: `Do you want to <b class="text-danger">Inprocess</b> this <b class="text-info">${courseName}</b> course?`,
+        message: `Do you want to change status into <b class="text-danger">Inprocess</b> this <b class="text-info">${courseName}</b> course?`,
         buttons: {
             cancel: {
                 label: '<i class="fa fa-times"></i> No'
@@ -81,7 +81,7 @@ courses.Inprocess = function (courseId, courseName) {
 courses.Completed = function (courseId, courseName) {
     bootbox.confirm({
         title: '<h2 class="text-warning">Warning</h2>',
-        message: `Do you want to <b class="text-danger">Completed</b> this <b class="text-info">${courseName}</b> course?`,
+        message: `Do you want to change status into <b class="text-danger">Completed</b> this <b class="text-info">${courseName}</b> course?`,
         buttons: {
             cancel: {
                 label: '<i class="fa fa-times"></i> No'

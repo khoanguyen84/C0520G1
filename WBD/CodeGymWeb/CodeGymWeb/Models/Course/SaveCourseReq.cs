@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CodeGymWeb.Models.Wiki;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -23,5 +24,6 @@ namespace CodeGymWeb.Models.Course
         [DataType(DataType.Date)]
         [Display(Name = "End date")]
         public DateTime EndDate { get; set; }
+        public List<Status> Statuses { get; set; }
     }
 }

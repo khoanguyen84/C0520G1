@@ -1,7 +1,7 @@
 ﻿@model SaveCourseReq
 @{
     ViewData["Title"] = "Create course";
-    var status = ViewBag.Status != null ? ViewBag.Status as List<Status> : new List<Status>();
+    //var status = ViewBag.Status != null ? ViewBag.Status as List<Status> : new List<Status>();
 }
 <div>
     @if (TempData["success"] != null)
@@ -32,7 +32,7 @@
             </div>
             <div class="col-10">
                 <select asp-for="Status" class="form-control">
-                    @foreach (var item in status)
+                    @foreach (var item in Model.Statuses)
                     {
                         <option value="@item.Id">@item.Name</option>
                     }
