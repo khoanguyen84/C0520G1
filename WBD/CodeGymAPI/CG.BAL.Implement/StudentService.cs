@@ -22,7 +22,7 @@ namespace CG.BAL.Implement
         {
             var students = new Students();
             students.StudentList = await studentRepository.GetStudentByCourseId(courseId);
-            var course = await courseRepository.Get(courseId);
+            var course = await courseRepository.GetCourseById(courseId);
             students.CourseName = course.CourseName;
             return students;
         }
