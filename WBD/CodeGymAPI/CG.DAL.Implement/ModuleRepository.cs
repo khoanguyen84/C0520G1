@@ -12,6 +12,18 @@ namespace CG.DAL.Implement
 {
     public class ModuleRepository : BaseRepository, IModuleRepository
     {
+        public async Task<SaveModuleRes> Deleted(int id, int status)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@ModuleId", id);
+            parameters.Add("@Status", status);
+            var result = await SqlMapper.QueryFirstOrDefaultAsync<SaveModuleRes>(cnn: connection,
+                                                                                sql: "sp_ChangeStatusModule",
+                                                                                parameters,
+                                                                                commandType: CommandType.StoredProcedure);
+            return result;
+        }
+
         public async Task<IEnumerable<ModuleView>> Gets()
         {
             return await SqlMapper.QueryAsync<ModuleView>(cnn: connection,

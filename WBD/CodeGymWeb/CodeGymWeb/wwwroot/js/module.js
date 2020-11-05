@@ -35,9 +35,32 @@ module.edit = function (moduleId, moduleName, duration, status) {
 }
 
 module.delete = function (moduleId) {
-
+    bootbox.confirm({
+        message: "Do you want changed status to Deleted?}",
+        buttons: {
+            confirm: {
+                label: 'Yes',
+                className: 'btn-info'
+            },
+            cancel: {
+                label: 'No',
+                className: 'btn-waning'
+            }
+        },
+        callback: function (result) {
+            if (result) {
+                $.ajax({
+                    url: `/module/deleted/${moduleId}`,
+                    method: 'POST',
+                    dataType: 'json',
+                    success: function (data) {
+                        window.location.href = "/Module/Index/";
+                    }
+                });
+            }
+        }
+    });
 }
-
 module.openModal = function () {
     $('#addEditModuleModal').modal('show');
 }

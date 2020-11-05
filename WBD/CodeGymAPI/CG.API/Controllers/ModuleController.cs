@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CG.BAL.Interface;
 using CG.Domain.Request.Module;
+using CG.Domain.Response.Module;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,6 +33,13 @@ namespace CG.API.Controllers
         {
             var result = await moduleService.Save(request);
             return Ok(result);
+        }
+        [HttpPost, HttpPatch]
+        [Route("api/module/deleted/{moduleId}/{status}")]
+        public async Task<SaveModuleRes> Deleted(int id, int status)
+        {
+            var result = await moduleService.Deleted(id, status);
+            return result;
         }
     }
 }
