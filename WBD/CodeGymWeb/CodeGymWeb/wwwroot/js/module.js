@@ -21,6 +21,8 @@ module.showData = function () {
                                        onclick="module.get(${v.moduleId})" class="item"><i class='fas fa-edit text-success'></i></a> 
                                 <a href="javascripts:;" class="item"
                                         onclick="module.delete(${v.moduleId})"><i class='fas fa-trash text-danger'></i></a>
+                                <a href="javascripts:;"
+                                       onclick="module.update(${v.moduleId},'${v.moduleName}',${v.duration}, ${v.status})" class="btn btn-info">Edit Ver2</a> 
                         </td>
                     </tr>`
                 );
@@ -68,6 +70,7 @@ module.save = function () {
                 if (response.data.moduleId > 0) {
                     $('#addEditModuleModal').modal('hide');
                     module.showData();
+                    //$('#frmAddEditModule').trigger("reset");
                 }
             }
         });
@@ -90,6 +93,17 @@ module.get = (id) => {
             $('#addEditModuleModal').modal('show');
         }
     });
+}
+
+
+//update dữ liệu mà không cần phải vào sever lấy dữ liệu đỗ ra.
+module.update = (moduleId, moduleName, duration, status) => {
+    $('#ModuleId').val(moduleId);
+    $('#ModuleName').val(moduleName);
+    $('#Duration').val(duration);
+    $('#Status').val(status);
+    $('.modal-title').text("Update Module Ver.2").css({ "color": "#8093ad", "padding-left": "0px", "font-weight": "500" });
+    $('#addEditModuleModal').modal('show');
 }
 
 //xoá 1 module
