@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CodeGymWeb.Models.Module;
+﻿using CodeGymWeb.Models.Module;
 using CodeGymWeb.Models.Wiki;
 using CodeGymWeb.Ultilities;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace CodeGymWeb.Controllers
 {
@@ -23,6 +20,11 @@ namespace CodeGymWeb.Controllers
             var modules = ApiHelper<List<ModuleView>>.HttpGetAsync("module/gets");
             return Json(new { data = modules });
         }
+        public IActionResult Detail(int id)
+        {
+            var data = ApiHelper<ModuleView>.HttpGetAsync($"module/get/{id}");
+            return View(data);
+        }
 
         [HttpGet]
         [Route("/module/status/gets")]
@@ -39,5 +41,13 @@ namespace CodeGymWeb.Controllers
             var result = ApiHelper<SaveModuleResult>.HttpPostAsync($"module/save", "POST", request);
             return Json(new { data = result });
         }
+
+     
+        public IActionResult Delete(int id, SaveModule req)
+        {
+            var result = ApiHelper<SaveModuleResult>.HttpPostAsync($"module/changeModuleStatus/{id}/4", "Patch", req);
+            return RedirectToAction("index");
+        }
+
     }
 }

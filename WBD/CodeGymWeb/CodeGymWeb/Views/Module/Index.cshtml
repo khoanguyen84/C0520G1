@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Module page";
 }
 
@@ -6,7 +7,7 @@
     <a href="javascript:void(0);" class="btn btn-info" onclick="module.openModal()">Create</a>
 
     <table id="tbModule" class="table table-bordered mt-2">
-        <thead class="thead-dark">
+        <thead class="thead-dark" style="text-align:center">
             <tr>
                 <th>Module Id</th>
                 <th>Module Name</th>
@@ -15,29 +16,30 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody style="text-align:center">
+
         </tbody>
     </table>
 </div>
 <!-- The Modal -->
 <div class="modal" id="addEditModuleModal">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-footer">
         <div class="modal-content">
 
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Create module</h4>
+                <h4 class="modal-title">Create Module</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
             <!-- Modal body -->
-            <div class="modal-body">
-                <form id="frmAddEditModule">
+            <div class="modal-body" >
+                <form id="formAddEditModule">
                     <input hidden name="ModuleId" id="ModuleId" value="0" />
                     <div class="row form-group">
                         <label for="ModuleName" class="col-3">Module name:</label>
                         <div class="col-9">
-                            <input type="text" class="form-control" placeholder="Module name" 
+                            <input type="text" class="form-control" placeholder="Module Name" 
                                    id="ModuleName" name="ModuleName"
                                    data-rule-required="true"
                                    data-msg-required="Module name is required">
@@ -51,17 +53,17 @@
                                    data-rule-required="true"
                                    data-msg-required="Duration is required"
                                    data-rule-range="2,8"
-                                   data-msg-range="Duration between 2 and 8.">
+                                   data-msg-range="Duration between 2 and 8">
                         </div>
                     </div>
                     <div class="row form-group">
-                        <label for="Status" class="col-3">Duration:</label>
+                        <label for="Status" class="col-3">Status:</label>
                         <div class="col-9">
                             <select class="form-control" id="Status" name="Status">
-
                             </select>
                         </div>
                     </div>
+
                 </form>
                 
             </div>
@@ -69,7 +71,7 @@
             <!-- Modal footer -->
             <div class="modal-footer">
                 <a href="javascript:;" class="btn btn-success" onclick="module.save()">Save</a>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" id="Close">Close</button>
             </div>
 
         </div>

@@ -14,12 +14,25 @@ module.showData = function () {
                         <td>${v.moduleName}</td>
                         <td>${v.duration}</td>
                         <td>${v.statusName}</td>
-                        <td></td>
+                        <td><a href="javascript:void(0);" class="btn btn-success" 
+                        onclick="module.Update(${v.moduleId},'${v.moduleName}',${v.duration},'${v.statusName}')">Edit</a>
+                        <a href="javascript:void(0);" class="btn btn-warning"
+                        onclick="module.Delete(${v.moduleId},'${v.moduleName}')">Delete</a></td>
                     </tr>`
                 );
             });
         }
     });
+}
+
+module.Update = function (moduleId, moduleName, duration, statusName) {
+    $('#ModuleId').val(moduleId);
+    $('#ModuleName').val(moduleName);
+    $('#Duration').val(duration);
+    $('#Status').val(statusName);
+    module.initStatus();
+    module.openModal();
+
 }
 
 module.openModal = function () {
@@ -43,7 +56,7 @@ module.initStatus = function () {
 }
 
 module.save = function () {
-    if ($('#frmAddEditModule').valid()) {
+    if ($('#formAddEditModule').valid()) {
         var saveObj = {};
         saveObj.moduleId = parseInt($('#ModuleId').val());
         saveObj.moduleName = $('#ModuleName').val();
@@ -59,12 +72,20 @@ module.save = function () {
                 bootbox.alert(response.data.message);
                 if (response.data.moduleId > 0) {
                     $('#addEditModuleModal').modal('hide');
+                    $('#formAddEditModule').trigger('reset');
                     module.showData();
+
                 }
             }
         });
     }
 }
+
+$('#Close').on('click', function () {
+    $('#addEditModuleModal').modal('hide');
+    $('#formAddEditModule').trigger('reset');
+})
+
 
 module.init = function () {
     module.showData();
@@ -74,3 +95,26 @@ module.init = function () {
 $(document).ready(function () {
     module.init();
 });
+
+module.Delete = function (id, name) {
+    bootbox.confirm({
+        message: "Do you want to Delete ? <span class='text-danger'>" + name + "</span>",
+        buttons: {
+            cancel: {
+                label: 'No',
+                className: 'btn-danger'
+            },
+            confirm: {
+                label: 'Yes',
+                className: 'btn-success'
+            }
+        },
+        callback: function (result) {
+            if (result) {
+                module.showData();
+                //window.location.href = "Module/Delete?id=" + id;
+                bootbox.alert("Delete Completed ");
+            }
+        }
+    });
+};

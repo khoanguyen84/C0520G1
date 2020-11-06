@@ -10,5 +10,6 @@ namespace CG.Domain.Request.Module
         public string ModuleName { get; set; }
         public int Status { get; set; }
         public int Duration { get; set; }
+        //public int SavedBy { get; set; }
     }
 }
