@@ -12,6 +12,36 @@ namespace CG.DAL.Implement
 {
     public class ModuleRepository : BaseRepository, IModuleRepository
     {
+        public async Task<SaveModuleRes> ChangeStatusModuleByModuleId(ModuleChangeStatusRequest request)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@moduleId", request.ModuleId);
+                parameters.Add("@status", request.Status);
+                parameters.Add("@modifiedBy", request.ModifiedBy);
+                return (await SqlMapper.QueryFirstOrDefaultAsync<SaveModuleRes>(cnn: connection,
+                                 param: parameters,
+                                sql: "sp_ChangeStatusModuleByModuleId",
+                                commandType: CommandType.StoredProcedure));
+            }
+            catch (Exception)
+            {
+                return new SaveModuleRes()
+                {
+                    ModuleId = 0,
+                    Message = "Something went wrong, please try again"
+                };
+            }
+
+        }
+        public async Task<ModuleView> Get(int id)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@ModuleId", id);
+            return await SqlMapper.QueryFirstOrDefaultAsync<ModuleView>(cnn: connection, sql: "sp_GetModuleById", param: parameters, commandType: CommandType.StoredProcedure);
+        }
+
         public async Task<IEnumerable<ModuleView>> Gets()
         {
             return await SqlMapper.QueryAsync<ModuleView>(cnn: connection,
@@ -30,8 +60,8 @@ namespace CG.DAL.Implement
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@ModuleId", request.ModuleId);
                 parameters.Add("@ModuleName", request.ModuleName);
-                parameters.Add("@Status", request.Status);
                 parameters.Add("@Duration", request.Duration);
+                parameters.Add("@Status", request.Status);
 
                 result = await SqlMapper.QueryFirstOrDefaultAsync<SaveModuleRes>(cnn: connection,
                                                                     sql: "sp_SaveModule",

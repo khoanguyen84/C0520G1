@@ -16,6 +16,17 @@ namespace CG.BAL.Implement
         {
             this.moduleRepository = moduleRepository;
         }
+
+        public async Task<SaveModuleRes> ChangeStatusModuleByModuleId(ModuleChangeStatusRequest request)
+        {
+            return await moduleRepository.ChangeStatusModuleByModuleId(request);
+        }
+
+        public async Task<ModuleView> Get(int id)
+        {
+            return await moduleRepository.Get(id);
+        }
+
         public async Task<IEnumerable<ModuleView>> Gets()
         {
             return await moduleRepository.Gets();
