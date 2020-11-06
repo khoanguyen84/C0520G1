@@ -14,19 +14,86 @@ module.showData = function () {
                         <td>${v.moduleName}</td>
                         <td>${v.duration}</td>
                         <td>${v.statusName}</td>
-                        <td></td>
+                        <td>
+                            <a href="javascript:void(0);" title="Edit Module"
+                                onclick="module.Edit(${v.moduleId},'${v.moduleName}',${v.duration},'${v.status}')">
+                                <i class="far fa-eye"></i>
+                            </a>
+                                
+                            <a onclick="module.Delete(${v.moduleId}, '${v.moduleName }')"
+                               href="javascript:void(0);" title="Delete Module" >
+                               <i class='fas fa-trash'></i>
+                            </a>
+                        </td>
                     </tr>`
                 );
             });
         }
     });
 }
+module.Delete= function (id, name) {
+    bootbox.confirm({
+        title: 'Confirm!',
+        message: "Do you want to delete " + name,
+        buttons: {
+            cancel: function () {
+                $.alert('Canceled!');
+            }
+        }, callback: function (result) {
+            $.confirm({
+                title: 'Message',
+                content: "Completed delete " + name,
+                buttons: {
+                    somethingElse: {
+                        btnClass: 'btn-blue',
+                        text: 'Ok',
+                        action: function () {
+                            window.location.href = "module/Delete?id=" + id;
+                        }
+                    }
+                }
+            });
+        }
+    });
+};
+
+module.Edit = function (moduleId, moduleName, duration, status) {
+    $('#ModuleId').val(moduleId);
+    $('#ModuleName').val(moduleName);
+    $('#Duration').val(duration);
+    module.initStatus(status);
+    module.openModal();
+    console.log("texxt  " + status )
+}
+
+//EDIT c1
+    /*< a href = "javascript:void(0);" title = "Edit Module"
+onclick = "module.Edit(${v.moduleId})"class="btn btn-warning" >
+    Edit
+                            </a >*/
+/*module.Edit = function (id) {
+    $.ajax({
+        url: `https://localhost:44393/api/module/get/${id}`,
+        method: 'GET',
+        dataType: 'JSON',
+        success: function (data) {
+            $('#ModuleId').val(data.moduleId);        
+            $('#ModuleName').val(data.moduleName);
+            $('#Duration').val(data.duration);
+            $('#StatusName').val(data.statusName);
+            module.openModal();
+            console.log("text id "+id)
+        }
+             
+    });
+}*/
+
 
 module.openModal = function () {
     $('#addEditModuleModal').modal('show');
 }
 
-module.initStatus = function () {
+module.initStatus = function (status) {
     $.ajax({
         url: '/module/status/gets',
         method: 'GET',
@@ -37,6 +104,9 @@ module.initStatus = function () {
                 $('#Status').append(
                     `<option value=${v.id}>${v.name}</option>`
                 );
+                if (status != null) {
+                    $('#Status').val(status);
+                }
             });
         }
     });

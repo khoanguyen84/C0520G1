@@ -1,18 +1,18 @@
 ﻿@{
     ViewData["Title"] = "Module page";
 }
-
-<div class=" row">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<div class=" row text-center">
     <a href="javascript:void(0);" class="btn btn-info" onclick="module.openModal()">Create</a>
 
     <table id="tbModule" class="table table-bordered mt-2">
         <thead class="thead-dark">
             <tr>
-                <th>Module Id</th>
+                <th style="width: 104px">Module Id</th>
                 <th>Module Name</th>
                 <th>Duration</th>
                 <th>Status</th>
-                <th>Actions</th>
+                <th style="width: 157px;">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -37,7 +37,7 @@
                     <div class="row form-group">
                         <label for="ModuleName" class="col-3">Module name:</label>
                         <div class="col-9">
-                            <input type="text" class="form-control" placeholder="Module name" 
+                            <input type="text" class="form-control" placeholder="Module name"
                                    id="ModuleName" name="ModuleName"
                                    data-rule-required="true"
                                    data-msg-required="Module name is required">
@@ -46,7 +46,7 @@
                     <div class="row form-group">
                         <label for="Duration" class="col-3">Duration:</label>
                         <div class="col-9">
-                            <input type="number" class="form-control" placeholder="Duration" 
+                            <input type="number" class="form-control" placeholder="Duration"
                                    id="Duration" name="Duration"
                                    data-rule-required="true"
                                    data-msg-required="Duration is required"
@@ -55,16 +55,17 @@
                         </div>
                     </div>
                     <div class="row form-group">
-                        <label for="Status" class="col-3">Duration:</label>
+                        <label for="Status" class="col-3">Status:</label>
                         <div class="col-9">
                             <select class="form-control" id="Status" name="Status">
-
                             </select>
                         </div>
                     </div>
+
                 </form>
-                
             </div>
+
+
 
             <!-- Modal footer -->
             <div class="modal-footer">
@@ -77,5 +78,7 @@
 </div>
 
 @section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <script src="~/lib/bootbox/bootbox.min.js"></script>
     <script src="~/js/module.js" asp-append-version="true"></script>
 }

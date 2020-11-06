@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CG.BAL.Interface;
+using CG.Domain.Request;
 using CG.Domain.Request.Module;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,6 +18,7 @@ namespace CG.API.Controllers
         {
             this.moduleService = moduleService;
         }
+
         [HttpPut("api/module/update")]
 
         public int UpdateModule([FromBody] UpdateModule request)
@@ -33,9 +35,25 @@ namespace CG.API.Controllers
 
         [HttpPost, HttpPatch]
         [Route("api/module/save")]
-        public async Task<OkObjectResult> SaveModule(SaveModuleReq request)
+        public async Task<OkObjectResult> SaveModule([FromBody] SaveModuleReq request)
         {
             var result = await moduleService.Save(request);
+            return Ok(result);
+        }
+
+        [HttpGet("api/module/get/{id}")]
+        public async Task<OkObjectResult> Get(int id)
+        {
+            var course = await moduleService.Get(id);
+            return Ok(course);
+        }
+
+
+        [HttpPatch]
+        [Route("api/module/delete/{id}")]
+        public async Task<OkObjectResult> Delete(int id)
+        {
+            var result = await moduleService.Delete(id);
             return Ok(result);
         }
     }

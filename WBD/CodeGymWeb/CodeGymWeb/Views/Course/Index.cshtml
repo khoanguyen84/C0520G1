@@ -2,11 +2,11 @@
 @{
     ViewData["Title"] = "Course page";
 }
-
-<div class=" row">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<div class=" row ">
     <a asp-controller="Course" asp-action="Create" class="btn btn-info">Create</a>
-    <a href="javascript:void(0);" class="btn btn-info" onclick="course.openModel()">Create</a>
-
+@*    <a href="javascript:void(0);" class="btn btn-info" onclick="course.openModel()">Create</a>
+*@
     <table class="table table-bordered mt-2">
         <thead class="thead-dark">
             <tr>
@@ -26,15 +26,15 @@
                 {
                     case 1:
                         {
-                            actions = $"<a href='{Url.Action("Edit","Course", new { id = item.CourseId})}'><i class='fas fa-edit'></i></a>";
-                            actions += $" <a href='#'><i class='fas fa-check-circle'></i></a>";
+                            actions = $"<a href='{Url.Action("Edit", "Course", new { id = item.CourseId })}'><i class='fas fa-edit'></i></a>";
+                            actions += $" <a href='#' onclick='Complete({item.CourseId},\"" + item.CourseName + "\")'><i class='fas fa-check-circle'></i></a>";
                             break;
                         }
                     case 3:
                         {
-                            actions = $"<a href='#'><i class='fas fa-trash'></i></a>";
-                            actions += $" <a href='#'><i class='fas fa-edit'></i></a>";
-                            actions += $" <a href='#'><i class='far fa-play-circle'></i></a>";
+                            actions = $"<a href='#' onclick='Delete({item.CourseId},\"" + item.CourseName + "\")'><i class='fas fa-trash'></i></a>";
+                            actions += $" <a href='{Url.Action("Edit", "Course", new { id = item.CourseId })}'><i class='fas fa-edit'></i></a>";
+                            actions += $" <a href='#' onclick='Active({item.CourseId},\"" + item.CourseName + "\")'><i class='far fa-play-circle'></i></a>";
                             break;
                         }
                 }
@@ -49,7 +49,7 @@
                         <span class="@(item.Status == 1 ? "btn btn-primary" : (item.Status == 2 ? "btn btn-success" : "btn btn-warning"))">@item.StatusName</span>
                     </td>
                     <td>
-                        <a href="#"><i class="fas fa-eye"></i></a>
+                        <a asp-controller="Course" asp-action="Detail" asp-route-id="@item.CourseId"><i class="fas fa-eye"></i></a>
                         @Html.Raw(actions)
                     </td>
                 </tr>
@@ -57,3 +57,75 @@
         </tbody>
     </table>
 </div>
+
+@section scripts
+{
+   @* <script src="~/lib/jquery/dist/jquery.js"></script>*@
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <script>
+        function Delete(id, name) {
+            bootbox.confirm({
+                title: 'Confirm!',
+                message: "Do you want to delete " + name,
+                buttons: {
+                    cancel: function () {
+                        $.alert('Canceled!');
+                    }
+                }, callback: function (result) {
+                      $.confirm({
+                                title: 'Message',
+                                content: "Completed delete " + name,
+                                buttons: {
+                                    somethingElse: {
+                                        btnClass: 'btn-blue',
+                                        text: 'Ok',
+                                        action: function () {
+                                            window.location.href = "Course/Delete?id=" + id;
+                                        }
+                                    }
+                                }
+                            });
+                }
+            });
+        };
+        function Active(id, name) {
+            $.confirm({
+                title: 'Confirm!',
+                content: "Do you want to active " + name,
+                buttons: {
+                    btnClass: 'btn-red',
+                    confirm: {
+                        btnClass: 'btn-blue',
+                        action: function () {
+                            $.confirm({
+                                title: 'Message',
+                                content: "Completed active " + name,
+                                buttons: {
+                                    somethingElse: {
+                                        btnClass: 'btn-blue',
+                                        text: 'Ok',
+                                        action: function () {
+                                            window.location.href = "Course/Pending?id=" + id;
+                                        }
+                                    }
+                                }
+                            });
+                        }
+                    },
+                    cancel: function () {
+                        $.alert('Canceled!');
+                    }
+                },
+            });
+        };
+        function Complete(id, name) {
+            var r = confirm("Do you want to Complete " + name);
+            if (r == true) {
+                window.location.href = "Course/Complete?id=" + id;
+                alert("completed " + name);
+            }
+        };
+    </script>
+   
+}

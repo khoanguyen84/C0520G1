@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CodeGymWeb.Models;
+using CodeGymWeb.Ultilities;
+using CodeGymWeb.Models.Module;
 
 namespace CodeGymWeb.Controllers
 {
@@ -20,7 +22,8 @@ namespace CodeGymWeb.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var data = ApiHelper<List<ModuleView>>.HttpGetAsync("module/get");
+            return View(data);
         }
 
         public IActionResult Privacy()
