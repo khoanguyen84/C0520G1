@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CG.BAL.Interface;
-using CG.Domain.Request;
+using CG.Domain.Request.Module;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CG.API.Controllers
@@ -28,6 +29,14 @@ namespace CG.API.Controllers
         {
             var courses = await moduleService.Gets();
             return Ok(courses);
+        }
+
+        [HttpPost, HttpPatch]
+        [Route("api/module/save")]
+        public async Task<OkObjectResult> SaveModule(SaveModuleReq request)
+        {
+            var result = await moduleService.Save(request);
+            return Ok(result);
         }
     }
 }

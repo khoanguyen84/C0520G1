@@ -111,7 +111,7 @@ namespace CG.DAL.Implement
             }
         }
 
-        public async Task<SaveCourseRes> Save(SaveCourseReq request)
+        public async Task<SaveCourseRes> Save(Domain.Request.Course.SaveCourseReq request)
         {
             var result = new SaveCourseRes()
             {
