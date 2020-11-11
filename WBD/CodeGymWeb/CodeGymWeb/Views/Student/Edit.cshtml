@@ -1,0 +1,101 @@
+﻿@model SaveStudentReq
+@{
+    ViewData["Title"] = "Update Student";
+    var status = ViewBag.Status != null ? ViewBag.Status as List<Status> : new List<Status>();
+}
+
+<form enctype="multipart/form-data" asp-controller="Student" asp-action="Edit" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <input type="hidden" asp-for="CourseId" value="@Model.CourseId" />
+    <input hidden asp-for="StudentId" value="@Model.StudentId"/>
+    <input hidden asp-for="Avatar" value="@Model.Avatar">
+    <div class="row">
+        <div class="col-2 col-form-label">
+            <label asp-for="Fullname"></label>
+        </div>
+        <div class="col-10">
+            <input asp-for="Fullname" class="form-control" />
+            <span asp-validation-for="Fullname" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2 col-form-label">
+            <label asp-for="GenderInt"></label>
+        </div>
+        <div class="col-10">
+            <select asp-for="GenderInt" class="form-control" asp-items="@Html.GetEnumSelectList<Common.Gender>()">
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2 col-form-label">
+            <label asp-for="Address"></label>
+        </div>
+        <div class="col-10">
+            <input asp-for="Address" class="form-control" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2 col-form-label">
+            <label asp-for="Dob"></label>
+        </div>
+        <div class="col-10">
+            <input asp-for="Dob" class="form-control" type="date" />
+            <span asp-validation-for="Dob" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2 col-form-label">
+            <label asp-for="Email"></label>
+        </div>
+        <div class="col-10">
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2 col-form-label">
+            <label asp-for="PhoneNumber"></label>
+        </div>
+        <div class="col-10">
+            <input asp-for="PhoneNumber" class="form-control" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2 col-form-label">
+            <label asp-for="Status"></label>
+        </div>
+        <div class="col-10">
+            <select asp-for="Status" class="form-control">
+                @foreach (var item in status)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2 col-form-label">
+            <label asp-for="AvatarPath"></label>
+        </div>
+        <div class="col-10">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" asp-for="AvatarPath">
+                <label class="custom-file-label" for="customFile">Chọn tệp</label>
+            </div>
+            <span asp-validation-for="AvatarPath" class="text-danger"></span>
+            <img id="image" src="/images/@Model.Avatar" alt="your image" style="width: auto; height: 300px;"/>
+        </div>
+    </div>
+    <div class="row">
+        <button class="btn btn-success mr-3" type="submit">Update</button>
+        <button class="btn btn-warning" type="reset">Cancel</button>
+    </div>
+</form>
+
+@section Scripts{
+        <script src="~/js/student.js" asp-append-version="true"></script>
+}

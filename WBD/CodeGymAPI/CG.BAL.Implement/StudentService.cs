@@ -1,5 +1,6 @@
 ﻿using CG.BAL.Interface;
 using CG.DAL.Interface;
+using CG.Domain.Request.Student;
 using CG.Domain.Response.Student;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -18,6 +19,11 @@ namespace CG.BAL.Implement
             this.courseRepository = courseRepository;
         }
 
+        public async Task<StudentOfCourseId> Get(int studentId)
+        {
+            return await studentRepository.Get(studentId);
+        }
+
         public async Task<Students> GetStudentByCourseId(int courseId)
         {
             var students = new Students();
@@ -26,5 +32,11 @@ namespace CG.BAL.Implement
             students.CourseName = course.CourseName;
             return students;
         }
+
+        public async Task<SaveStudentRes> Save(SaveStudentReq request)
+        {
+            return await studentRepository.Save(request);
+        }
+
     }
 }

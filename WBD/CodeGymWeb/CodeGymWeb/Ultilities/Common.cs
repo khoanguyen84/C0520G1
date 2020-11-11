@@ -16,6 +16,11 @@ namespace CodeGymWeb.Ultilities
             Teacher = 3,
             Student = 4
         }
+        public enum Gender
+        {          
+            Famale, 
+            Male
+        }
     }
 
 }

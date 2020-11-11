@@ -40,6 +40,7 @@
                             break;
                         }
                 }
+                var studentcout = ApiHelper<Students>.HttpGetAsync($"student/getbycourseid/{item.CourseId}").StudentList.ToList();
 
 
                 <tr>
@@ -47,6 +48,7 @@
                     <td>@item.CourseName</td>
                     <td>@item.StartDateStr</td>
                     <td>@item.EndDateStr</td>
+                    <td><a asp-controller="Student" asp-action="Index" asp-route-id="@item.CourseId" class="btn btn-info">@studentcout.Count</a></td>
                     <td>
                         <span class="@(item.Status == 1 ? "btn btn-primary" : (item.Status == 2 ? "btn btn-success" : "btn btn-warning"))">@item.StatusName</span>
                     </td>

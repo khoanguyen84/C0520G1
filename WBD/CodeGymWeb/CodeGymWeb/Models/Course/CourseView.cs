@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CodeGymWeb.Models.Student;
 
 namespace CodeGymWeb.Models.Course
 {
@@ -15,6 +16,6 @@ namespace CodeGymWeb.Models.Course
         public string EndDateStr { get; set; }
         public int Students { get; set; }
         public int Status { get; set; }
-        public string StatusName { get; set; }
+        public string StatusName { get; set; }    
     }
 }
