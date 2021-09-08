@@ -33,7 +33,12 @@ namespace CG.API
             services.AddSwaggerGen();
             services.AddScoped<ICourseService, CourseService>();
             services.AddScoped<ICourseRepository, CourseRepository>();
-
+            services.AddScoped<IWikiService, WikiService>();
+            services.AddScoped<IWikiRepository, WikiRepository>();
+            services.AddScoped<IModuleService, ModuleService>();
+            services.AddScoped<IModuleRepository, ModuleRepository>();
+            services.AddScoped<IStudentService, StudentService>();
+            services.AddScoped<IStudentRepository, StudentRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
